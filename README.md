@@ -28,7 +28,5 @@
     - 상품 등록 페이지
    
   1.3 팀 구성
-||[FE] 황초희||
-||:----:||
-||<img src="https://avatars.githubusercontent.com/u/168400614?v=4" width="120px" height="120px" />||
-||[GitHub Profile](https://github.com/chochohee)||
+  | [FE] 황초희|
+  |:---:|
