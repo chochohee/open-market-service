@@ -30,5 +30,5 @@
   1.3 팀 구성
 |[FE] 황초희|
 |:----:|
-|<img src="https://github.com/user-attachments/assets/477d18b7-0ab6-45d8-88da-a52317a8a864" width="120px" height="120px" />|
+|<img src="https://avatars.githubusercontent.com/u/168400614?v=4" width="120px" height="120px" />|
 |[GitHub Profile](https://github.com/chochohee)|
