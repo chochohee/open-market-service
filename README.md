@@ -34,11 +34,11 @@
   |<img src = "https://github.com/user-attachments/assets/959ca3c8-a246-4c49-baff-1f341b91f006" width="120px" height="120px" />|
   |[chochohee](https://github.com/chochohee)|
 
-  ## 2. 요구사항과 기능 명세
+## 2. 요구사항과 기능 명세
   ![image](https://github.com/user-attachments/assets/3aab37bd-6551-456a-972c-bf6b2166c2d8)
 
 ## 3. 프로젝트 구조와 개발 일정
-  ## 4. 와이어프레임/UI
+## 4. 와이어프레임/UI
   ### 4.1 와이어프레임
   ![image](https://github.com/user-attachments/assets/717505b7-0f20-492a-9709-15593ef4674d)
   ### 4.2 UI
@@ -48,15 +48,15 @@
   |img|img|
   |구매자 장바구니 페이지||
   |img||
-  ### 5. 에러와 해결방법
+## 5. 에러와 해결방법
   - a
   - b
   - c
-  ### 6. 개발하며 느낀점
+## 6. 개발하며 느낀점
   - a
   - b
   - c
-  ### 7. 추후 개발 계획
+## 7. 추후 개발 계획
   - a
   - b
   - c
