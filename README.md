@@ -28,6 +28,7 @@
     - 상품 등록 페이지
    
   1.3 팀 구성
-  |[FE| 황초희|
+  |[FE] 황초희|
   |:----:|
+|![황초희](https://github.com/user-attachments/assets/477d18b7-0ab6-45d8-88da-a52317a8a864 width:120px height:120px)|
   |https://github.com/chochohee|
