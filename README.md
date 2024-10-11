@@ -31,5 +31,5 @@
   | [FE] 황초희|
   |:---:|
   |<img src = "https://github.com/user-attachments/assets/959ca3c8-a246-4c49-baff-1f341b91f006" width="120px" height="120px" />|
-  |https://github.com/chochohee|
+  |[chochohee]https://github.com/chochohee|
 
