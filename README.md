@@ -6,6 +6,7 @@
 ### 1.1 프로젝트 목표
 - 판매자와 구매자를 구별하여 판매자가 상품을 등록, 판매하며 구매자는 구매하는 서비스입니다.
 - JavaScript를 사용하여 상품 등록, 결제, 상품에 대한 CRUD를 직접 구현해보는 프로젝트
+- 개인의 Vanilla JavaScript의 기능 숙련도 증가, MBA 방식으로 우선 개발하여 추후 Vanila JavsScript로 SPA 리팩토링 or React 리팩토링 예정입니다.
 
 ### 1.2 구현하고자하는 기능
 - 필수 구현 기능
@@ -33,28 +34,29 @@
   |<img src = "https://github.com/user-attachments/assets/959ca3c8-a246-4c49-baff-1f341b91f006" width="120px" height="120px" />|
   |[chochohee](https://github.com/chochohee)|
 
-  ## 2. 요구사항과 기능 명세
+## 2. 요구사항과 기능 명세
   ![image](https://github.com/user-attachments/assets/3aab37bd-6551-456a-972c-bf6b2166c2d8)
 
-  ## 3. 와이어프레임/UI
-  ### 3.1 와이어프레임
+## 3. 프로젝트 구조와 개발 일정
+## 4. 와이어프레임/UI
+  ### 4.1 와이어프레임
   ![image](https://github.com/user-attachments/assets/717505b7-0f20-492a-9709-15593ef4674d)
-  ### 3.2 UI
+  ### 4.2 UI
   #### 필수 구현페이지
   |구매자 로그인페이지|구매자 상품 목록 페이지|
   |:---:|:---:|
   |img|img|
   |구매자 장바구니 페이지||
   |img||
-  ### 4. 에러와 해결방법
+## 5. 에러와 해결방법
   - a
   - b
   - c
-  ### 5. 개발하며 느낀점
+## 6. 개발하며 느낀점
   - a
   - b
   - c
-  ### 6. 추후 개발 계획
+## 7. 추후 개발 계획
   - a
   - b
   - c
