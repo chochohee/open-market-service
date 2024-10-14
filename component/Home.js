@@ -1,8 +1,44 @@
-import Header from "../component/Header.js";
-import Footer from "../component/Footer.js";
+import Header from "./Header.js";
+import Footer from "./Footer.js";
 
 class Home {
+  constructor() {
+    this.data = null;
+    this.init();
+  }
+
+  async init() {
+    try {
+      const response = await fetch("./src/product.json");
+      const data = await response.json();
+      this.data = data;
+      this.render();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  render() {
+    const html = this.template(); // 템플릿 생성
+    const $app = document.querySelector(".App"); // .App 요소 선택
+    $app.innerHTML = html; // HTML 렌더링
+  }
+
   template() {
+    if (!this.data) return "<p>상품정보를 가져오는중입니다.</p>";
+
+    const productList = this.data.products
+      .map(
+        (product) => `
+          <li class="product-wrap">
+            <img src="${product.image}" alt="" />
+            <div class="product-store">${product.store}</div>
+            <div class="product-title">${product.title}</div>
+            <div class="product-price">${product.price}<span>원</span></div>
+          </li>
+      `
+      )
+      .join("");
     return `    
     ${Header.template()}
     <main>
@@ -18,36 +54,7 @@ class Home {
         </div>
       </div>
       <ul class="main-product">
-        <li class="product-wrap">
-          <img src="./src/assets/productImg/노트북파우치.png" alt="" />
-          <div class="product-store">우당탕탕 라이캣의 실험실</div>
-          <div class="product-title">Hack Your Life 개발자 노트북 파우치</div>
-          <div class="product-price">29,000<span>원</span></div>
-        </li>
-        <li class="product-wrap">
-          <img src="./src/assets/productImg/노트북파우치.png" alt="" />
-          <div class="product-store">store</div>
-          <div class="product-title">title</div>
-          <div class="product-price">price<span>원</span></div>
-        </li>
-        <li class="product-wrap">
-          <img src="./src/assets/productImg/노트북파우치.png" alt="" />
-          <div class="product-store">store</div>
-          <div class="product-title">title</div>
-          <div class="product-price">price<span>원</span></div>
-        </li>
-        <li class="product-wrap">
-          <img src="./src/assets/productImg/노트북파우치.png" alt="" />
-          <div class="product-store">store</div>
-          <div class="product-title">title</div>
-          <div class="product-price">price<span>원</span></div>
-        </li>
-        <li class="product-wrap">
-          <img src="./src/assets/productImg/노트북파우치.png" alt="" />
-          <div class="product-store">store</div>
-          <div class="product-title">title</div>
-          <div class="product-price">price<span>원</span></div>
-        </li>
+        ${productList}
       </ul>
     </main>
     ${Footer.template()}    

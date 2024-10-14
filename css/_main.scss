@@ -1,6 +1,7 @@
 main {
+  width: calc(100vw - 1.6rem);
   .slide-img-wrap {
-    width: 100vw;
+    width: calc(100vw - 1.6rem);
     height: 25vh;
     min-height: 40rem;
     background-color: $lightgray-color;

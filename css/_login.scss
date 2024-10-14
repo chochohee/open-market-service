@@ -65,7 +65,15 @@ form {
       &::placeholder {
         font-size: map-get($font-size, small);
         line-height: map-get($line-height, small);
-        color: #767676;
+        color: $darkgray-color;
+      }
+      &:valid {
+        font-size: map-get($font-size, small);
+        line-height: map-get($line-height, small);
+        padding-left: 0.5rem;
+      }
+      &:focus {
+        outline: none;
       }
     }
     .submit {
