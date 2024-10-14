@@ -1,0 +1,99 @@
+.login-wrap {
+  @include center-xy;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-top: 10rem;
+}
+
+.login-logo a {
+  width: 23.8rem;
+  height: 7.4rem;
+}
+
+form {
+  @include center-xy;
+  flex-direction: column;
+  padding-top: 7rem;
+  .choice-user button {
+    border: 1px solid $gray-color;
+    border-bottom: none;
+    border-radius: 1rem 1rem 0 0;
+    font-size: map-get($font-size, medium);
+    line-height: map-get($line-height, medium);
+    padding: 2rem 7.65rem 2.8rem 7.65rem;
+    margin: -2px;
+    background-color: $lightgray-color;
+    position: relative;
+    &.active {
+      background-color: $white;
+      z-index: 10;
+      &.buyer::after {
+        content: "";
+        background-color: $white;
+        width: 1rem;
+        height: 2rem;
+        position: absolute;
+        top: 84.5%;
+        left: 98%;
+      }
+      &.seller::after {
+        content: "";
+        background-color: $white;
+        width: 1rem;
+        height: 2rem;
+        position: absolute;
+        top: 84.5%;
+        right: 98%;
+      }
+    }
+  }
+  .input-wrap {
+    border: 1px solid $gray-color;
+    border-radius: 1rem;
+    width: 55rem;
+    @include center-xy;
+    flex-direction: column;
+    padding: 3.5rem;
+    position: relative;
+    top: -1rem;
+    background-color: $white;
+
+    input {
+      width: 48rem;
+      height: 6rem;
+      border-bottom: 1px solid $gray-color;
+      &::placeholder {
+        font-size: map-get($font-size, small);
+        line-height: map-get($line-height, small);
+        color: #767676;
+      }
+    }
+    .submit {
+      background-color: $main-color;
+      color: $white;
+      padding: 1.9rem 21.5rem;
+      margin-top: 3.6rem;
+      text-wrap: nowrap;
+      border-radius: 0.5rem;
+      font-size: map-get($font-size, medium);
+      line-height: map-get($line-height, medium);
+      font-weight: map-get($font-weights, bold);
+    }
+  }
+}
+.btn-wrap {
+  a {
+    font-size: map-get($map: $font-size, $key: small);
+    line-height: map-get($map: $line-height, $key: small);
+    color: #333333;
+    box-sizing: content-box;
+  }
+  #sign-up {
+    padding-right: 1.4rem;
+  }
+  #sign-up::after {
+    content: "|";
+    padding-left: 1.4rem;
+    color: #333333;
+  }
+}

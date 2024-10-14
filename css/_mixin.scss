@@ -1,0 +1,28 @@
+@mixin center-xy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin main-header-btn {
+  background-repeat: no-repeat;
+  width: 3.2rem;
+  height: 3.2rem;
+  padding-bottom: 0.9rem;
+  display: block;
+}
+
+@mixin main-slide-img-btn {
+  background-image: url(../src/assets/icon-rhigt-arrow.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 6rem;
+  height: 12.4rem;
+  position: absolute;
+  top: 50%;
+}
+
+@mixin blank-wrap-x {
+  padding-left: 16.7%;
+  padding-right: 16.7%;
+}

@@ -1,0 +1,67 @@
+// header
+header {
+  display: flex;
+  justify-content: space-between;
+  @include blank-wrap-x;
+  box-shadow: 0px 4px 5px 0px #0000001a;
+  .main-logo-wrap {
+    display: flex;
+    align-items: center;
+    padding: 2.6rem 0;
+    .main-logo a {
+      width: 12.4rem;
+      height: 3.8rem;
+    }
+    .search-box {
+      min-width: 25rem;
+      width: 20vw;
+      padding: 0.3rem 2.2rem;
+      border: 2px solid $main-color;
+      border-radius: 5rem;
+      margin-left: 3rem;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      & input {
+        min-width: 15rem;
+        width: calc(20vw - 2rem);
+        padding: 1rem 0;
+        outline: none;
+        &::placeholder {
+          color: $darkgray-color;
+          font-size: map-get($map: $font-size, $key: small);
+          line-height: map-get($map: $line-height, $key: small);
+        }
+      }
+      button {
+        background-image: url(../src/assets/search.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 2.8rem;
+        height: 2.8rem;
+      }
+    }
+  }
+
+  .main-header-btn {
+    display: flex;
+    align-items: center;
+    margin-left: 2.6rem;
+    .cart-btn {
+      text-wrap: nowrap;
+      &::before {
+        content: "";
+        background-image: url(../src/assets/icon-shopping-cart.svg);
+        @include main-header-btn;
+      }
+    }
+    .login-btn {
+      margin-left: 2.6rem;
+      &::before {
+        content: "";
+        background-image: url(../src/assets/icon-user.svg);
+        @include main-header-btn;
+      }
+    }
+  }
+}

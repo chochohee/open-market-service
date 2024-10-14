@@ -1,0 +1,41 @@
+footer {
+  @include blank-wrap-x;
+  background-color: $lightgray-color;
+  min-width: 115rem;
+  .footer-item {
+    border-bottom: 1px solid $gray-color;
+    padding: 6rem 0 2.2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .link-list {
+      font-size: map-get($map: $font-size, $key: mini);
+      line-height: map-get($map: $line-height, $key: mini);
+
+      @for $i from 1 through 5 {
+        & a:nth-child(#{$i})::after {
+          content: "|";
+          padding: 0 1.4rem;
+        }
+      }
+      :nth-child(3) {
+        font-weight: map-get($map: $font-weights, $key: bold);
+      }
+    }
+  }
+  .sns-list {
+    display: flex;
+    gap: 1.4rem;
+  }
+  address {
+    margin-top: 3rem;
+    padding-bottom: 6.3rem;
+    font-size: map-get($map: $font-size, $key: mini);
+    line-height: 2.4rem;
+    color: $darkgray-color;
+    .company {
+      font-weight: map-get($map: $font-weights, $key: bold);
+      color: $deepdarkgray-color;
+    }
+  }
+}
