@@ -3,6 +3,8 @@ import { getLoggedIn, state } from "../js/loggedIn.js";
 class Header {
   template() {
     const loggedInState = getLoggedIn();
+    const currentPath = window.location.pathname;
+    const isCartPage = currentPath === "/cart";
     console.log("현재 로그인상태:", state);
     return `
       <header>
@@ -14,7 +16,7 @@ class Header {
         </form>
       </div>
       <div class="main-header-btn">
-        <a href="/" class="cart-btn">장바구니</a>
+        <a href="/" class="cart-btn ${isCartPage ? "active" : ""}">장바구니</a>
         ${
           !loggedInState
             ? '<a href="/login" class="login-btn">로그인</a>'

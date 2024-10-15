@@ -56,6 +56,11 @@ header {
         background-image: url(../src/assets/icon-shopping-cart.svg);
         @include main-header-btn;
       }
+      &.active::before {
+        content: "";
+        background-image: url(../src/assets/icon-shopping-cart-2.svg);
+        @include main-header-btn;
+      }
     }
     .login-btn,
     .my-page {

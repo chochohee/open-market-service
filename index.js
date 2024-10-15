@@ -1,5 +1,6 @@
 import Home from "./component/Home.js";
 import Login from "./component/Login.js";
+import Cart from "./component/Cart.js";
 import { loggedIn, setLoggedIn, state } from "./js/loggedIn.js";
 
 const $app = document.querySelector(".App");
@@ -7,6 +8,7 @@ const $app = document.querySelector(".App");
 const routes = {
   "/": Home,
   "/login": Login,
+  "/cart": Cart,
 };
 
 function renderPage(path) {
@@ -15,7 +17,6 @@ function renderPage(path) {
   if (page) {
     console.log("렌더링중...");
     $app.innerHTML = page.template();
-
     if (path === "/login") {
       // 로그인 페이지 일 때 loggedIn 함수 호출
       loggedIn();

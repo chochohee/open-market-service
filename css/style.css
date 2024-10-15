@@ -206,6 +206,15 @@ header .main-header-btn .cart-btn::before {
   padding-bottom: 0.9rem;
   display: block;
 }
+header .main-header-btn .cart-btn.active::before {
+  content: "";
+  background-image: url(../src/assets/icon-shopping-cart-2.svg);
+  background-repeat: no-repeat;
+  width: 3.2rem;
+  height: 3.2rem;
+  padding-bottom: 0.9rem;
+  display: block;
+}
 header .main-header-btn .login-btn,
 header .main-header-btn .my-page {
   margin-left: 2.6rem;
