@@ -1,0 +1,162 @@
+.detail-page-wrapper {
+  @include blank-wrap-x;
+}
+
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  margin-top: 5.6vh;
+  margin-bottom: 10vh;
+  box-sizing: border-box;
+  .img-wrapper {
+    position: relative;
+    width: 60rem;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    margin: auto;
+    img {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.02);
+    }
+  }
+  .info-wrapper {
+    width: 63rem;
+    .product-info {
+      margin-bottom: 13.8rem;
+      .store {
+        font-size: map-get($map: $font-size, $key: medium);
+        line-height: map-get($map: $line-height, $key: medium);
+        color: $darkgray-color;
+      }
+      .title {
+        font-size: map-get($map: $font-size, $key: extra);
+        line-height: map-get($map: $line-height, $key: extra);
+        padding: 1.6rem 0 2rem 0;
+      }
+      .price {
+        font-size: map-get($map: $font-size, $key: extra);
+        line-height: map-get($map: $line-height, $key: extra);
+        font-weight: map-get($map: $font-weights, $key: bold);
+        span {
+          font-size: map-get($map: $font-size, $key: medium);
+          line-height: map-get($map: $line-height, $key: medium);
+          font-weight: map-get($map: $font-weights, $key: regular);
+        }
+      }
+    }
+    .buy-info {
+      .delivery {
+        font-size: map-get($map: $font-size, $key: small);
+        line-height: map-get($map: $line-height, $key: small);
+        color: $darkgray-color;
+        margin-bottom: 2rem;
+      }
+      .count-wrap {
+        border-top: 2px solid $gray-color;
+        border-bottom: 2px solid $gray-color;
+        padding: 3rem 0;
+        display: flex;
+        .minus {
+          box-sizing: border-box;
+          border: 1px solid $gray-color;
+          border-right: none;
+          width: 5rem;
+          height: 5rem;
+          border-radius: 0.5rem 0 0 0.5rem;
+          img {
+            width: 2rem;
+          }
+        }
+        .count {
+          border: 1px solid $gray-color;
+          width: 5rem;
+          height: 5rem;
+          @include center-xy;
+          font-size: map-get($map: $font-size, $key: medium);
+          line-height: map-get($map: $line-height, $key: medium);
+        }
+        .plus {
+          border-radius: 0 0.5rem 0.5rem 0;
+          border: 1px solid $gray-color;
+          border-left: none;
+          width: 5rem;
+          height: 5rem;
+          img {
+            width: 2rem;
+          }
+        }
+      }
+      .price-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 3.2rem 0 2.2rem 0;
+        .total-price {
+          font-size: map-get($map: $font-size, $key: medium);
+          line-height: map-get($map: $line-height, $key: medium);
+          font-weight: map-get($map: $font-weights, $key: medium);
+        }
+        .count-total {
+          span:nth-child(1) {
+            font-size: map-get($map: $font-size, $key: medium);
+            line-height: map-get($map: $line-height, $key: medium);
+            color: $darkgray-color;
+            &::after {
+              content: "|";
+              padding: 0 1.1rem;
+              color: $gray-color;
+            }
+            .count-number {
+              color: $main-color;
+            }
+          }
+          span:nth-child(2) {
+            font-size: map-get($map: $font-size, $key: medium);
+            line-height: map-get($map: $line-height, $key: medium);
+            color: $main-color;
+            strong {
+              font-size: map-get($map: $font-size, $key: extra);
+              line-height: map-get($map: $line-height, $key: extra);
+              font-weight: map-get($map: $font-weights, $key: bold);
+            }
+          }
+        }
+      }
+      .buy-btns {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 1.4rem;
+        .buy-now {
+          background-color: $main-color;
+          @include buy-btn;
+        }
+        .cart-btn {
+          background-color: $darkgray-color;
+          @include buy-btn;
+        }
+      }
+    }
+  }
+}
+.product-info-btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  button {
+    width: 32rem;
+    border-bottom: 0.6rem solid #e0e0e0;
+    padding-bottom: 1.2rem;
+    font-size: map-get($map: $font-size, $key: medium);
+    line-height: map-get($map: $line-height, $key: medium);
+    font-weight: map-get($map: $font-weights, $key: medium);
+    color: $darkgray-color;
+    &.active {
+      border-bottom-color: $main-color;
+      font-weight: map-get($map: $font-weights, $key: bold);
+      color: $main-color;
+    }
+  }
+}

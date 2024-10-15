@@ -1,6 +1,7 @@
 import Home from "./component/Home.js";
 import Login from "./component/Login.js";
 import Cart from "./component/Cart.js";
+import DetailPage from "./component/DetailPage.js";
 import { loggedIn, setLoggedIn, state } from "./js/loggedIn.js";
 
 const $app = document.querySelector(".App");
@@ -9,6 +10,7 @@ const routes = {
   "/": Home,
   "/login": Login,
   "/cart": Cart,
+  "/product": DetailPage,
 };
 
 function renderPage(path) {
