@@ -18,7 +18,7 @@ class Header {
         ${
           !loggedInState
             ? '<a href="/login" class="login-btn">로그인</a>'
-            : '<a href="/login" class="my-page">마이페이지</a>'
+            : '<a href="#" class="my-page">마이페이지</a>'
         }
       </div>
     </header>

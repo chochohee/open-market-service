@@ -1,11 +1,19 @@
-let isLoggedIn = false;
+export let state = {
+  isLoggedIn: false,
+  isSeller: false,
+  isBuyer: true,
+};
 
 export function setLoggedIn(value) {
-  isLoggedIn = value;
+  state.isLoggedIn = value;
+  state.isSeller = value;
+  state.isBuyer = value;
 }
 
 export function getLoggedIn() {
-  return isLoggedIn;
+  return state.isLoggedIn;
+  state.isSeller;
+  state.isBuyer;
 }
 
 export function loggedIn() {
@@ -14,11 +22,32 @@ export function loggedIn() {
   const pw = loginForm.querySelector(".pw-inp");
   const msg = loginForm.querySelector(".error-text");
   const loggedIn = loginForm.querySelector(".login-submit");
-
+  const buyerLogin = loginForm.querySelector(".buyer");
+  const sellerLogin = loginForm.querySelector(".seller");
+  let isBuyer = state.isBuyer;
+  let isSeller = state.isBuyer;
   // id 영문자로시작하는 영문자 또는 숫자 6~20자
   // pw 8~16자 영문,숫자 조합
   const validId = "test1234";
   const validPw = "test1234";
+
+  buyerLogin.addEventListener("click", (event) => {
+    event.preventDefault();
+    isBuyer = true;
+    isSeller = false;
+    console.log(isBuyer, isSeller);
+    buyerLogin.classList.add("active");
+    sellerLogin.classList.remove("active");
+  });
+
+  sellerLogin.addEventListener("click", (event) => {
+    event.preventDefault();
+    isSeller = true;
+    isBuyer = false;
+    console.log(isBuyer, isSeller);
+    buyerLogin.classList.remove("active");
+    sellerLogin.classList.add("active");
+  });
 
   loggedIn.addEventListener("click", (event) => {
     event.preventDefault();
