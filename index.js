@@ -30,7 +30,7 @@ function navigateTo(path) {
   renderPage(path);
 }
 
-// 페이지 로드시 로컬스토리지의 isLoggedIn 속성을 통해 로그인여부 확인
+// 페이지 로드시 로컬스토리지의 isLoggedIn 속성을 통해 로그인여부 확인하는 함수
 function checkLoginStatus() {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   if (isLoggedIn) {
