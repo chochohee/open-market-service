@@ -478,7 +478,7 @@ footer address .company {
   align-items: center;
   margin: 3.2rem 0 2.2rem 0;
 }
-.product-detail .info-wrapper .buy-info .price-info .total-price {
+.product-detail .info-wrapper .buy-info .price-info div:nth-child(1) {
   font-size: 1.8rem;
   line-height: 2.2rem;
   font-weight: 500;

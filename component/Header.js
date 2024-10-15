@@ -16,7 +16,9 @@ class Header {
         </form>
       </div>
       <div class="main-header-btn">
-        <a href="/" class="cart-btn ${isCartPage ? "active" : ""}">장바구니</a>
+        <a href="/cart" class="cart-btn ${
+          isCartPage ? "active" : ""
+        }">장바구니</a>
         ${
           !loggedInState
             ? '<a href="/login" class="login-btn">로그인</a>'

@@ -7,7 +7,7 @@ class ProductList {
     try {
       const response = await fetch("./src/product.json");
       this.data = await response.json();
-      console.log(this.data);
+      console.log("jsonData", this.data);
     } catch (error) {
       console.error(error.message);
     }

@@ -11,14 +11,26 @@ const routes = {
   "/login": Login,
   "/cart": Cart,
   "/product": DetailPage,
+  "/product/:id": DetailPage,
 };
 
-function renderPage(path) {
+async function renderPage(path) {
   console.log("랜더링경로:", path);
+  // 일반 페이지 라우팅 || 상세페이지 라우팅
+  const pathParts = path.split("/");
+
+  if (pathParts[1] === "product" && pathParts[2]) {
+    const productId = pathParts[2];
+    await DetailPage.render(productId);
+    return;
+  }
+
   const page = routes[path];
+
   if (page) {
     console.log("렌더링중...");
     $app.innerHTML = page.template();
+
     if (path === "/login") {
       // 로그인 페이지 일 때 loggedIn 함수 호출
       loggedIn();
@@ -56,24 +68,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const $app = document.querySelector(".App");
 
-  $app.addEventListener("click", (event) => {
-    if (
-      event.target.matches(".logo-btn") ||
-      event.target.matches(".main-logo")
-    ) {
-      event.preventDefault();
+  $app.addEventListener("click", (e) => {
+    if (e.target.matches(".logo-btn") || e.target.matches(".main-logo")) {
+      e.preventDefault();
       navigateTo("/");
       loggedIn();
     }
 
-    if (event.target.matches(".login-btn")) {
-      event.preventDefault();
+    if (e.target.matches(".login-btn")) {
+      e.preventDefault();
       navigateTo("/login");
     }
 
-    if (event.target.matches(".cart-btn")) {
-      event.preventDefault();
+    if (e.target.matches(".cart-btn")) {
+      e.preventDefault();
       navigateTo("/cart");
     }
+
+    if (e.target.closest(".product-wrap")) {
+      const productId = e.target
+        .closest(".product-wrap")
+        .getAttribute("data-id");
+      console.log("e ID:", productId);
+      navigateTo(`/product/${productId}`);
+    }
+
+    console.log(e.target);
   });
 });
