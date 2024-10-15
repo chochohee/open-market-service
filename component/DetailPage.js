@@ -56,9 +56,7 @@ class DetailPage {
                 <div >총 상품 금액</div>
                 <div class="count-total">
                   <span>총 수량 <strong class="count-number">1</strong>개</span>
-                  <span><strong class="total-price">${
-                    product.price
-                  }</strong>원</span>
+                  <span><strong class="total-price">${product.price}
                 </div>
               </div>
               <div class="buy-btns">
