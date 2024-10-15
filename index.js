@@ -1,6 +1,6 @@
 import Home from "./component/Home.js";
 import Login from "./component/Login.js";
-import { loggedIn, state } from "./js/loggedIn.js";
+import { loggedIn, setLoggedIn, state } from "./js/loggedIn.js";
 
 const $app = document.querySelector(".App");
 
@@ -30,6 +30,16 @@ function navigateTo(path) {
   renderPage(path);
 }
 
+// 페이지 로드시 로컬스토리지의 isLoggedIn 속성을 통해 로그인여부 확인
+function checkLoginStatus() {
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  if (isLoggedIn) {
+    setLoggedIn(true, state.isBuyer, state.isSeller);
+  } else {
+    setLoggedIn(false, false, false);
+  }
+}
+
 renderPage(window.location.pathname);
 
 window.addEventListener("popstate", () => {
@@ -38,6 +48,9 @@ window.addEventListener("popstate", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   renderPage(window.location.pathname);
+
+  checkLoginStatus();
+
   const $app = document.querySelector(".App");
 
   $app.addEventListener("click", (event) => {
