@@ -1,9 +1,9 @@
-import { getLoggedIn } from "../js/loggedIn.js";
+import { getLoggedIn, state } from "../js/loggedIn.js";
 
 class Header {
   template() {
     const loggedInState = getLoggedIn();
-    console.log("현재 로그인상태:", loggedInState);
+    console.log("현재 로그인상태:", state);
     return `
       <header>
       <div class="main-logo-wrap">

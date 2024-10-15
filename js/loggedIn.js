@@ -4,16 +4,14 @@ export let state = {
   isBuyer: true,
 };
 
-export function setLoggedIn(value) {
-  state.isLoggedIn = value;
-  state.isSeller = value;
-  state.isBuyer = value;
+export function setLoggedIn(isLoggedInValue, isSellerValue, isBuyerValue) {
+  state.isLoggedIn = isLoggedInValue;
+  state.isSeller = isSellerValue;
+  state.isBuyer = isBuyerValue;
 }
 
 export function getLoggedIn() {
   return state.isLoggedIn;
-  state.isSeller;
-  state.isBuyer;
 }
 
 export function loggedIn() {
@@ -24,8 +22,9 @@ export function loggedIn() {
   const loggedIn = loginForm.querySelector(".login-submit");
   const buyerLogin = loginForm.querySelector(".buyer");
   const sellerLogin = loginForm.querySelector(".seller");
-  let isBuyer = state.isBuyer;
-  let isSeller = state.isBuyer;
+
+  let isBuyer = true;
+  let isSeller = false;
   // id 영문자로시작하는 영문자 또는 숫자 6~20자
   // pw 8~16자 영문,숫자 조합
   const validId = "test1234";
@@ -35,7 +34,7 @@ export function loggedIn() {
     event.preventDefault();
     isBuyer = true;
     isSeller = false;
-    console.log(isBuyer, isSeller);
+    console.log("buyer:", isBuyer, "seller:", isSeller);
     buyerLogin.classList.add("active");
     sellerLogin.classList.remove("active");
   });
@@ -44,7 +43,7 @@ export function loggedIn() {
     event.preventDefault();
     isSeller = true;
     isBuyer = false;
-    console.log(isBuyer, isSeller);
+    console.log("buyer:", isBuyer, "seller:", isSeller);
     buyerLogin.classList.remove("active");
     sellerLogin.classList.add("active");
   });
@@ -59,7 +58,7 @@ export function loggedIn() {
     if (idValue === validId && pwValue === validPw) {
       localStorage.setItem("userId", idValue);
       localStorage.setItem("isLoggedIn", true); // 로그인상태 스토리지에 저장
-      setLoggedIn(true); // 로그인상태 업데이트
+      setLoggedIn(true, !isBuyer, !isSeller); // 로그인상태 업데이트
 
       window.history.back(); // 로그인 성공시 이전 페이지로 이동
     } else if (

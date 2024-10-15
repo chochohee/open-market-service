@@ -1,6 +1,6 @@
 import Home from "./component/Home.js";
 import Login from "./component/Login.js";
-import { loggedIn } from "./js/loggedIn.js";
+import { loggedIn, state } from "./js/loggedIn.js";
 
 const $app = document.querySelector(".App");
 
