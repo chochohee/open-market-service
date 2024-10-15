@@ -1,7 +1,7 @@
 class Header {
   template() {
     return `
-        <header>
+      <header>
       <div class="main-logo-wrap">
         <h1 class="main-logo"><a href="/"></a></h1>
         <form class="search-box">
@@ -11,10 +11,10 @@ class Header {
       </div>
       <div class="main-header-btn">
         <a href="/" class="cart-btn">장바구니</a>
-        <a href="/" class="login-btn">로그인</a>
+        <a href="/login" class="login-btn">로그인</a>
       </div>
     </header>
-        `;
+    `;
   }
 }
 

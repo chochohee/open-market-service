@@ -62,15 +62,12 @@ form {
       width: 48rem;
       height: 6rem;
       border-bottom: 1px solid $gray-color;
+      font-size: map-get($font-size, small);
+      line-height: map-get($line-height, small);
       &::placeholder {
         font-size: map-get($font-size, small);
         line-height: map-get($line-height, small);
         color: $darkgray-color;
-      }
-      &:valid {
-        font-size: map-get($font-size, small);
-        line-height: map-get($line-height, small);
-        padding-left: 0.5rem;
       }
       &:focus {
         outline: none;

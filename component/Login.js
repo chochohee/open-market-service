@@ -15,7 +15,7 @@ class Login {
           </button>
         </div>
         <div class="input-wrap">
-          <input type="text" id="id" name="id" class="id-inp"placeholder="아이디" pattern="^[a-z]+[a-z0-9]{5,19}$/g" required/>
+          <input type="text" id="id" name="id" class="id-inp" placeholder="아이디" pattern="^[a-z]+[a-z0-9]{5,19}$/g" required/>
           <input type="password" id="pw" name="pw" class="pw-inp" placeholder="비밀번호" pattern="^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/" required/>
           <div class="error-text"></div>
           <button type="submit" class="login-submit">

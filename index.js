@@ -14,7 +14,6 @@ function renderPage(path) {
   const page = routes[path];
   if (page) {
     $app.innerHTML = page.template();
-
     if (path === "/login") {
       loggedIn();
     }
