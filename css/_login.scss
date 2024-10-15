@@ -76,16 +76,27 @@ form {
         outline: none;
       }
     }
-    .submit {
+    .login-submit {
       background-color: $main-color;
       color: $white;
       padding: 1.9rem 21.5rem;
-      margin-top: 3.6rem;
+      margin-top: 2.6rem;
       text-wrap: nowrap;
       border-radius: 0.5rem;
       font-size: map-get($font-size, medium);
       line-height: map-get($line-height, medium);
       font-weight: map-get($font-weights, bold);
+    }
+    .error-text {
+      display: flex;
+      justify-content: start;
+      font-size: map-get($map: $font-size, $key: small);
+      line-height: map-get($map: $line-height, $key: small);
+      font-weight: map-get($map: $font-weights, $key: medium);
+      color: $error;
+      padding-top: 2.6rem;
+      position: relative;
+      left: -34%;
     }
   }
 }

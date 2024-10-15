@@ -10,8 +10,8 @@ class Header {
         </form>
       </div>
       <div class="main-header-btn">
-        <a href="#" class="cart-btn">장바구니</a>
-        <a href="#/login" class="login-btn">로그인</a>
+        <a href="/" class="cart-btn">장바구니</a>
+        <a href="/" class="login-btn">로그인</a>
       </div>
     </header>
         `;

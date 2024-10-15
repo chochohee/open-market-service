@@ -1,5 +1,6 @@
 import Home from "./component/Home.js";
 import Login from "./component/Login.js";
+import { loggedIn } from "./js/loggedIn.js";
 
 const $app = document.querySelector(".App");
 
@@ -9,16 +10,21 @@ const routes = {
 };
 
 function renderPage(path) {
+  console.log("랜더링경로:", path);
   const page = routes[path];
   if (page) {
     $app.innerHTML = page.template();
+
+    if (path === "/login") {
+      loggedIn();
+    }
   } else {
     $app.innerHTML = "<p>404 Not Found</p>";
   }
 }
 
 function navigateTo(path) {
-  window.history.pushState({}, path, window.location.origin + path); // URL 변경
+  window.history.pushState({}, "", path); // URL 변경
   renderPage(path);
 }
 
@@ -29,10 +35,18 @@ window.addEventListener("popstate", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOMContentLoaded 이벤트 발생");
   const $app = document.querySelector(".App");
 
   $app.addEventListener("click", (event) => {
+    if (
+      event.target.matches(".logo-btn") ||
+      event.target.matches(".main-logo")
+    ) {
+      event.preventDefault();
+      navigateTo("/");
+      loggedIn;
+    }
+
     if (event.target.matches(".login-btn")) {
       event.preventDefault();
       navigateTo("/login");
@@ -41,11 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target.matches(".cart-btn")) {
       event.preventDefault();
       navigateTo("/cart");
-    }
-
-    if (event.target.matches(".logo-btn")) {
-      event.preventDefault();
-      navigateTo("/");
     }
   });
 });
