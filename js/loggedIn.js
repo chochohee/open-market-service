@@ -1,6 +1,12 @@
-let state = {
-  isLoggedIn: false,
-};
+let isLoggedIn = false;
+
+export function setLoggedIn(value) {
+  isLoggedIn = value;
+}
+
+export function getLoggedIn() {
+  return isLoggedIn;
+}
 
 export function loggedIn() {
   const loginForm = document.querySelector(".login-form");
@@ -24,7 +30,7 @@ export function loggedIn() {
     if (idValue === validId && pwValue === validPw) {
       localStorage.setItem("userId", idValue);
       localStorage.setItem("isLoggedIn", true); // 로그인상태 스토리지에 저장
-      state.isLoggedIn = true; // 변수 업데이트
+      setLoggedIn(true); // 로그인상태 업데이트
 
       window.history.back(); // 로그인 성공시 이전 페이지로 이동
     } else if (
@@ -41,5 +47,3 @@ export function loggedIn() {
     }
   });
 }
-
-export { state };

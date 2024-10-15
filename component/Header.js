@@ -1,5 +1,9 @@
+import { getLoggedIn } from "../js/loggedIn.js";
+
 class Header {
   template() {
+    const loggedInState = getLoggedIn();
+    console.log("현재 로그인상태:", loggedInState);
     return `
       <header>
       <div class="main-logo-wrap">
@@ -11,7 +15,11 @@ class Header {
       </div>
       <div class="main-header-btn">
         <a href="/" class="cart-btn">장바구니</a>
-        <a href="/login" class="login-btn">로그인</a>
+        ${
+          !loggedInState
+            ? '<a href="/login" class="login-btn">로그인</a>'
+            : '<a href="/login" class="my-page">마이페이지</a>'
+        }
       </div>
     </header>
     `;

@@ -1,6 +1,5 @@
 import Header from "./Header.js";
 import Footer from "./Footer.js";
-
 class Home {
   constructor() {
     this.data = null;
@@ -14,7 +13,7 @@ class Home {
       this.data = data;
       this.render();
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
     }
   }
 

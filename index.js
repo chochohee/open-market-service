@@ -13,8 +13,11 @@ function renderPage(path) {
   console.log("랜더링경로:", path);
   const page = routes[path];
   if (page) {
+    console.log("렌더링중...");
     $app.innerHTML = page.template();
+
     if (path === "/login") {
+      // 로그인 페이지 일 때 loggedIn 함수 호출
       loggedIn();
     }
   } else {
@@ -34,6 +37,7 @@ window.addEventListener("popstate", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  renderPage(window.location.pathname);
   const $app = document.querySelector(".App");
 
   $app.addEventListener("click", (event) => {
@@ -43,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       event.preventDefault();
       navigateTo("/");
-      loggedIn;
+      loggedIn();
     }
 
     if (event.target.matches(".login-btn")) {
