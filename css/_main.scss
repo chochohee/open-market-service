@@ -42,12 +42,12 @@ main {
     margin-bottom: 9vh;
     .product-wrap {
       margin-top: 4vh;
-      cursor: pointer;
       img {
         min-width: 16rem;
         width: 20vw;
         min-height: 16rem;
         height: 20vw;
+        cursor: pointer;
       }
       .product-store {
         margin-top: 1.6rem;
@@ -59,6 +59,7 @@ main {
         margin-top: 1rem;
         font-size: map-get($map: $font-size, $key: medium);
         line-height: map-get($map: $line-height, $key: medium);
+        cursor: pointer;
       }
       .product-price {
         margin-top: 1rem;

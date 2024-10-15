@@ -288,13 +288,13 @@ main .main-product {
 }
 main .main-product .product-wrap {
   margin-top: 4vh;
-  cursor: pointer;
 }
 main .main-product .product-wrap img {
   min-width: 16rem;
   width: 20vw;
   min-height: 16rem;
   height: 20vw;
+  cursor: pointer;
 }
 main .main-product .product-wrap .product-store {
   margin-top: 1.6rem;
@@ -306,6 +306,7 @@ main .main-product .product-wrap .product-title {
   margin-top: 1rem;
   font-size: 1.8rem;
   line-height: 2.2rem;
+  cursor: pointer;
 }
 main .main-product .product-wrap .product-price {
   margin-top: 1rem;

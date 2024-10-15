@@ -1,20 +1,15 @@
 import Header from "./Header.js";
 import Footer from "./Footer.js";
+import ProductList from "../js/productList.js";
 class Home {
   constructor() {
-    this.data = null;
+    this.productList = new ProductList();
     this.init();
   }
 
   async init() {
-    try {
-      const response = await fetch("./src/product.json");
-      const data = await response.json();
-      this.data = data;
-      this.render();
-    } catch (error) {
-      console.error(error.message);
-    }
+    await this.productList.init();
+    this.render();
   }
 
   render() {
@@ -24,20 +19,23 @@ class Home {
   }
 
   template() {
-    if (!this.data) return "<p>상품정보를 가져오는중입니다.</p>";
+    const data = this.productList.getData();
+    let productListHtml = "<p>상품정보를 가져오는중입니다.</p>";
 
-    const productList = this.data.products
-      .map(
-        (product) => `
-          <li class="product-wrap">
+    if (data && data.products) {
+      productListHtml = data.products
+        .map(
+          (product) => `
+          <li class="product-wrap" data-id="${product.id}">
             <img src="${product.image}" alt="" />
             <div class="product-store">${product.store}</div>
             <div class="product-title">${product.title}</div>
             <div class="product-price">${product.price}<span>원</span></div>
           </li>
       `
-      )
-      .join("");
+        )
+        .join("");
+    }
     return `    
     ${Header.template()}
     <main>
@@ -53,7 +51,7 @@ class Home {
         </div>
       </div>
       <ul class="main-product">
-        ${productList}
+        ${productListHtml}
       </ul>
     </main>
     ${Footer.template()}    
