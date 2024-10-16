@@ -1,3 +1,5 @@
+import { state } from "../js/state.js";
+
 class SignUp {
   constructor() {
     this.init();
@@ -20,23 +22,27 @@ class SignUp {
       </h1>
       <form method="post" class="sign-up-form">
         <div class="choice-user">
-          <button type="button" class="buyer active">구매회원가입</button>
-          <button type="button" class="seller">판매회원가입</button>
+          <button type="button" class="buyer ${
+            state.userType === "BUYER" ? "active" : ""
+          }">구매회원가입</button>
+          <button type="button" class="seller ${
+            state.userType === "SELLER" ? "active" : ""
+          }">판매회원가입</button>
         </div>
         <div class="input-wrap">
-          <label for="sign-up-id">아이디</label>
+          <label for="user-name">아이디</label>
           <div class="id-wrap">
             <input
               type="text"
-              id="sign-up-id"
-              name="sign-up-id"
-              class="sign-up-id"
+              id="user-name"
+              name="user-name"
+              class="user-name"
               pattern="[a-zA-Z]+[a-zA-Z0-9]{5,19}$"
               required
             />
-            <button class="checked-id" type="button">중복확인</button>
+            <button class="checked-id" type="submit">중복확인</button>
           </div>
-          <div class="error-text"></div>
+          <div class="id-error"></div>
           <div class="sign-up-pw-wrap">
             <label for="sign-up-pw">비밀번호</label>
             <input
@@ -62,8 +68,8 @@ class SignUp {
             <div class="error-text"></div>
           </div>
 
-          <label for="user-name" class="user-name">이름</label>
-          <input type="text" id="user-name" name="user-name" required />
+          <label for="name" class=name">이름</label>
+          <input type="text" id="name" name="name" class="name" required />
           <label for="contact">휴대폰번호</label>
           <div class="contact-inp">
             <div class="select">
@@ -77,12 +83,25 @@ class SignUp {
               <li class="select-option">019</li>
             </ul>
           </div>
-          <input type="text" name="middle-number" id="middle-number" />
-          <input type="text" name="last-number" id="last-number" />
+ <input
+      type="text"
+      name="middle-number"
+      id="middle-number"
+      pattern=".{3,4}"
+      title="3자리 또는 4자리 입력해주세요."
+      required
+    />
+    <input 
+      type="text"
+      name="last-number"
+      id="last-number"
+      pattern=".{4}"
+      title="4자리 입력해주세요."
+      required/>
         </div>
     </div>
         <div class="sign-up-checkd">
-          <input type="checkbox" id="checkbox" class="checkbox txt-hide" />
+          <input type="checkbox" id="checkbox" class="checkbox txt-hide"/>
           <label for="checkbox" class="label-hold"></label>
           <label for="checkbox" class="agreed">
             호두샵의 <a href="#">이용약관</a> 및

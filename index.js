@@ -1,19 +1,21 @@
-import Home from "./component/HomePage.js";
-import Login from "./component/LoginPage.js";
-import Cart from "./component/CartPage.js";
+import HomePage from "./component/HomePage.js";
+import LoginPage from "./component/LoginPage.js";
+import CartPage from "./component/CartPage.js";
 import DetailPage from "./component/DetailPage.js";
-import SignUp from "./component/SignUpPage.js";
+import SignUpPage from "./component/SignUpPage.js";
 import { loggedIn } from "./js/loggedIn.js";
 import { setLoggedIn, state } from "./js/state.js";
+import { signup } from "./js/signUp.js";
 
 const $app = document.querySelector(".App");
 
 const routes = {
-  "/": Home,
-  "/login": Login,
-  "/cart": Cart,
+  "/": HomePage,
+  "/login": LoginPage,
+  "/cart": CartPage,
   "/product": DetailPage,
-  "/signup": SignUp,
+  "/accounts/buyer/signup": SignUpPage, // 구매자 회원가입
+  "/accounts/seller/signup": SignUpPage, // 판매자 회원가입
 };
 
 async function renderPage() {
@@ -38,7 +40,6 @@ async function renderPage() {
       const pageInstance = new page();
       await pageInstance.init();
       $app.innerHTML = pageInstance.template();
-      console.log(typeof Login.template);
       console.log("랜더링 완료");
     } catch (error) {
       console.error("페이지 초기화 오류", error);
@@ -49,6 +50,10 @@ async function renderPage() {
     }
   } else {
     $app.innerHTML = "<p>404 Not Found</p>";
+  }
+
+  if (path === "/accounts/buyer/signup" || path === "/accounts/seller/signup") {
+    signup();
   }
 }
 
@@ -98,9 +103,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (e.target.closest(".sign-up")) {
       e.preventDefault();
-      window.location.hash = "#/signup";
+      window.location.hash = "#/accounts/buyer/signup";
+      state.userType = "BUYER";
     }
 
+    if (e.target.closest(".sign-up-form .buyer")) {
+      e.preventDefault();
+      window.location.hash = "#/accounts/buyer/signup";
+      state.userType = "BUYER";
+    }
+
+    if (e.target.closest(".sign-up-form .seller")) {
+      e.preventDefault();
+      window.location.hash = "#/accounts/seller/signup";
+      state.userType = "SELLER";
+    }
+    console.log("usertype:", state.userType);
     console.log(e.target);
   });
 });

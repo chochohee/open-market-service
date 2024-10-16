@@ -601,23 +601,29 @@ footer address .company {
 .sign-up-form .input-wrap input:focus {
   border: 1px solid #21bf48;
 }
-.sign-up-form .input-wrap .error-text {
+.sign-up-form .input-wrap .id-error {
   font-size: 1.6rem;
   line-height: 2rem;
-  color: #eb5757;
   padding-top: 1rem;
   height: 4rem;
+  color: #eb5757;
+}
+.sign-up-form .input-wrap .id-error.succes {
+  color: #21bf48;
 }
 .sign-up-form .input-wrap .id-wrap {
   display: flex;
   margin-top: 1rem;
 }
-.sign-up-form .input-wrap .id-wrap input {
+.sign-up-form .input-wrap .id-wrap .user-name {
   width: 34.6rem;
   height: 5.4rem;
   margin-right: 1.2rem;
 }
-.sign-up-form .input-wrap .id-wrap button {
+.sign-up-form .input-wrap .id-wrap .error {
+  border: 1px solid #eb5757;
+}
+.sign-up-form .input-wrap .id-wrap .checked-id {
   background-color: #21bf48;
   padding: 1.7rem 3.1rem;
   font-size: 1.6rem;
@@ -654,7 +660,7 @@ footer address .company {
 .sign-up-form .input-wrap .sign-up-pw-wrap input {
   margin-bottom: 1rem;
 }
-.sign-up-form .input-wrap #user-name {
+.sign-up-form .input-wrap #name {
   margin-bottom: 1.6rem;
   margin-top: 1rem;
 }
@@ -707,6 +713,7 @@ footer address .company {
   overflow-y: scroll;
   overflow-x: hidden;
   box-sizing: border-box;
+  z-index: 10;
 }
 .sign-up-form .input-wrap .contact-inp .select ul::-webkit-scrollbar {
   background-color: #f2f2f2;
@@ -718,9 +725,13 @@ footer address .company {
   border: solid 0.6rem #f2f2f2;
 }
 .sign-up-form .input-wrap .contact-inp .select ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   top: 5rem;
   padding: 1rem 0;
+  width: inherit;
 }
 .sign-up-form .input-wrap .contact-inp .select ul li:hover {
   display: flex;
@@ -739,7 +750,8 @@ footer address .company {
 .sign-up-form .sign-up-checkd {
   width: 48rem;
   display: flex;
-  margin-top: 3.4rem;
+  margin-top: 2.4rem;
+  cursor: pointer;
 }
 .sign-up-form .sign-up-checkd .txt-hide {
   position: absolute;
@@ -752,6 +764,7 @@ footer address .company {
 .sign-up-form .sign-up-checkd .label-hold {
   position: relative;
   top: 0.2rem;
+  cursor: pointer;
 }
 .sign-up-form .sign-up-checkd .label-hold::before {
   content: "";
@@ -781,6 +794,7 @@ footer address .company {
   font-size: 1.6rem;
   line-height: 2rem;
   color: #767676;
+  cursor: pointer;
 }
 .sign-up-form .sign-up-checkd .agreed a {
   font-weight: 700;
@@ -795,7 +809,7 @@ footer address .company {
   padding: 1.9rem 20.7rem;
   text-wrap: nowrap;
   border-radius: 0.5rem;
-  margin-top: 3.4rem;
+  margin-top: 3.2rem;
   margin-bottom: 11rem;
 }
 .sign-up-form .sign-up-submit:disabled {

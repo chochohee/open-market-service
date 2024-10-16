@@ -45,22 +45,30 @@
         border: 1px solid $main-color;
       }
     }
-    .error-text {
+    .id-error {
       font-size: map-get($map: $font-size, $key: small);
       line-height: map-get($map: $line-height, $key: small);
-      color: $error;
       padding-top: 1rem;
       height: 4rem;
+      color: $error;
+      &.succes {
+        color: $main-color;
+      }
     }
+
     .id-wrap {
       display: flex;
       margin-top: 1rem;
-      input {
+      .user-name {
         width: 34.6rem;
         height: 5.4rem;
         margin-right: 1.2rem;
       }
-      button {
+      .error {
+        border: 1px solid $error;
+      }
+
+      .checked-id {
         background-color: $main-color;
         padding: 1.7rem 3.1rem;
         font-size: map-get($map: $font-size, $key: small);
@@ -99,7 +107,7 @@
       }
     }
 
-    #user-name {
+    #name {
       margin-bottom: 1.6rem;
       margin-top: 1rem;
     }
@@ -146,6 +154,7 @@
           overflow-y: scroll;
           overflow-x: hidden;
           box-sizing: border-box;
+          z-index: 10;
           &::-webkit-scrollbar {
             background-color: $lightgray-color;
             width: 1.8rem;
@@ -158,9 +167,11 @@
           }
 
           li {
+            @include center-xy;
             position: relative;
             top: 5rem;
             padding: 1rem 0;
+            width: inherit;
             &:hover {
               @include center-xy;
               width: 13.4rem;
@@ -179,10 +190,12 @@
       }
     }
   }
+
   .sign-up-checkd {
     width: 48rem;
     display: flex;
-    margin-top: 3.4rem;
+    margin-top: 2.4rem;
+    cursor: pointer;
     .txt-hide {
       position: absolute;
       clip: rect(0 0 0 0);
@@ -194,6 +207,7 @@
     .label-hold {
       position: relative;
       top: 0.2rem;
+      cursor: pointer;
     }
     .label-hold::before {
       content: "";
@@ -217,13 +231,16 @@
       left: 0;
       opacity: 0;
     }
+
     .checkbox:checked + .label-hold::after {
       opacity: 1;
     }
+
     .agreed {
       font-size: map-get($map: $font-size, $key: small);
       line-height: map-get($map: $line-height, $key: small);
       color: $darkgray-color;
+      cursor: pointer;
       a {
         font-weight: map-get($map: $font-weights, $key: bold);
         text-decoration: underline;
@@ -239,9 +256,10 @@
     padding: 1.9rem 20.7rem;
     text-wrap: nowrap;
     border-radius: 0.5rem;
-    margin-top: 3.4rem;
+    margin-top: 3.2rem;
     margin-bottom: 11rem;
   }
+
   .sign-up-submit:disabled {
     background-color: $gray-color;
   }

@@ -1,6 +1,7 @@
 export const state = {
   isLoggedIn: false,
   userType: "BUYER", // BUYER || SELLER
+  isAgreed: false,
 };
 
 // 로그인 상태 설정
