@@ -2,6 +2,7 @@ import Home from "./component/Home.js";
 import Login from "./component/Login.js";
 import Cart from "./component/Cart.js";
 import DetailPage from "./component/DetailPage.js";
+import SignUp from "./component/SignUp.js";
 import { loggedIn } from "./js/loggedIn.js";
 import { setLoggedIn, state } from "./js/state.js";
 
@@ -12,6 +13,7 @@ const routes = {
   "/login": Login,
   "/cart": Cart,
   "/product": DetailPage,
+  "/signup": SignUp,
 };
 
 async function renderPage(path) {
@@ -96,6 +98,11 @@ document.addEventListener("DOMContentLoaded", () => {
         .getAttribute("data-id");
       console.log("e ID:", productId);
       navigateTo(`/product/${productId}`);
+    }
+
+    if (e.target.closest(".sign-up")) {
+      e.preventDefault();
+      navigateTo("/signup");
     }
 
     console.log(e.target);

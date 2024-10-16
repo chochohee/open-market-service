@@ -11,6 +11,9 @@
 }
 
 .sign-up-form {
+  @include center-xy;
+  flex-direction: column;
+  padding-top: 7rem;
   .choice-user button {
     border: 1px solid $gray-color;
     border-bottom: none;
@@ -26,6 +29,7 @@
     display: flex;
     align-items: flex-start;
     padding-top: 4rem;
+
     label {
       font-size: map-get($map: $font-size, $key: small);
       line-height: map-get($map: $line-height, $key: small);
@@ -35,7 +39,8 @@
       border: 1px solid $gray-color;
       border-radius: 0.5rem;
       padding-left: 0.5rem;
-      margin-top: 1rem;
+      padding: 1.7rem 0 1.7rem 1.6rem;
+      height: 5.4rem;
       &:focus {
         border: 1px solid $main-color;
       }
@@ -49,6 +54,7 @@
     }
     .id-wrap {
       display: flex;
+      margin-top: 1rem;
       input {
         width: 34.6rem;
         height: 5.4rem;
@@ -68,6 +74,9 @@
     .sign-up-pw-wrap,
     .checked-pw-wrap {
       position: relative;
+      input {
+        margin-top: 1rem;
+      }
       &::before {
         content: "";
         width: 2.8rem;
@@ -90,16 +99,15 @@
       }
     }
 
-    .user-name {
-      padding-top: 1rem;
-    }
     #user-name {
       margin-bottom: 1.6rem;
+      margin-top: 1rem;
     }
     .contact-inp {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 1.2rem;
+      margin-top: 1rem;
       .select {
         width: auto;
         border-radius: 0.5rem;
@@ -109,12 +117,11 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        padding-top: 1rem;
         .selected {
           border: 1px solid $gray-color;
           border-radius: 0.5rem;
           width: 15.2rem;
-          padding: 1.7rem 7.3rem 1.7rem 5rem;
+          padding: 1.6rem 7.3rem 1.6rem 5rem;
           cursor: pointer;
           &::before {
             content: "";

@@ -563,6 +563,13 @@ footer address .company {
   height: 7.4rem;
 }
 
+.sign-up-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 7rem;
+}
 .sign-up-form .choice-user button {
   border: 1px solid #c4c4c4;
   border-bottom: none;
@@ -588,7 +595,8 @@ footer address .company {
   border: 1px solid #c4c4c4;
   border-radius: 0.5rem;
   padding-left: 0.5rem;
-  margin-top: 1rem;
+  padding: 1.7rem 0 1.7rem 1.6rem;
+  height: 5.4rem;
 }
 .sign-up-form .input-wrap input:focus {
   border: 1px solid #21bf48;
@@ -602,6 +610,7 @@ footer address .company {
 }
 .sign-up-form .input-wrap .id-wrap {
   display: flex;
+  margin-top: 1rem;
 }
 .sign-up-form .input-wrap .id-wrap input {
   width: 34.6rem;
@@ -622,6 +631,10 @@ footer address .company {
 .sign-up-form .input-wrap .checked-pw-wrap {
   position: relative;
 }
+.sign-up-form .input-wrap .sign-up-pw-wrap input,
+.sign-up-form .input-wrap .checked-pw-wrap input {
+  margin-top: 1rem;
+}
 .sign-up-form .input-wrap .sign-up-pw-wrap::before,
 .sign-up-form .input-wrap .checked-pw-wrap::before {
   content: "";
@@ -641,16 +654,15 @@ footer address .company {
 .sign-up-form .input-wrap .sign-up-pw-wrap input {
   margin-bottom: 1rem;
 }
-.sign-up-form .input-wrap .user-name {
-  padding-top: 1rem;
-}
 .sign-up-form .input-wrap #user-name {
   margin-bottom: 1.6rem;
+  margin-top: 1rem;
 }
 .sign-up-form .input-wrap .contact-inp {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1.2rem;
+  margin-top: 1rem;
 }
 .sign-up-form .input-wrap .contact-inp .select {
   width: auto;
@@ -663,13 +675,12 @@ footer address .company {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-top: 1rem;
 }
 .sign-up-form .input-wrap .contact-inp .select .selected {
   border: 1px solid #c4c4c4;
   border-radius: 0.5rem;
   width: 15.2rem;
-  padding: 1.7rem 7.3rem 1.7rem 5rem;
+  padding: 1.6rem 7.3rem 1.6rem 5rem;
   cursor: pointer;
 }
 .sign-up-form .input-wrap .contact-inp .select .selected::before {
