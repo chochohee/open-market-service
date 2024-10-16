@@ -1,4 +1,17 @@
 class Login {
+  constructor() {
+    this.init();
+  }
+  async init() {
+    this.render();
+  }
+
+  render() {
+    const html = this.template(); // 템플릿 생성
+    const $app = document.querySelector(".App"); // .App 요소 선택
+    $app.innerHTML = html; // HTML 렌더링
+  }
+
   template() {
     return `
     <div class="login-wrap">
@@ -7,7 +20,7 @@ class Login {
       </h1>
       <form method="post" class="login-form">
         <div class="choice-user">
-          <button type="button" class="buyer active">
+          <button type="button" class="buyer active"> 
             구매회원 로그인
           </button>
           <button type="button" class="seller">
@@ -15,8 +28,8 @@ class Login {
           </button>
         </div>
         <div class="input-wrap">
-          <input type="text" id="id" name="id" class="id-inp" placeholder="아이디" pattern="^[a-z]+[a-z0-9]{5,19}$/g" required/>
-          <input type="password" id="pw" name="pw" class="pw-inp" placeholder="비밀번호" pattern="^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/" required/>
+          <input type="text" id="id" name="id" class="id-inp" placeholder="아이디" required autocomplete="username" />
+          <input type="password" id="pw" name="pw" class="pw-inp" placeholder="비밀번호" required autocomplete="current-password"/>
           <div class="error-text"></div>
           <button type="submit" class="login-submit">
             로그인
@@ -24,10 +37,10 @@ class Login {
         </div>
       </form>
       <div class="btn-wrap">
-        <a href="" id="sign-up">
+        <a href="" class="sign-up">
           회원가입
         </a>
-        <a href="" id="find-pw">
+        <a href="" class="find-pw">
           비밀번호 찾기
         </a>
       </div>
@@ -35,4 +48,4 @@ class Login {
   }
 }
 
-export default new Login();
+export default Login;

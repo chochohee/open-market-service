@@ -10,4 +10,4 @@ class Cart {
   }
 }
 
-export default new Cart();
+export default Cart;

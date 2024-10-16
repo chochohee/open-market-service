@@ -1,11 +1,12 @@
-import { getLoggedIn, state } from "../js/loggedIn.js";
-
+import { getLoggedIn } from "../js/state.js";
 class Header {
   template() {
     const loggedInState = getLoggedIn();
     const currentPath = window.location.pathname;
     const isCartPage = currentPath === "/cart";
-    console.log("현재 로그인상태:", state);
+
+    console.log("현재 로그인상태:", loggedInState);
+
     return `
       <header>
       <div class="main-logo-wrap">
@@ -16,12 +17,12 @@ class Header {
         </form>
       </div>
       <div class="main-header-btn">
-        <a href="/cart" class="cart-btn ${
+        <a href="#" class="cart-btn ${
           isCartPage ? "active" : ""
         }">장바구니</a>
         ${
           !loggedInState
-            ? '<a href="/login" class="login-btn">로그인</a>'
+            ? '<a href="#" class="login-btn">로그인</a>'
             : '<a href="#" class="my-page">마이페이지</a>'
         }
       </div>

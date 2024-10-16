@@ -128,10 +128,10 @@ form .input-wrap .error-text {
   color: #333333;
   box-sizing: content-box;
 }
-.btn-wrap #sign-up {
+.btn-wrap .sign-up {
   padding-right: 1.4rem;
 }
-.btn-wrap #sign-up::after {
+.btn-wrap .sign-up::after {
   content: "|";
   padding-left: 1.4rem;
   color: #333333;

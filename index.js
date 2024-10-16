@@ -2,7 +2,8 @@ import Home from "./component/Home.js";
 import Login from "./component/Login.js";
 import Cart from "./component/Cart.js";
 import DetailPage from "./component/DetailPage.js";
-import { loggedIn, setLoggedIn, state } from "./js/loggedIn.js";
+import { loggedIn } from "./js/loggedIn.js";
+import { setLoggedIn, state } from "./js/state.js";
 
 const $app = document.querySelector(".App");
 
@@ -11,28 +12,35 @@ const routes = {
   "/login": Login,
   "/cart": Cart,
   "/product": DetailPage,
-  "/product/:id": DetailPage,
 };
 
 async function renderPage(path) {
   console.log("랜더링경로:", path);
-  // 일반 페이지 라우팅 || 상세페이지 라우팅
-  const pathParts = path.split("/");
+  const pathParts = path.split("/").filter(Boolean); // 빈 요소를 제거하여 경로 파트 얻기
+  console.log("pathParts:", pathParts);
 
   if (pathParts[1] === "product" && pathParts[2]) {
-    const productId = pathParts[2];
-    await DetailPage.render(productId);
+    const detailPage = new DetailPage();
+    await detailPage.init(); // 초기화 후 렌더링
+    $app.innerHTML = detailPage.template();
     return;
   }
 
-  const page = routes[path];
+  const page = routes[path] || (pathParts[0] === "product" ? DetailPage : null);
 
   if (page) {
     console.log("렌더링중...");
-    $app.innerHTML = page.template();
+    try {
+      const pageInstance = new page();
+      await pageInstance.init();
+      $app.innerHTML = pageInstance.template();
+      console.log(typeof Login.template);
+      console.log("랜더링 완료");
+    } catch (error) {
+      console.error("페이지 초기화 오류", error);
+    }
 
     if (path === "/login") {
-      // 로그인 페이지 일 때 loggedIn 함수 호출
       loggedIn();
     }
   } else {
@@ -49,30 +57,27 @@ function navigateTo(path) {
 function checkLoginStatus() {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   if (isLoggedIn) {
-    setLoggedIn(true, state.isBuyer, state.isSeller);
+    const userType = localStorage.getItem("userType") || "BUYER";
+    setLoggedIn(true, userType);
   } else {
-    setLoggedIn(false, false, false);
+    setLoggedIn(false, "BUYER");
   }
 }
 
-renderPage(window.location.pathname);
-
-window.addEventListener("popstate", () => {
-  renderPage(window.location.pathname);
-});
-
 document.addEventListener("DOMContentLoaded", () => {
-  renderPage(window.location.pathname);
-
+  console.log("페이지가 로드되었습니다.");
   checkLoginStatus();
+  renderPage(window.location.pathname);
+  console.log("현재 경로 : ", window.location.pathname);
 
-  const $app = document.querySelector(".App");
+  window.addEventListener("popstate", () => {
+    renderPage(window.location.pathname);
+  });
 
   $app.addEventListener("click", (e) => {
     if (e.target.matches(".logo-btn") || e.target.matches(".main-logo")) {
       e.preventDefault();
       navigateTo("/");
-      loggedIn();
     }
 
     if (e.target.matches(".login-btn")) {

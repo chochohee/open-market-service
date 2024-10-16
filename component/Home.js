@@ -1,15 +1,21 @@
 import Header from "./Header.js";
 import Footer from "./Footer.js";
 import ProductList from "../js/productList.js";
+
 class Home {
   constructor() {
-    this.productList = new ProductList();
+    this.productList = ProductList;
     this.init();
   }
 
   async init() {
-    await this.productList.init();
-    this.render();
+    try {
+      await this.productList.init();
+      this.render();
+      console.log("Home초기화");
+    } catch (error) {
+      console.error("home 초기화 오류 :", error);
+    }
   }
 
   render() {
@@ -22,20 +28,25 @@ class Home {
     const data = this.productList.getData();
     let productListHtml = "<p>상품정보를 가져오는중입니다.</p>";
 
-    if (data && data.products) {
-      productListHtml = data.products
+    if (data && data.length > 0) {
+      productListHtml = data
         .map(
           (product) => `
           <li class="product-wrap" data-id="${product.id}">
-            <img src="${product.image}" alt="" />
-            <div class="product-store">${product.store}</div>
-            <div class="product-title">${product.title}</div>
-            <div class="product-price">${product.price}<span>원</span></div>
+            <img src="${product.image}" alt="${product.name}" />
+            <div class="product-store">${product.seller?.name}</div>
+            <div class="product-title">${product.name}</div>
+            <div class="product-price">${Number(
+              product.price
+            ).toLocaleString()}<span>원</span></div>
           </li>
       `
         )
         .join("");
+    } else {
+      productListHtml = "<p>등록된 상품이 없습니다.</p>"; // 상품이 없을 때의 메시지
     }
+
     return `    
     ${Header.template()}
     <main>
@@ -55,8 +66,8 @@ class Home {
       </ul>
     </main>
     ${Footer.template()}    
-        `;
+    `;
   }
 }
 
-export default new Home();
+export default Home;

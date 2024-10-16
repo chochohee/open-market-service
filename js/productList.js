@@ -1,16 +1,23 @@
+// productList.js
+import { fetchAllProducts } from "./api.js";
+
 class ProductList {
   constructor() {
     this.data = null;
-    this.init();
   }
+
   async init() {
-    try {
-      const response = await fetch("./src/product.json");
-      this.data = await response.json();
-      console.log("jsonData", this.data);
-    } catch (error) {
-      console.error(error.message);
+    this.data = await this.loadProducts();
+    console.log(this.data);
+  }
+
+  async loadProducts() {
+    const response = await fetchAllProducts();
+    if (!response) {
+      console.error("제품 목록을 가져오지 못했습니다.");
+      return null;
     }
+    return response.results;
   }
 
   getData() {
@@ -18,8 +25,12 @@ class ProductList {
   }
 
   getProductById(id) {
-    return this.data?.products.find((product) => product.id === id);
+    if (!this.data) {
+      console.erre("제품 목록이 로드되지 않았습니다.");
+      return null;
+    }
+    return this.data.find((product) => product.id === id);
   }
 }
 
-export default ProductList;
+export default new ProductList(); // 인스턴스 내보내기
