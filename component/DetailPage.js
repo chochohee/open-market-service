@@ -13,34 +13,33 @@ class DetailPage {
   }
 
   async render() {
-    const pathParts = window.location.pathname.split("/");
+    const pathParts = window.location.hash.split("/");
+    console.log(pathParts);
     this.productId = pathParts[2];
-    const product = this.productList.getProductById(Number(this.productId));
+    console.log(this.productId);
+    const product = await this.productList.getProductById(
+      Number(this.productId)
+    );
+    console.log(this.productId);
 
     const $app = document.querySelector(".App");
     if (product) {
       $app.innerHTML = this.template(product);
       this.productCount();
-      this.updateTotalPrice(1);
     } else {
       $app.innerHTML = "<p>제품을 찾을 수 없습니다.</p>";
     }
   }
 
   template(product) {
-    let shippingText;
-    if (product.shipping_method === "PARCEL") {
-      shippingText = "택배배송";
-    } else if (product.shipping_method === "DELIVERY") {
-      shippingText = "직접배송(화물배달)";
-    }
+    let shippingText =
+      product.shipping_method === "PARCEL" ? "택배배송" : "직접배송(화물배달)";
 
-    let shippingFee;
-    if (product.shipping_fee === 0) {
-      shippingFee = "무료배송";
-    } else {
-      shippingFee = `${product.shipping_fee.toLocaleString()}원`;
-    }
+    let shippingFee =
+      product.shipping_fee === 0
+        ? "무료배송"
+        : `${Number(product.shipping_fee).toLocaleString()}원`;
+
     return `
     ${Header.template()}
         <main>
@@ -53,7 +52,9 @@ class DetailPage {
             <div class="product-info">
               <div class="store">${product.seller.name}</div>
               <div class="title" data-id="${product.id}">${product.name}</div>
-              <div class="price">${product.price.toLocaleString()}<span>원</span></div>
+              <div class="price">${Number(
+                product.price
+              ).toLocaleString()}<span>원</span></div>
             </div>
             <div class="buy-info">
               <div class="delivery">${shippingText} / ${shippingFee}</div>
@@ -70,7 +71,9 @@ class DetailPage {
                 <div >총 상품 금액</div>
                 <div class="count-total">
                   <span>총 수량 <strong class="count-number">1</strong>개</span>
-                  <span><strong class="total-price"></strong>원</span>
+                  <span><strong class="total-price">${Number(
+                    product.price
+                  ).toLocaleString()}</strong>원</span>
                 </div>
               </div>
               <div class="buy-btns">

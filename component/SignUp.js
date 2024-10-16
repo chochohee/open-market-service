@@ -16,7 +16,7 @@ class SignUp {
     return `
     <div class="sign-up-wrap">
       <h1 class="sign-up-logo">
-        <a href="#" class="logo-btn"></a>
+        <a href="#/" class="logo-btn"></a>
       </h1>
       <form method="post" class="sign-up-form">
         <div class="choice-user">

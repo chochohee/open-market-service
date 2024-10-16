@@ -16,19 +16,21 @@ const routes = {
   "/signup": SignUp,
 };
 
-async function renderPage(path) {
-  console.log("랜더링경로:", path);
+async function renderPage() {
+  const hash = window.location.hash || "#/";
+  const path = hash.replace("#", "");
   const pathParts = path.split("/").filter(Boolean); // 빈 요소를 제거하여 경로 파트 얻기
   console.log("pathParts:", pathParts);
 
-  if (pathParts[1] === "product" && pathParts[2]) {
+  if (pathParts[0] === "product" && pathParts[1]) {
+    const productId = pathParts[1];
     const detailPage = new DetailPage();
-    await detailPage.init(); // 초기화 후 렌더링
+    await detailPage.init(productId); // 초기화 후 렌더링
     $app.innerHTML = detailPage.template();
     return;
   }
 
-  const page = routes[path] || (pathParts[0] === "product" ? DetailPage : null);
+  const page = routes[path] || (pathParts[1] === "product" ? DetailPage : null);
 
   if (page) {
     console.log("렌더링중...");
@@ -50,11 +52,6 @@ async function renderPage(path) {
   }
 }
 
-function navigateTo(path) {
-  window.history.pushState({}, "", path); // URL 변경
-  renderPage(path);
-}
-
 // 페이지 로드시 로컬스토리지의 isLoggedIn 속성을 통해 로그인여부 확인하는 함수
 function checkLoginStatus() {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
@@ -69,27 +66,26 @@ function checkLoginStatus() {
 document.addEventListener("DOMContentLoaded", () => {
   console.log("페이지가 로드되었습니다.");
   checkLoginStatus();
-  renderPage(window.location.pathname);
-  console.log("현재 경로 : ", window.location.pathname);
 
-  window.addEventListener("popstate", () => {
-    renderPage(window.location.pathname);
+  window.addEventListener("hashchange", () => {
+    renderPage(window.location.hash);
   });
+  renderPage(window.location.hash);
 
   $app.addEventListener("click", (e) => {
     if (e.target.matches(".logo-btn") || e.target.matches(".main-logo")) {
       e.preventDefault();
-      navigateTo("/");
+      window.location.hash = "#/";
     }
 
     if (e.target.matches(".login-btn")) {
       e.preventDefault();
-      navigateTo("/login");
+      window.location.hash = "#/login";
     }
 
     if (e.target.matches(".cart-btn")) {
       e.preventDefault();
-      navigateTo("/cart");
+      window.location.hash = "#/cart";
     }
 
     if (e.target.closest(".product-wrap")) {
@@ -97,12 +93,12 @@ document.addEventListener("DOMContentLoaded", () => {
         .closest(".product-wrap")
         .getAttribute("data-id");
       console.log("e ID:", productId);
-      navigateTo(`/product/${productId}`);
+      window.location.hash = `#/product/${productId}`;
     }
 
     if (e.target.closest(".sign-up")) {
       e.preventDefault();
-      navigateTo("/signup");
+      window.location.hash = "#/signup";
     }
 
     console.log(e.target);

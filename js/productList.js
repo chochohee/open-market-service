@@ -1,4 +1,3 @@
-// productList.js
 import { fetchAllProducts } from "./api.js";
 
 class ProductList {
@@ -17,6 +16,7 @@ class ProductList {
       console.error("제품 목록을 가져오지 못했습니다.");
       return null;
     }
+
     return response.results;
   }
 
@@ -26,10 +26,12 @@ class ProductList {
 
   getProductById(id) {
     if (!this.data) {
-      console.erre("제품 목록이 로드되지 않았습니다.");
+      console.error("제품 목록이 로드되지 않았습니다.");
       return null;
     }
-    return this.data.find((product) => product.id === id);
+    const product = this.data.find((product) => product.id === Number(id));
+    console.log("Found product in getProductById:", product);
+    return product;
   }
 }
 

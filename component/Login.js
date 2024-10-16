@@ -16,7 +16,7 @@ class Login {
     return `
     <div class="login-wrap">
       <h1 class="login-logo">
-        <a href="#" class="logo-btn"></a>
+        <a href="#/" class="logo-btn"></a>
       </h1>
       <form method="post" class="login-form">
         <div class="choice-user">
@@ -37,7 +37,7 @@ class Login {
         </div>
       </form>
       <div class="btn-wrap">
-        <a href="" class="sign-up">
+        <a href="#/signup" class="sign-up">
           회원가입
         </a>
         <a href="" class="find-pw">
