@@ -1,8 +1,8 @@
-import Home from "./component/Home.js";
-import Login from "./component/Login.js";
-import Cart from "./component/Cart.js";
+import Home from "./component/HomePage.js";
+import Login from "./component/LoginPage.js";
+import Cart from "./component/CartPage.js";
 import DetailPage from "./component/DetailPage.js";
-import SignUp from "./component/SignUp.js";
+import SignUp from "./component/SignUpPage.js";
 import { loggedIn } from "./js/loggedIn.js";
 import { setLoggedIn, state } from "./js/state.js";
 

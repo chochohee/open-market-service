@@ -7,9 +7,9 @@ class SignUp {
   }
 
   render() {
-    const html = this.template(); // 템플릿 생성
-    const $app = document.querySelector(".App"); // .App 요소 선택
-    $app.innerHTML = html; // HTML 렌더링
+    const html = this.template();
+    const $app = document.querySelector(".App");
+    $app.innerHTML = html;
   }
 
   template() {
