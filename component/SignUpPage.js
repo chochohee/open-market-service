@@ -50,7 +50,7 @@ class SignUp {
               id="sign-up-pw"
               name="sign-up-pw"
               class="sign-up-pw"
-              pattern="^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$"
+              pattern="^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{8,16}$"
               required
             />
           </div>

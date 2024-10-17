@@ -2,6 +2,7 @@ export const state = {
   isLoggedIn: false,
   userType: "BUYER", // BUYER || SELLER
   isCheckedId: false,
+  isCheckedPw: false,
   isAgreed: false,
 };
 

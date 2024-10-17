@@ -14,6 +14,7 @@
   @include center-xy;
   flex-direction: column;
   padding-top: 7rem;
+
   .choice-user button {
     border: 1px solid $gray-color;
     border-bottom: none;
@@ -55,7 +56,16 @@
         color: $main-color;
       }
     }
-
+    .error-text {
+      font-size: map-get($map: $font-size, $key: small);
+      line-height: map-get($map: $line-height, $key: small);
+      padding: 1rem 0 1rem 0;
+      height: 4rem;
+      color: $error;
+    }
+    input.error {
+      border: 1px solid $error;
+    }
     .id-wrap {
       display: flex;
       margin-top: 1rem;
@@ -63,9 +73,6 @@
         width: 34.6rem;
         height: 5.4rem;
         margin-right: 1.2rem;
-      }
-      .error {
-        border: 1px solid $error;
       }
 
       .checked-id {

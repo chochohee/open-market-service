@@ -611,6 +611,16 @@ footer address .company {
 .sign-up-form .input-wrap .id-error.success {
   color: #21bf48;
 }
+.sign-up-form .input-wrap .error-text {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  padding: 1rem 0 1rem 0;
+  height: 4rem;
+  color: #eb5757;
+}
+.sign-up-form .input-wrap input.error {
+  border: 1px solid #eb5757;
+}
 .sign-up-form .input-wrap .id-wrap {
   display: flex;
   margin-top: 1rem;
@@ -619,9 +629,6 @@ footer address .company {
   width: 34.6rem;
   height: 5.4rem;
   margin-right: 1.2rem;
-}
-.sign-up-form .input-wrap .id-wrap .error {
-  border: 1px solid #eb5757;
 }
 .sign-up-form .input-wrap .id-wrap .checked-id {
   background-color: #21bf48;

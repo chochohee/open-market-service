@@ -6,6 +6,15 @@ export function signup() {
   const buyerSignup = signupForm.querySelector(".buyer");
   const sellerSignup = signupForm.querySelector(".seller");
 
+  const checkedId = signupForm.querySelector(".checked-id");
+  const idError = signupForm.querySelector(".id-error");
+  const userName = signupForm.querySelector(".user-name");
+
+  const pw = signupForm.querySelector(".sign-up-pw");
+  const checkedPw = signupForm.querySelector(".checked-pw");
+
+  const submitBtn = signupForm.querySelector(".sign-up-submit");
+
   buyerSignup.addEventListener("click", (e) => {
     e.preventDefault();
     state.userType = "BUYER";
@@ -20,12 +29,6 @@ export function signup() {
     buyerSignup.classList.remove("active");
   });
 
-  const checkedId = signupForm.querySelector(".checked-id");
-  const idError = signupForm.querySelector(".id-error");
-
-  const userName = signupForm.querySelector(".user-name");
-  const submitBtn = signupForm.querySelector(".sign-up-submit");
-
   // 1. 아이디 검증
   // 에러메세지 class관리
   if (!state.isCheckedId) {
@@ -38,13 +41,17 @@ export function signup() {
 
     if (!userName.value.trim()) {
       idError.textContent = "필수 정보입니다.";
+      userName.classList.add("error");
       state.isCheckedId = false;
     } else if (userName.validity.patternMismatch) {
       idError.textContent =
         "20자 이내의 영문 소문자, 대문자, 숫자만 사용 가능합니다.";
+      userName.classList.add("error");
+
       state.isCheckedId = false;
     } else if (userName.validity.valid) {
       idError.textContent = "중복확인을 진행해주세요.";
+      userName.classList.add("error");
       state.isCheckedId = false;
     }
   });
@@ -53,6 +60,18 @@ export function signup() {
     state.isCheckedId = false;
     idError.classList.remove("success");
     idError.textContent = "";
+    userName.classList.remove("error");
+
+    if (userName.validity.patternMismatch) {
+      idError.textContent =
+        "20자 이내의 영문 소문자, 대문자, 숫자만 사용 가능합니다.";
+      state.isCheckedId = false;
+      userName.classList.add("error");
+    } else if (userName.validity.valid) {
+      idError.textContent = "중복확인을 진행해주세요.";
+      state.isCheckedId = false;
+      userName.classList.add("error");
+    }
   });
 
   checkedId.addEventListener("click", async (e) => {
@@ -64,20 +83,24 @@ export function signup() {
     if (!userName.value.trim()) {
       idError.textContent = "필수 정보입니다.";
       state.isCheckedId = false;
+      userName.classList.add("error");
     } else if (userName.validity.patternMismatch) {
       idError.textContent =
         "20자 이내의 영문 소문자, 대문자, 숫자만 사용 가능합니다.";
       state.isCheckedId = false;
+      userName.classList.add("error");
     } else if (isUsernameValid.valid) {
       idError.textContent = "멋진 아이디네요:)";
       state.isCheckedId = true;
       idError.classList.add("success");
+      userName.classList.remove("error");
     } else {
       idError.textContent = isUsernameValid.error;
       state.isCheckedId = false;
+      userName.classList.add("error");
     }
 
-    // 서버통신
+    // 아이디 검증 서버통신
     async function validateUsername(username) {
       try {
         const response = await fetch(
@@ -107,14 +130,63 @@ export function signup() {
 
   // 2. 나머지 입력 유효성검사
   function validateInputs() {
-    const pw = signupForm.querySelector(".sign-up-pw");
-    const checkedPw = signupForm.querySelector(".checked-pw");
+    const errorText = document.createElement("div");
+    errorText.classList.add("error-text");
+    const successPw = signupForm.querySelector(".sign-up-pw-wrap");
 
-    pw.addEventListener("input", () => {
-      if (pw.validity.valid) {
-        pw.classList.add("on");
+    pw.addEventListener("blur", () => {
+      if (!userName.value.trim()) {
+        idError.textContent = "필수 정보입니다.";
+        state.isCheckedId = false;
+        userName.classList.add("error");
+      }
+      if (!pw.value.trim()) {
+        if (!pw.parentNode.querySelector(".error-text")) {
+          errorText.textContent = "필수 정보입니다.";
+          pw.parentNode.appendChild(errorText);
+          state.isCheckedPw = false;
+          pw.classList.add("error");
+        }
       }
     });
+
+    pw.addEventListener("input", () => {
+      console.log(`유효성검사 : ${pw.validity.valid} 입력:${pw.value}`);
+      if (!userName.value.trim()) {
+        idError.textContent = "필수 정보입니다.";
+        state.isCheckedId = false;
+        pw.classList.add("error");
+      }
+      if (pw.validity.valid) {
+        console.log("비밀번호가 유효합니다.");
+        successPw.classList.add("on");
+        pw.classList.remove("error");
+
+        const existingErrorText = pw.parentNode.querySelector(".error-text");
+        if (existingErrorText) {
+          pw.parentNode.removeChild(existingErrorText);
+        }
+      } else {
+        console.log("비밀번호가 유효하지 않습니다.");
+        pw.classList.add("error");
+
+        if (!pw.value.trim()) {
+          pw.classList.add("error");
+          errorText.textContent = "필수 정보입니다.";
+        } else if (pw.validity.patternMismatch) {
+          errorText.textContent =
+            "8자 이상, 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
+          pw.classList.add("error");
+        }
+
+        if (!pw.parentNode.querySelector(".error-text")) {
+          pw.parentNode.appendChild(errorText);
+        }
+        successPw.classList.remove("on");
+      }
+    });
+
+    
   }
 
   validateInputs();
@@ -212,8 +284,7 @@ export function signup() {
   init();
 
   window.addEventListener("click", (e) => {
-    const pw = document.querySelector(".sign-up-pw");
     console.log(e.target);
-    console.log("pw.valied", pw.validity.valid);
+    console.log("checkPW", pw.validity);
   });
 }
