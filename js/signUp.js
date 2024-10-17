@@ -133,60 +133,113 @@ export function signup() {
     const errorText = document.createElement("div");
     errorText.classList.add("error-text");
     const successPw = signupForm.querySelector(".sign-up-pw-wrap");
+    const successCheckedPw = signupForm.querySelector(".checked-pw-wrap");
+    const noneValue = "필수 정보입니다.";
 
-    pw.addEventListener("blur", () => {
-      if (!userName.value.trim()) {
-        idError.textContent = "필수 정보입니다.";
-        state.isCheckedId = false;
-        userName.classList.add("error");
+    // 에러메세지 add
+    function showError(message) {
+      errorText.textContent = message;
+      if (!pw.parentNode.querySelector(".error-text")) {
+        pw.parentNode.appendChild(errorText);
       }
+    }
+
+    // 에러메세지 remove
+    function removeError() {
+      if (pw.parentNode.querySelector(".error-text")) {
+        pw.parentNode.removeChild(errorText);
+      }
+    }
+
+    // 유효하지 않은 pw
+    function invalidPw() {
+      pw.classList.add("error");
+      let errorMessage = "";
+
       if (!pw.value.trim()) {
-        if (!pw.parentNode.querySelector(".error-text")) {
-          errorText.textContent = "필수 정보입니다.";
-          pw.parentNode.appendChild(errorText);
-          state.isCheckedPw = false;
-          pw.classList.add("error");
+        errorMessage = noneValue;
+      } else if (pw.validity.patternMismatch) {
+        errorMessage = "8자 이상, 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
+      }
+
+      if (errorMessage) {
+        showError(errorMessage);
+      }
+
+      successPw.classList.remove("on");
+    }
+
+    // 유효한 pw
+    function validPw() {
+      successPw.classList.add("on");
+      pw.classList.remove("error");
+      removeError();
+    }
+
+    function trimUserName() {
+      if (!userName.value.trim()) {
+        idError.textContent = noneValue;
+        pw.classList.add("error");
+      }
+    }
+    function trimPw() {
+      if (!pw.value.trim()) {
+        showError(noneValue);
+      }
+    }
+
+    function checkCheckedPw() {
+      if (checkedPw.value.trim()) {
+        if (checkedPw.value === pw.value) {
+          checkedPwErrorText.textContent = "";
+          successCheckedPw.classList.add("on");
+          checkedPw.classList.remove("error");
+        } else if (checkedPw.value !== pw.value) {
+          checkedPwErrorText.textContent = "비밀번호가 일치하지 않습니다.";
+          checkedPw.classList.add("error");
+          successCheckedPw.classList.remove("on");
         }
       }
+    }
+
+    // pw
+    pw.addEventListener("blur", () => {
+      trimUserName();
+      trimPw();
     });
 
     pw.addEventListener("input", () => {
-      console.log(`유효성검사 : ${pw.validity.valid} 입력:${pw.value}`);
-      if (!userName.value.trim()) {
-        idError.textContent = "필수 정보입니다.";
-        state.isCheckedId = false;
-        pw.classList.add("error");
-      }
+      trimUserName();
       if (pw.validity.valid) {
-        console.log("비밀번호가 유효합니다.");
-        successPw.classList.add("on");
-        pw.classList.remove("error");
-
-        const existingErrorText = pw.parentNode.querySelector(".error-text");
-        if (existingErrorText) {
-          pw.parentNode.removeChild(existingErrorText);
-        }
+        validPw();
       } else {
-        console.log("비밀번호가 유효하지 않습니다.");
-        pw.classList.add("error");
+        invalidPw();
+      }
+      checkCheckedPw();
+    });
 
-        if (!pw.value.trim()) {
-          pw.classList.add("error");
-          errorText.textContent = "필수 정보입니다.";
-        } else if (pw.validity.patternMismatch) {
-          errorText.textContent =
-            "8자 이상, 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
-          pw.classList.add("error");
-        }
+    // checkedPw
+    const checkedPwErrorText = signupForm.querySelector(
+      ".checked-pw-wrap .error-text"
+    );
 
-        if (!pw.parentNode.querySelector(".error-text")) {
-          pw.parentNode.appendChild(errorText);
-        }
-        successPw.classList.remove("on");
+    checkedPw.addEventListener("blur", () => {
+      trimUserName();
+      trimPw();
+
+      if (!checkedPw.value.trim()) {
+        checkedPwErrorText.textContent = noneValue;
+        checkedPw.classList.add("error");
       }
     });
 
-    
+    checkedPw.addEventListener("input", () => {
+      console.log("Pw확인", state.isPw, state.isCheckedPw);
+
+      trimUserName();
+      trimPw();
+      checkCheckedPw();
+    });
   }
 
   validateInputs();
@@ -285,6 +338,5 @@ export function signup() {
 
   window.addEventListener("click", (e) => {
     console.log(e.target);
-    console.log("checkPW", pw.validity);
   });
 }
