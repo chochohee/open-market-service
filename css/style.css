@@ -673,13 +673,23 @@ footer address .company {
   margin-bottom: 1.6rem;
   margin-top: 1rem;
 }
-.sign-up-form .input-wrap .contact-inp {
+.sign-up-form .input-wrap .contact-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.sign-up-form .input-wrap .contact-wrap label {
+  display: flex;
+  flex-direction: column;
+}
+.sign-up-form .input-wrap .contact-wrap .contact-inp {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1.2rem;
   margin-top: 1rem;
 }
-.sign-up-form .input-wrap .contact-inp .select {
+.sign-up-form .input-wrap .contact-wrap .contact-inp .select {
+  display: inline;
   width: auto;
   border-radius: 0.5rem;
   display: flex;
@@ -691,14 +701,14 @@ footer address .company {
   display: flex;
   flex-direction: column;
 }
-.sign-up-form .input-wrap .contact-inp .select .selected {
+.sign-up-form .input-wrap .contact-wrap .contact-inp .select .selected {
   border: 1px solid #c4c4c4;
   border-radius: 0.5rem;
   width: 15.2rem;
   padding: 1.6rem 7.3rem 1.6rem 5rem;
   cursor: pointer;
 }
-.sign-up-form .input-wrap .contact-inp .select .selected::before {
+.sign-up-form .input-wrap .contact-wrap .contact-inp .select .selected::before {
   content: "";
   background-image: url(../src/assets/icon-down-arrow.svg);
   position: absolute;
@@ -706,7 +716,7 @@ footer address .company {
   width: 2.2rem;
   height: 2.2rem;
 }
-.sign-up-form .input-wrap .contact-inp .select ul {
+.sign-up-form .input-wrap .contact-wrap .contact-inp .select ul {
   background-color: #fff;
   width: 15.2rem;
   height: 15rem;
@@ -724,16 +734,16 @@ footer address .company {
   box-sizing: border-box;
   z-index: 10;
 }
-.sign-up-form .input-wrap .contact-inp .select ul::-webkit-scrollbar {
+.sign-up-form .input-wrap .contact-wrap .contact-inp .select ul::-webkit-scrollbar {
   background-color: #f2f2f2;
   width: 1.8rem;
 }
-.sign-up-form .input-wrap .contact-inp .select ul::-webkit-scrollbar-thumb {
+.sign-up-form .input-wrap .contact-wrap .contact-inp .select ul::-webkit-scrollbar-thumb {
   background-color: #c4c4c4;
   border-radius: 1rem;
   border: solid 0.6rem #f2f2f2;
 }
-.sign-up-form .input-wrap .contact-inp .select ul li {
+.sign-up-form .input-wrap .contact-wrap .contact-inp .select ul li {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -742,7 +752,7 @@ footer address .company {
   padding: 1rem 0;
   width: inherit;
 }
-.sign-up-form .input-wrap .contact-inp .select ul li:hover {
+.sign-up-form .input-wrap .contact-wrap .contact-inp .select ul li:hover {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -750,10 +760,10 @@ footer address .company {
   background-color: #e0e0e0;
   cursor: pointer;
 }
-.sign-up-form .input-wrap .contact-inp .select .none {
+.sign-up-form .input-wrap .contact-wrap .contact-inp .select .none {
   display: none;
 }
-.sign-up-form .input-wrap .contact-inp input {
+.sign-up-form .input-wrap .contact-wrap input {
   width: 15.2rem;
 }
 .sign-up-form .sign-up-checkd {

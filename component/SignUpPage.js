@@ -68,8 +68,11 @@ class SignUp {
             <div class="error-text"></div>
           </div>
 
-          <label for="name" class=name">이름</label>
-          <input type="text" id="name" name="name" class="name" required />
+          <div class="name-wrap">
+          <label for="name" class=name" >이름</label>
+          <input type="text" id="name" name="name" class="name" pattern= "^[가-힣a-zA-Z]+$" required />
+          </div>
+          <div class= contact-wrap>
           <label for="contact">휴대폰번호</label>
           <div class="contact-inp">
             <div class="select">
@@ -82,22 +85,24 @@ class SignUp {
               <li class="select-option">018</li>
               <li class="select-option">019</li>
             </ul>
-          </div>
- <input
-      type="text"
+            <div class="error-text"></div>
+            </div>
+             <input
+              type="text"
       name="middle-number"
       id="middle-number"
-      pattern=".{3,4}"
+      pattern="^[0-9]{3,4}"
       title="3자리 또는 4자리 입력해주세요."
       required
     />
-    <input 
+        <input 
       type="text"
       name="last-number"
       id="last-number"
-      pattern=".{4}"
+      pattern="^[0-9]{4}"
       title="4자리 입력해주세요."
       required/>
+      </div>
         </div>
     </div>
         <div class="sign-up-checkd">

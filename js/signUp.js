@@ -1,4 +1,4 @@
-import { state } from "./state.js";
+import { signupValidate } from "./state.js";
 
 export function signup() {
   const signupForm = document.querySelector(".sign-up-form");
@@ -9,9 +9,14 @@ export function signup() {
   const checkedId = signupForm.querySelector(".checked-id");
   const idError = signupForm.querySelector(".id-error");
   const userName = signupForm.querySelector(".user-name");
+  const name = signupForm.querySelector(".name");
 
   const pw = signupForm.querySelector(".sign-up-pw");
   const checkedPw = signupForm.querySelector(".checked-pw");
+
+  const contactError = signupForm.querySelector(".contact-wrap .error-text");
+  const middleNum = signupForm.querySelector("#middle-number");
+  const lastNum = signupForm.querySelector("#last-number");
 
   const submitBtn = signupForm.querySelector(".sign-up-submit");
 
@@ -29,76 +34,73 @@ export function signup() {
     buyerSignup.classList.remove("active");
   });
 
-  // 1. 아이디 검증
-  // 에러메세지 class관리
-  if (!state.isCheckedId) {
-    idError.classList.remove("success");
+  // contact
+  let firstNumber = "010";
+  let middleNumber = "";
+  let lastNumber = "";
+
+  function getContactNum() {
+    const contactNum = `${firstNumber}${middleNumber}${lastNumber}`.trim();
+    return contactNum;
   }
 
-  // focus 검증
-  userName.addEventListener("blur", () => {
-    if (state.isCheckedId) return;
+  function toggleSubmitState() {
+    signupValidate.canSubmit =
+      signupValidate.isValidUsername &&
+      signupValidate.isValidPw &&
+      signupValidate.isValidCheckedPw &&
+      signupValidate.isValidName &&
+      signupValidate.isValidContact &&
+      signupValidate.isAgreed;
 
-    if (!userName.value.trim()) {
-      idError.textContent = "필수 정보입니다.";
-      userName.classList.add("error");
-      state.isCheckedId = false;
-    } else if (userName.validity.patternMismatch) {
-      idError.textContent =
-        "20자 이내의 영문 소문자, 대문자, 숫자만 사용 가능합니다.";
-      userName.classList.add("error");
+    submitBtn.disabled = !signupValidate.canSubmit;
+  }
 
-      state.isCheckedId = false;
-    } else if (userName.validity.valid) {
-      idError.textContent = "중복확인을 진행해주세요.";
-      userName.classList.add("error");
-      state.isCheckedId = false;
+  // 1. 아이디 검증
+  function validateId() {
+    // 에러메세지 class관리
+    if (!signupValidate.isValidUsername) {
+      idError.classList.remove("success");
     }
-  });
 
-  userName.addEventListener("input", (e) => {
-    state.isCheckedId = false;
-    idError.classList.remove("success");
-    idError.textContent = "";
-    userName.classList.remove("error");
+    // focus 검증
+    userName.addEventListener("blur", () => {
+      if (signupValidate.isValidUsername) return;
 
-    if (userName.validity.patternMismatch) {
-      idError.textContent =
-        "20자 이내의 영문 소문자, 대문자, 숫자만 사용 가능합니다.";
-      state.isCheckedId = false;
-      userName.classList.add("error");
-    } else if (userName.validity.valid) {
-      idError.textContent = "중복확인을 진행해주세요.";
-      state.isCheckedId = false;
-      userName.classList.add("error");
-    }
-  });
+      if (!userName.value.trim()) {
+        idError.textContent = "필수 정보입니다.";
+        userName.classList.add("error");
+        signupValidate.isValidUsername = false;
+      } else if (userName.validity.patternMismatch) {
+        idError.textContent =
+          "20자 이내의 영문 소문자, 대문자, 숫자만 사용 가능합니다.";
+        userName.classList.add("error");
 
-  checkedId.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const username = userName.value.trim();
+        signupValidate.isValidUsername = false;
+      } else {
+        idError.textContent = "중복확인을 진행해주세요.";
+        userName.classList.add("error");
+        signupValidate.isValidUsername = false;
+      }
+    });
 
-    const isUsernameValid = await validateUsername(username);
-
-    if (!userName.value.trim()) {
-      idError.textContent = "필수 정보입니다.";
-      state.isCheckedId = false;
-      userName.classList.add("error");
-    } else if (userName.validity.patternMismatch) {
-      idError.textContent =
-        "20자 이내의 영문 소문자, 대문자, 숫자만 사용 가능합니다.";
-      state.isCheckedId = false;
-      userName.classList.add("error");
-    } else if (isUsernameValid.valid) {
-      idError.textContent = "멋진 아이디네요:)";
-      state.isCheckedId = true;
-      idError.classList.add("success");
+    userName.addEventListener("input", () => {
+      signupValidate.isValidUsername = false;
+      idError.classList.remove("success");
+      idError.textContent = "";
       userName.classList.remove("error");
-    } else {
-      idError.textContent = isUsernameValid.error;
-      state.isCheckedId = false;
-      userName.classList.add("error");
-    }
+
+      if (userName.validity.patternMismatch) {
+        idError.textContent =
+          "20자 이내의 영문 소문자, 대문자, 숫자만 사용 가능합니다.";
+        signupValidate.isValidUsername = false;
+        userName.classList.add("error");
+      } else if (userName.validity.valid) {
+        idError.textContent = "중복확인을 진행해주세요.";
+        signupValidate.isValidUsername = false;
+        userName.classList.add("error");
+      }
+    });
 
     // 아이디 검증 서버통신
     async function validateUsername(username) {
@@ -126,28 +128,58 @@ export function signup() {
         return { valid: false, error: "서버 오류가 발생했습니다." }; // 오류 발생 시
       }
     }
-  });
+
+    checkedId.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const username = userName.value.trim();
+
+      if (!userName) {
+        idError.textContent = "필수 정보입니다.";
+        signupValidate.isValidUsername = false;
+        userName.classList.add("error");
+        return;
+      }
+
+      const isUsernameValid = await validateUsername(username);
+
+      if (isUsernameValid.valid) {
+        idError.textContent = "멋진 아이디네요:)";
+        signupValidate.isValidUsername = true;
+        idError.classList.add("success");
+        userName.classList.remove("error");
+      } else {
+        idError.textContent = isUsernameValid.error;
+        signupValidate.isValidUsername = false;
+        userName.classList.add("error");
+      }
+
+      await toggleSubmitState();
+    });
+  }
 
   // 2. 나머지 입력 유효성검사
   function validateInputs() {
-    const errorText = document.createElement("div");
-    errorText.classList.add("error-text");
     const successPw = signupForm.querySelector(".sign-up-pw-wrap");
     const successCheckedPw = signupForm.querySelector(".checked-pw-wrap");
     const noneValue = "필수 정보입니다.";
 
     // 에러메세지 add
-    function showError(message) {
+    function createError(message, target) {
+      const errorText = document.createElement("div");
+      errorText.classList.add("error-text");
       errorText.textContent = message;
-      if (!pw.parentNode.querySelector(".error-text")) {
-        pw.parentNode.appendChild(errorText);
+
+      if (!target.parentNode.querySelector(".error-text")) {
+        target.parentNode.appendChild(errorText);
       }
     }
 
     // 에러메세지 remove
-    function removeError() {
-      if (pw.parentNode.querySelector(".error-text")) {
-        pw.parentNode.removeChild(errorText);
+    function removeError(target) {
+      console.log("Removing error element:", target);
+      const existingErrorText = target.parentNode.querySelector(".error-text");
+      if (existingErrorText) {
+        target.parentNode.removeChild(existingErrorText);
       }
     }
 
@@ -163,59 +195,124 @@ export function signup() {
       }
 
       if (errorMessage) {
-        showError(errorMessage);
+        createError(errorMessage, pw);
       }
 
       successPw.classList.remove("on");
+      signupValidate.isValidPw = false;
     }
 
     // 유효한 pw
     function validPw() {
       successPw.classList.add("on");
       pw.classList.remove("error");
-      removeError();
+      removeError(pw);
+      signupValidate.isValidPw = true;
     }
 
-    function trimUserName() {
+    function passingUserName() {
       if (!userName.value.trim()) {
         idError.textContent = noneValue;
+        userName.classList.add("error");
+      }
+    }
+    function passingPw() {
+      if (!pw.value.trim()) {
+        createError(noneValue, pw);
         pw.classList.add("error");
       }
     }
-    function trimPw() {
-      if (!pw.value.trim()) {
-        showError(noneValue);
-      }
-    }
 
-    function checkCheckedPw() {
+    function passingCheckedPw() {
       if (checkedPw.value.trim()) {
         if (checkedPw.value === pw.value) {
           checkedPwErrorText.textContent = "";
           successCheckedPw.classList.add("on");
           checkedPw.classList.remove("error");
+          signupValidate.isValidCheckedPw = true;
         } else if (checkedPw.value !== pw.value) {
           checkedPwErrorText.textContent = "비밀번호가 일치하지 않습니다.";
           checkedPw.classList.add("error");
           successCheckedPw.classList.remove("on");
+          signupValidate.isValidCheckedPw = false;
+        }
+      } else {
+        if (!checkedPw.value.trim()) {
+          checkedPwErrorText.textContent = noneValue;
+          checkedPw.classList.add("error");
         }
       }
     }
 
+    function passingName() {
+      if (!name.value.trim()) {
+        createError(noneValue, name);
+        name.classList.add("error");
+        signupValidate.isValidName = false;
+      } else if (name.validity.valid) {
+        removeError(name);
+        name.classList.remove("error");
+        signupValidate.isValidName = true;
+      } else {
+        createError("올바른 이름을입력해주세요.", name);
+        name.classList.add("error");
+      }
+    }
+
+    function passingContact() {
+      const middleNumValid = middleNum.validity.valid;
+      const lastNumValid = lastNum.validity.valid;
+
+      let isValid = true;
+
+      if (!middleNum.value.trim()) {
+        contactError.textContent = "필수 정보입니다.";
+        middleNum.classList.add("error");
+        isValid = false;
+      } else if (!middleNumValid) {
+        contactError.textContent = noneValue;
+        middleNum.classList.add("error");
+        isValid = false;
+      } else {
+        middleNum.classList.remove("error");
+      }
+
+      if (!lastNum.value.trim()) {
+        contactError.textContent = noneValue;
+        lastNum.classList.add("error");
+        isValid = false;
+      } else if (!lastNumValid) {
+        contactError.textContent = noneValue;
+        lastNum.classList.remove("error");
+        isValid = false;
+      } else {
+        lastNum.classList.remove("error");
+      }
+
+      if (middleNumValid && lastNumValid) {
+        contactError.textContent = "";
+        middleNum.classList.remove("error");
+        lastNum.classList.remove("error");
+        isValid = true;
+      }
+
+      signupValidate.isValidContact = isValid;
+    }
+
     // pw
     pw.addEventListener("blur", () => {
-      trimUserName();
-      trimPw();
+      passingUserName();
+      passingPw();
     });
 
     pw.addEventListener("input", () => {
-      trimUserName();
+      passingUserName();
       if (pw.validity.valid) {
         validPw();
       } else {
         invalidPw();
       }
-      checkCheckedPw();
+      passingCheckedPw();
     });
 
     // checkedPw
@@ -224,119 +321,193 @@ export function signup() {
     );
 
     checkedPw.addEventListener("blur", () => {
-      trimUserName();
-      trimPw();
-
-      if (!checkedPw.value.trim()) {
-        checkedPwErrorText.textContent = noneValue;
-        checkedPw.classList.add("error");
-      }
+      passingUserName();
+      passingPw();
+      passingCheckedPw();
     });
 
     checkedPw.addEventListener("input", () => {
-      console.log("Pw확인", state.isPw, state.isCheckedPw);
+      passingUserName();
+      passingPw();
+      passingCheckedPw();
+    });
 
-      trimUserName();
-      trimPw();
-      checkCheckedPw();
+    // name
+    name.addEventListener("blur", () => {
+      passingUserName();
+      passingPw();
+      passingCheckedPw();
+      passingName();
+    });
+
+    name.addEventListener("input", () => {
+      passingUserName();
+      passingPw();
+      passingCheckedPw();
+      passingName();
+    });
+
+    // 핸드폰번호 첫자리 입력받기
+    function selectNumber() {
+      const select = signupForm.querySelector(".selected");
+      const selectList = signupForm.querySelector(".contact-inp ul");
+
+      select.addEventListener("click", (e) => {
+        e.preventDefault();
+        selectList.classList.toggle("none");
+
+        selectList.addEventListener("click", (e) => {
+          e.preventDefault();
+          select.textContent = e.target.textContent;
+          selectList.classList.add("none");
+
+          firstNumber = select.textContent;
+          getContactNum();
+        });
+      });
+    }
+
+    // 입력하는 값이 숫자인지 판별
+    function checkNumber(e) {
+      if (
+        (e.key < "0" || e.key > "9") && // 숫자가 아닐 때
+        e.key !== "Backspace" &&
+        !e.key.startsWith("Arrow") // 화살표 키가 아닐 때
+      ) {
+        e.preventDefault();
+      }
+
+      // 4자리이상 입력 방지
+      const target = e.target;
+      if (target.value.length >= 4 && e.key !== "Backspace") {
+        e.preventDefault();
+      }
+    }
+
+    function onlyNumbers(e) {
+      // 숫자만 남기고 나머지 제거
+      e.target.value = e.target.value.replace(/[^0-9]/g, "");
+
+      // 4자리가 넘으면 잘라내기
+      if (e.target.value.length > 4) {
+        e.target.value = e.target.value.slice(0, 4);
+      }
+
+      if (e.target.id === "middle-number") {
+        middleNumber = e.target.value;
+      } else if (e.target.id === "last-number") {
+        lastNumber = e.target.value;
+      }
+      getContactNum();
+    }
+
+    function enterNumber(e) {
+      middleNum.addEventListener("keydown", checkNumber);
+      lastNum.addEventListener("keydown", checkNumber);
+
+      middleNum.addEventListener("blur", () => {
+        passingUserName();
+        passingPw();
+        passingCheckedPw();
+        passingName();
+        passingContact();
+      });
+
+      lastNum.addEventListener("blur", () => {
+        passingUserName();
+        passingPw();
+        passingCheckedPw();
+        passingName();
+        passingContact();
+      });
+
+      middleNum.addEventListener("input", (e) => {
+        onlyNumbers(e);
+        passingUserName();
+        passingPw();
+        passingCheckedPw();
+        passingName();
+        passingContact();
+      });
+      lastNum.addEventListener("input", (e) => {
+        onlyNumbers(e);
+        passingUserName();
+        passingPw();
+        passingCheckedPw();
+        passingName();
+        passingContact();
+      });
+    }
+
+    function init() {
+      selectNumber();
+      enterNumber();
+    }
+
+    init();
+
+    const checkbox = signupForm.querySelector("#checkbox");
+    checkbox.addEventListener("click", () => {
+      signupValidate.isAgreed = !signupValidate.isAgreed;
+    });
+
+    window.addEventListener("click", (e) => {
+      console.log(e.target);
+      console.log(signupValidate.isValidUsername);
+      if (
+        e.target.matches(".select-option") ||
+        e.target.matches(".selected") ||
+        e.target.matches("#checkbox")
+      ) {
+        toggleSubmitState();
+      }
+    });
+    window.addEventListener("input", (e) => {
+      if (e.target.matches("input")) {
+        toggleSubmitState();
+      }
     });
   }
-
+  validateId();
   validateInputs();
-
   // 3. form 제출
 
-  // 핸드폰번호
-  let firstNumber = "010";
-  let middleNumber = "";
-  let lastNumber = "";
+  submitBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
 
-  // 핸드폰번호 첫자리 입력받기
-  function selectNumber() {
-    const select = signupForm.querySelector(".selected");
-    const selectList = signupForm.querySelector(".contact-inp ul");
+    const formData = {
+      username: userName.value.trim(),
+      password: pw.value.trim(),
+      name: name.value.trim(),
+      phone_number: getContactNum(),
+    };
 
-    select.addEventListener("click", (e) => {
-      e.preventDefault();
-      selectList.classList.toggle("none");
+    try {
+      const response = await fetch(
+        "https://estapi.openmarket.weniv.co.kr/accounts/buyer/signup/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
-      selectList.addEventListener("click", (e) => {
-        e.preventDefault();
-        select.textContent = e.target.textContent;
-        selectList.classList.add("none");
+      const result = await response.json();
 
-        firstNumber = select.textContent;
-        getContactNum();
-      });
-    });
-  }
+      if (response.ok) {
+        console.log("회원가입 성공:", result);
+        window.location.hash = "#/login";
+      } else {
+        const errorMessage = result.phone_number
+          ? result.phone_number[0]
+          : "오류가 발생했습니다.";
 
-  // 입력하는 값이 숫자인지 판별
-  function checkNumber(e) {
-    if (
-      (e.key < "0" || e.key > "9") && // 숫자가 아닐 때
-      e.key !== "Backspace" &&
-      !e.key.startsWith("Arrow") // 화살표 키가 아닐 때
-    ) {
-      e.preventDefault();
+        contactError.textContent = errorMessage;
+      }
+    } catch (error) {
+      console.error("서버 오류:", error);
     }
-
-    const target = e.target;
-    if (target.value.length >= 4 && e.key !== "Backspace") {
-      e.preventDefault();
-    }
-  }
-
-  function onlyNumbers(e) {
-    // 숫자만 남기고 나머지 제거
-    e.target.value = e.target.value.replace(/[^0-9]/g, "");
-
-    // 4자리가 넘으면 잘라내기
-    if (e.target.value.length > 4) {
-      e.target.value = e.target.value.slice(0, 4);
-    }
-
-    if (e.target.id === "middle-number") {
-      middleNumber = e.target.value;
-    } else if (e.target.id === "last-number") {
-      lastNumber = e.target.value;
-    }
-    getContactNum();
-  }
-
-  function enterNumber(e) {
-    const middleNum = signupForm.querySelector("#middle-number");
-    const lastNum = signupForm.querySelector("#last-number");
-
-    middleNum.addEventListener("keydown", checkNumber);
-    lastNum.addEventListener("keydown", checkNumber);
-
-    middleNum.addEventListener("input", onlyNumbers);
-    lastNum.addEventListener("input", onlyNumbers);
-  }
-
-  function getContactNum() {
-    const contactNum = `${firstNumber}${middleNumber}${lastNumber}`.trim();
-    return contactNum;
-  }
-
-  function init() {
-    selectNumber();
-    enterNumber();
-  }
-
-  const checkbox = signupForm.querySelector("#checkbox");
-  const checkboxLabel = signupForm.querySelector(".agreed");
-  checkbox.addEventListener("click", () => {
-    state.isAgreed = checkbox.checked;
-  });
-  checkboxLabel.addEventListener("click", () => {
-    state.isAgreed = checkbox.checked;
-  });
-
-  init();
-
-  window.addEventListener("click", (e) => {
-    console.log(e.target);
   });
 }

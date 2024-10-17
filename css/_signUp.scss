@@ -119,77 +119,87 @@
       margin-bottom: 1.6rem;
       margin-top: 1rem;
     }
-    .contact-inp {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1.2rem;
-      margin-top: 1rem;
-      .select {
-        width: auto;
-        border-radius: 0.5rem;
-        @include center-xy;
-        font-size: map-get($map: $font-size, $key: small);
-        line-height: map-get($map: $line-height, $key: small);
-        position: relative;
+    .contact-wrap {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      & label {
         display: flex;
         flex-direction: column;
-        .selected {
-          border: 1px solid $gray-color;
-          border-radius: 0.5rem;
-          width: 15.2rem;
-          padding: 1.6rem 7.3rem 1.6rem 5rem;
-          cursor: pointer;
-          &::before {
-            content: "";
-            background-image: url(../src/assets/icon-down-arrow.svg);
-            position: absolute;
-            right: 1.6rem;
-            width: 2.2rem;
-            height: 2.2rem;
-          }
-        }
-        ul {
-          background-color: $white;
-          width: 15.2rem;
-          height: 15rem;
-          border: 1px solid $gray-color;
+      }
+      .contact-inp {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.2rem;
+        margin-top: 1rem;
+        .select {
+          display: inline;
+          width: auto;
           border-radius: 0.5rem;
           @include center-xy;
+          font-size: map-get($map: $font-size, $key: small);
+          line-height: map-get($map: $line-height, $key: small);
+          position: relative;
+          display: flex;
           flex-direction: column;
-          margin-top: 0.6rem;
-          position: absolute;
-          top: 100%;
-          overflow-y: scroll;
-          overflow-x: hidden;
-          box-sizing: border-box;
-          z-index: 10;
-          &::-webkit-scrollbar {
-            background-color: $lightgray-color;
-            width: 1.8rem;
-          }
-
-          &::-webkit-scrollbar-thumb {
-            background-color: $gray-color;
-            border-radius: 1rem;
-            border: solid 0.6rem $lightgray-color;
-          }
-
-          li {
-            @include center-xy;
-            position: relative;
-            top: 4.5rem;
-            padding: 1rem 0;
-            width: inherit;
-            &:hover {
-              @include center-xy;
-              width: 13.4rem;
-              background-color: #e0e0e0;
-              cursor: pointer;
+          .selected {
+            border: 1px solid $gray-color;
+            border-radius: 0.5rem;
+            width: 15.2rem;
+            padding: 1.6rem 7.3rem 1.6rem 5rem;
+            cursor: pointer;
+            &::before {
+              content: "";
+              background-image: url(../src/assets/icon-down-arrow.svg);
+              position: absolute;
+              right: 1.6rem;
+              width: 2.2rem;
+              height: 2.2rem;
             }
           }
-        }
-        .none {
-          display: none;
+          ul {
+            background-color: $white;
+            width: 15.2rem;
+            height: 15rem;
+            border: 1px solid $gray-color;
+            border-radius: 0.5rem;
+            @include center-xy;
+            flex-direction: column;
+            margin-top: 0.6rem;
+            position: absolute;
+            top: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            z-index: 10;
+            &::-webkit-scrollbar {
+              background-color: $lightgray-color;
+              width: 1.8rem;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background-color: $gray-color;
+              border-radius: 1rem;
+              border: solid 0.6rem $lightgray-color;
+            }
+
+            li {
+              @include center-xy;
+              position: relative;
+              top: 4.5rem;
+              padding: 1rem 0;
+              width: inherit;
+              &:hover {
+                @include center-xy;
+                width: 13.4rem;
+                background-color: #e0e0e0;
+                cursor: pointer;
+              }
+            }
+          }
+          .none {
+            display: none;
+          }
         }
       }
 

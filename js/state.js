@@ -1,8 +1,6 @@
 export const state = {
   isLoggedIn: false,
   userType: "BUYER", // BUYER || SELLER
-  isCheckedId: false,
-  isAgreed: false,
 };
 
 // 로그인 상태 설정
@@ -26,3 +24,13 @@ export function resetState() {
   state.isLoggedIn = false;
   state.userType = "BUYER"; // 기본값으로 설정
 }
+
+export const signupValidate = {
+  isValidUsername: false,
+  isValidPw: false,
+  isValidCheckedPw: false,
+  isValidName: false,
+  isValidContact: false,
+  isAgreed: false,
+  canSubmit: false,
+};

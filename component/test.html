@@ -12,13 +12,42 @@
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
-    <input
-      type="text"
-      name="middle-number"
-      id="middle-number"
-      pattern=".{3,4}"
-      title="3자리 또는 4자리 입력해주세요." required
-    />
-    <input type="text" name="last-number" id="last-number" pattern=".{4}" title="4자리 입력해주세요." />
-  </body>
+    <div class="name-wrap">
+      <label for="name" class=name" >이름</label>
+      <input type="text" id="name" name="name" class="name" pattern= "^[가-힣a-zA-Z]+$" required />
+      </div>
+      <div class= contact-wrap>
+      <label for="contact">휴대폰번호</label>
+      <div class="contact-inp">
+        <div class="select">
+          <div class="selected">010</div>
+        <ul class="none">
+          <li class="select-option">010</li>
+          <li class="select-option">011</li>
+          <li class="select-option">016</li>
+          <li class="select-option">017</li>
+          <li class="select-option">018</li>
+          <li class="select-option">019</li>
+        </ul>
+        <div class="error-text">1</div>
+        </div>
+         <input
+          type="text"
+  name="middle-number"
+  id="middle-number"
+  pattern="^[0-9]{3,4}"
+  title="3자리 또는 4자리 입력해주세요."
+  required
+/>
+    <input 
+  type="text"
+  name="last-number"
+  id="last-number"
+  pattern="^[0-9]{4}"
+  title="4자리 입력해주세요."
+  required/>
+  </div>
+    </div>
+</div>
+ </body>
 </html>
