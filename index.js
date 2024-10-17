@@ -14,8 +14,7 @@ const routes = {
   "/login": LoginPage,
   "/cart": CartPage,
   "/product": DetailPage,
-  "/accounts/buyer/signup": SignUpPage, // 구매자 회원가입
-  "/accounts/seller/signup": SignUpPage, // 판매자 회원가입
+  "/signup": SignUpPage,
 };
 
 async function renderPage() {
@@ -52,7 +51,7 @@ async function renderPage() {
     $app.innerHTML = "<p>404 Not Found</p>";
   }
 
-  if (path === "/accounts/buyer/signup" || path === "/accounts/seller/signup") {
+  if (path === "/signup") {
     signup();
   }
 }
@@ -103,22 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (e.target.closest(".sign-up")) {
       e.preventDefault();
-      window.location.hash = "#/accounts/buyer/signup";
+      window.location.hash = "#/signup";
       state.userType = "BUYER";
     }
-
-    if (e.target.closest(".sign-up-form .buyer")) {
-      e.preventDefault();
-      window.location.hash = "#/accounts/buyer/signup";
-      state.userType = "BUYER";
-    }
-
-    if (e.target.closest(".sign-up-form .seller")) {
-      e.preventDefault();
-      window.location.hash = "#/accounts/seller/signup";
-      state.userType = "SELLER";
-    }
-    console.log("usertype:", state.userType);
-    console.log(e.target);
   });
 });

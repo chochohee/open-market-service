@@ -608,7 +608,7 @@ footer address .company {
   height: 4rem;
   color: #eb5757;
 }
-.sign-up-form .input-wrap .id-error.succes {
+.sign-up-form .input-wrap .id-error.success {
   color: #21bf48;
 }
 .sign-up-form .input-wrap .id-wrap {
@@ -637,8 +637,10 @@ footer address .company {
 .sign-up-form .input-wrap .checked-pw-wrap {
   position: relative;
 }
-.sign-up-form .input-wrap .sign-up-pw-wrap input,
-.sign-up-form .input-wrap .checked-pw-wrap input {
+.sign-up-form .input-wrap .sign-up-pw-wrap .sign-up-pw,
+.sign-up-form .input-wrap .sign-up-pw-wrap .checked-pw,
+.sign-up-form .input-wrap .checked-pw-wrap .sign-up-pw,
+.sign-up-form .input-wrap .checked-pw-wrap .checked-pw {
   margin-top: 1rem;
 }
 .sign-up-form .input-wrap .sign-up-pw-wrap::before,
@@ -657,7 +659,7 @@ footer address .company {
 .sign-up-form .input-wrap .checked-pw-wrap.on::before {
   background-image: url(../src/assets/icon-check-on.svg);
 }
-.sign-up-form .input-wrap .sign-up-pw-wrap input {
+.sign-up-form .input-wrap .sign-up-pw-wrap .sign-up-pw {
   margin-bottom: 1rem;
 }
 .sign-up-form .input-wrap #name {
@@ -729,7 +731,7 @@ footer address .company {
   justify-content: center;
   align-items: center;
   position: relative;
-  top: 5rem;
+  top: 4.5rem;
   padding: 1rem 0;
   width: inherit;
 }
