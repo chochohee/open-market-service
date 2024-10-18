@@ -85,8 +85,10 @@
           border-left: none;
           width: 5rem;
           height: 5rem;
-          img {
-            width: 2rem;
+          color: $gray-color;
+          &:disabled {
+            background-color: $lightgray2-color;
+            color: $lightgray-color;
           }
         }
       }
@@ -147,7 +149,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   button {
     width: 32rem;
-    border-bottom: 0.6rem solid #e0e0e0;
+    border-bottom: 0.6rem solid $lightgray2-color;
     padding-bottom: 1.2rem;
     font-size: map-get($map: $font-size, $key: medium);
     line-height: map-get($map: $line-height, $key: medium);

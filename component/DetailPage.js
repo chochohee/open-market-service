@@ -24,7 +24,7 @@ class DetailPage {
     const $app = document.querySelector(".App");
     if (product) {
       $app.innerHTML = this.template(product);
-      this.productCount();
+      this.productCount(product);
     } else {
       $app.innerHTML = "<p>제품을 찾을 수 없습니다.</p>";
     }
@@ -63,7 +63,10 @@ class DetailPage {
                 </button>
                 <span class="count">1</span>
                 <button class="plus">
-                  <img src="../src/assets/icon-plus-line.svg" alt="" />
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 9.5H20" stroke="currentColor" stroke-width="2"/>
+                  <path d="M10 20L10 0" stroke="currentColor" stroke-width="2"/>
+                  </svg>
                 </button>
               </div>
               <div class="price-info">
@@ -93,39 +96,55 @@ class DetailPage {
     ${Footer.template()}`;
   }
 
-  productCount() {
+  async productCount() {
     const minusBtn = document.querySelector(".minus");
     const plusBtn = document.querySelector(".plus");
     const countDisplay = document.querySelector(".count");
     const totalCount = document.querySelector(".count-number");
 
+    const product = await this.productList.getProductById(
+      Number(this.productId)
+    );
     // count의 최소 숫자는 1, 각 버튼을 눌러 수량 +,- 할수있음.
 
     let count = 1;
+
+    this.buttonStyle(count, product.stock);
+    this.updateTotalPrice(count, product.price);
 
     minusBtn.addEventListener("click", () => {
       if (count > 1) {
         count--;
         countDisplay.textContent = count;
         totalCount.textContent = count;
-        this.updateTotalPrice(count);
+        this.updateTotalPrice(count, product.price);
+        this.buttonStyle(count, product.stock);
       }
     });
 
     plusBtn.addEventListener("click", () => {
-      count++;
-      countDisplay.textContent = count;
-      totalCount.textContent = count;
-      this.updateTotalPrice(count);
+      if (count < product.stock) {
+        count++;
+        countDisplay.textContent = count;
+        totalCount.textContent = count;
+        this.updateTotalPrice(count, product.price);
+        this.buttonStyle(count, product.stock);
+      }
     });
   }
 
-  updateTotalPrice(count) {
-    const product = this.productList.getProductById(Number(this.productId));
-    const totalPriceDisplay = document.querySelector(".total-price");
+  buttonStyle(count, stock) {
+    const plusBtn = document.querySelector(".plus");
 
-    // product.prce를 콤마 제거하고 10진수로 숫자 변경
-    const price = product.price;
+    if (count >= stock) {
+      plusBtn.disabled = true;
+    } else {
+      plusBtn.disabled = false;
+    }
+  }
+
+  updateTotalPrice(count, price) {
+    const totalPriceDisplay = document.querySelector(".total-price");
     // 선택한 수량만큼 화면에 rendering
     const totalPrice = price * count;
     totalPriceDisplay.textContent = totalPrice.toLocaleString();

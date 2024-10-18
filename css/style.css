@@ -535,9 +535,11 @@ footer address .company {
   border-left: none;
   width: 5rem;
   height: 5rem;
+  color: #c4c4c4;
 }
-.product-detail .info-wrapper .buy-info .count-wrap .plus img {
-  width: 2rem;
+.product-detail .info-wrapper .buy-info .count-wrap .plus:disabled {
+  background-color: #e0e0e0;
+  color: #f2f2f2;
 }
 .product-detail .info-wrapper .buy-info .price-info {
   display: flex;
