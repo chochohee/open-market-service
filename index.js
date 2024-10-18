@@ -5,6 +5,7 @@ import SignUpPage from "./component/SignUpPage.js";
 import { login } from "./js/login.js";
 import { signup } from "./js/signUp.js";
 import { isLoggedIn } from "./js/isLoggedIn.js";
+import { state } from "./js/state.js";
 
 function headerModal() {
   const mypageBtn = document.querySelector(".my-page-btn");
@@ -31,6 +32,7 @@ function headerModal() {
     logoutBtn.addEventListener("click", (e) => {
       e.preventDefault();
       localStorage.removeItem("accessToken");
+      state.isLoggedIn = false;
       location.reload();
     });
   }
