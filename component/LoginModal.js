@@ -17,6 +17,8 @@ export default class LoginModal {
     this.closedModal = document.querySelectorAll(".close-modal");
 
     this.setLoginModal();
+
+    document.body.style.overflow = "auto";
   }
 
   renderLoginModal() {
@@ -32,6 +34,7 @@ export default class LoginModal {
         this.buyNow.addEventListener("click", (e) => {
           e.preventDefault();
           this.loginModal.classList.remove("none");
+          document.body.style.overflow = "hidden";
         });
       }
 
@@ -40,6 +43,7 @@ export default class LoginModal {
           btn.addEventListener("click", (e) => {
             e.preventDefault();
             this.loginModal.classList.remove("none");
+            document.body.style.overflow = "hidden";
           });
         });
       }
@@ -49,6 +53,7 @@ export default class LoginModal {
           btn.addEventListener("click", (e) => {
             e.preventDefault();
             this.loginModal.classList.add("none");
+            document.body.style.overflow = "auto";
           });
         });
       }

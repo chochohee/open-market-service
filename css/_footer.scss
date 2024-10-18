@@ -1,7 +1,7 @@
 footer {
   @include blank-wrap-x;
   background-color: $lightgray-color;
-  width: calc(100vw - 1.5rem);
+  width: 100vw;
   .footer-item {
     border-bottom: 1px solid $gray-color;
     padding: 6rem 0 2.2rem 0;
@@ -12,10 +12,16 @@ footer {
       font-size: map-get($map: $font-size, $key: mini);
       line-height: map-get($map: $line-height, $key: mini);
 
+      a {
+        word-break: kepp-all;
+        white-space: nowrap;
+      }
+
       @for $i from 1 through 5 {
         & a:nth-child(#{$i})::after {
           content: "|";
           padding: 0 1.4rem;
+          font-weight: map-get($map: $font-weights, $key: regular);
         }
       }
       :nth-child(3) {
@@ -27,7 +33,7 @@ footer {
     display: flex;
     gap: 1.4rem;
   }
-  
+
   address {
     margin-top: 3rem;
     padding-bottom: 6.3rem;
@@ -37,6 +43,11 @@ footer {
     .company {
       font-weight: map-get($map: $font-weights, $key: bold);
       color: $deepdarkgray-color;
+    }
+    div,
+    span {
+      word-break: kepp-all;
+      white-space: nowrap;
     }
   }
 }

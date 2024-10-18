@@ -5,9 +5,13 @@
   padding-top: 10rem;
 }
 
-.sign-up-logo a {
+.main-logo .logo-btn {
   width: 23.8rem;
   height: 7.4rem;
+  background-image: url(../src/assets/Logo-hodu.png);
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .sign-up-form {
@@ -26,6 +30,7 @@
     background-color: $lightgray-color;
     position: relative;
   }
+  
   .input-wrap {
     display: flex;
     align-items: flex-start;

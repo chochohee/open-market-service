@@ -57,7 +57,7 @@ export default class Header {
         </h1>
         <form class="search-box">
           <input type="text" placeholder="상품을 검색해보세요!" />
-          <button>검색</button>
+          <button type="button">검색</button>
         </form>
       </div>
       <div class="main-header-btn">

@@ -32,7 +32,7 @@ async function renderPage() {
   }
 
   const page = routes[path] || (pathParts[1] === "product" ? DetailPage : null);
- 
+
   if (page) {
     console.log("렌더링중...");
     try {
@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (e.target.matches(".login-btn")) {
       e.preventDefault();
       window.location.hash = "#/login";
+      document.body.style.overflow = "auto";
     }
 
     if (e.target.closest(".product-wrap")) {
