@@ -142,6 +142,7 @@ header {
   justify-content: space-between;
   width: calc(100vw - 1.5rem);
   box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.1019607843);
+  position: relative;
   padding-left: 16.7%;
   padding-right: 16.7%;
 }
@@ -216,11 +217,11 @@ header .main-header-btn .cart-btn.active::before {
   display: block;
 }
 header .main-header-btn .login-btn,
-header .main-header-btn .my-page {
+header .main-header-btn .my-page-btn {
   margin-left: 2.6rem;
 }
 header .main-header-btn .login-btn::before,
-header .main-header-btn .my-page::before {
+header .main-header-btn .my-page-btn::before {
   content: "";
   background-image: url(../src/assets/icon-user.svg);
   background-repeat: no-repeat;
@@ -229,6 +230,69 @@ header .main-header-btn .my-page::before {
   padding-bottom: 0.9rem;
   display: block;
   margin: auto;
+  text-wrap: nowrap;
+}
+header .my-page-modal {
+  background-color: #fff;
+  position: fixed;
+  top: 9rem;
+  right: 13.5%;
+  width: 13rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2509803922);
+  z-index: 10;
+}
+header .my-page-modal::before {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: -0.5rem;
+  background-color: #fff;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2509803922);
+  transform: rotateZ(45deg);
+  border-radius: 0.4rem;
+  z-index: -1;
+}
+header .my-page-modal::after {
+  content: "";
+  background-color: #fff;
+  width: 5rem;
+  height: 3rem;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+header .my-page-modal .my-page,
+header .my-page-modal .logout {
+  position: relative;
+  width: 11rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  color: #767676;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  font-weight: 500;
+  padding: 1rem 0;
+}
+header .my-page-modal .my-page:hover,
+header .my-page-modal .logout:hover {
+  border: 1px solid #767676;
+  border-radius: 0.5rem;
+  color: #000;
+}
+header .my-page-modal .my-page {
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+}
+header .my-page-modal .logout {
+  margin-bottom: 1rem;
 }
 
 main {

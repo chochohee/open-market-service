@@ -16,10 +16,15 @@ class Header {
         <a href="#/cart" class="cart-btn">장바구니</a>
           ${
             state.isLoggedIn
-              ? '<a href="#" class="my-page">마이페이지</a>'
+              ? '<a href="#" class="my-page-btn">마이페이지</a>'
               : '<a href="#/login" class="login-btn">로그인</a>'
           }
+          
       </div>
+        <div class="my-page-modal">
+          <button class="my-page">마이페이지</button>
+          <button class="logout">로그아웃</button>
+        </div>
     </header>
     `;
   }
