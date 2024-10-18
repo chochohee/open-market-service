@@ -3,9 +3,9 @@ import LoginPage from "./component/LoginPage.js";
 import CartPage from "./component/CartPage.js";
 import DetailPage from "./component/DetailPage.js";
 import SignUpPage from "./component/SignUpPage.js";
-import { loggedIn } from "./js/loggedIn.js";
-import { setLoggedIn, state } from "./js/state.js";
+import { login } from "./js/login.js";
 import { signup } from "./js/signUp.js";
+import { isLoggedIn } from "./js/isLoggedIn.js";
 
 const $app = document.querySelector(".App");
 
@@ -45,7 +45,7 @@ async function renderPage() {
     }
 
     if (path === "/login") {
-      loggedIn();
+      login();
     }
   } else {
     $app.innerHTML = "<p>404 Not Found</p>";
@@ -56,25 +56,12 @@ async function renderPage() {
   }
 }
 
-// 페이지 로드시 로컬스토리지의 isLoggedIn 속성을 통해 로그인여부 확인하는 함수
-function checkLoginStatus() {
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-  if (isLoggedIn) {
-    const userType = localStorage.getItem("userType") || "BUYER";
-    setLoggedIn(true, userType);
-  } else {
-    setLoggedIn(false, "BUYER");
-  }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("페이지가 로드되었습니다.");
-  checkLoginStatus();
-
+document.addEventListener("DOMContentLoaded", async () => {
+  await isLoggedIn();
+  await renderPage(window.location.hash);
   window.addEventListener("hashchange", () => {
     renderPage(window.location.hash);
   });
-  renderPage(window.location.hash);
 
   $app.addEventListener("click", (e) => {
     if (e.target.matches(".logo-btn") || e.target.matches(".main-logo")) {

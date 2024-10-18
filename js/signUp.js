@@ -1,4 +1,4 @@
-import { signupValidate } from "./state.js";
+import { signupValidate, state } from "./state.js";
 
 export function signup() {
   const signupForm = document.querySelector(".sign-up-form");
@@ -253,7 +253,7 @@ export function signup() {
         removeError(name);
         name.classList.remove("error");
         signupValidate.isValidName = true;
-      } else {
+      } else if (!name.validity.valid) {
         createError("올바른 이름을입력해주세요.", name);
         name.classList.add("error");
       }

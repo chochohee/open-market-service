@@ -2,7 +2,7 @@ import { fetchAllProducts } from "./api.js";
 
 class ProductList {
   constructor() {
-    this.data = null;
+    this.data = [];
   }
 
   async init() {
@@ -25,14 +25,16 @@ class ProductList {
   }
 
   getProductById(id) {
-    if (!this.data) {
+    if (!this.data || !this.data.length) {
       console.error("제품 목록이 로드되지 않았습니다.");
       return null;
     }
-    const product = this.data.find((product) => product.id === Number(id));
-    console.log("Found product in getProductById:", product);
-    return product;
+    const foundProduct = this.data.find((product) => product.id === id);
+    if (!foundProduct) {
+      return null;
+    }
+    return foundProduct;
   }
 }
 
-export default new ProductList(); // 인스턴스 내보내기
+export default new ProductList; // 인스턴스 내보내기

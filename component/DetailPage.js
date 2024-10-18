@@ -4,7 +4,6 @@ import productList from "../js/productList.js";
 class DetailPage {
   constructor() {
     this.productList = productList;
-    this.productId = null;
   }
 
   async init() {
