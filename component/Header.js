@@ -53,7 +53,7 @@ export default class Header {
     return `
       <header>
       <div class="main-logo-wrap">
-        <h1 class="main-logo>
+        <h1 class="main-logo">
          <button class="logo-btn"> </button>
         </h1>
         <form class="search-box">

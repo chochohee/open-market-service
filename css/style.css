@@ -16,7 +16,7 @@ body {
   box-sizing: border-box;
   padding-top: 10rem;
 }
-.login-wrap .login-logo .logo-btn {
+.login-wrap .main-logo .logo-btn {
   background-image: url(../src/assets/Logo-hodu.png);
   display: block;
   background-size: contain;
