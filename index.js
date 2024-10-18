@@ -20,6 +20,7 @@ async function renderPage() {
   const hash = window.location.hash || "#/";
   const path = hash.replace("#", "");
   const pathParts = path.split("/").filter(Boolean); // 빈 요소를 제거하여 경로 파트 얻기
+
   console.log("pathParts:", pathParts);
 
   if (pathParts[0] === "product" && pathParts[1]) {
@@ -31,7 +32,7 @@ async function renderPage() {
   }
 
   const page = routes[path] || (pathParts[1] === "product" ? DetailPage : null);
-
+ 
   if (page) {
     console.log("렌더링중...");
     try {

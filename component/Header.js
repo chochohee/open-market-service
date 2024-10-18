@@ -25,7 +25,6 @@ export default class Header {
 
       document.addEventListener("click", (e) => {
         if (
-          this.mypageModal &&
           !this.mypageModal.contains(e.target) &&
           !this.mypageBtn.contains(e.target)
         ) {

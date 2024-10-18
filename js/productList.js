@@ -1,6 +1,6 @@
-import { fetchAllProducts } from "./api.js";
+import { fetchAllProducts, fetchDetailProducts } from "./api.js";
 
-export default class ProductList {
+export class ProductList {
   constructor() {
     this.data = [];
   }
@@ -24,7 +24,7 @@ export default class ProductList {
     return this.data;
   }
 
-  getProductById(id) {
+  getProductListById(id) {
     if (!this.data || !this.data.length) {
       console.error("제품 목록이 로드되지 않았습니다.");
       return null;
@@ -34,5 +34,29 @@ export default class ProductList {
       return null;
     }
     return foundProduct;
+  }
+}
+
+export class DetailProduct {
+  constructor() {
+    this.item = null;
+  }
+
+  async init(productId) {
+    this.item = await this.loadProduct(productId);
+  }
+
+  async loadProduct(productId) {
+    const response = await fetchDetailProducts(productId);
+    if (!response) {
+      console.error("제품 목록을 가져오지 못했습니다.");
+      return null;
+    }
+
+    return response;
+  }
+
+  async getProductById(productId) {
+    return await fetchDetailProducts(productId);
   }
 }

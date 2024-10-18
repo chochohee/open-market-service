@@ -1,6 +1,6 @@
 import Header from "./Header.js";
 import Footer from "./Footer.js";
-import ProductList from "../js/productList.js";
+import { ProductList } from "../js/productList.js";
 import LoginModal from "./LoginModal.js";
 
 export default class HomePage {

@@ -1,18 +1,21 @@
 import Header from "./Header.js";
 import Footer from "./Footer.js";
-import productList from "../js/productList.js";
+import { DetailProduct } from "../js/productList.js";
 import LoginModal from "./LoginModal.js";
 export default class DetailPage {
   constructor() {
-    this.productList = new productList();
+    this.detailProduct = new DetailProduct();
     this.header = new Header();
     this.loginModal = new LoginModal();
   }
 
   async init() {
     try {
-      await this.productList.init();
-      this.render();
+      const pathParts = window.location.hash.split("/");
+      const productId = pathParts[2];
+
+      await this.detailProduct.init(productId);
+      this.render(productId);
       this.header.init();
       this.loginModal.init();
     } catch (error) {
@@ -20,17 +23,11 @@ export default class DetailPage {
     }
   }
 
-  async render() {
-    const pathParts = window.location.hash.split("/");
-    console.log(pathParts);
-    this.productId = pathParts[2];
-    console.log(this.productId);
-    const product = await this.productList.getProductById(
-      Number(this.productId)
-    );
-    console.log(this.productId);
-
+  async render(productId) {
+    const product = await this.detailProduct.getProductById(Number(productId));
     const $app = document.querySelector(".App");
+    console.log(product);
+
     if (product) {
       $app.innerHTML = this.template(product);
       this.header.init();
@@ -42,11 +39,14 @@ export default class DetailPage {
   }
 
   template(product) {
+    if (!product) {
+      return "<p>제품을 찾을 수 없습니다.</p>";
+    }
     let shippingText =
       product.shipping_method === "PARCEL" ? "택배배송" : "직접배송(화물배달)";
 
     let shippingFee =
-      product.shipping_fee === 0
+      product?.shipping_fee === 0
         ? "무료배송"
         : `${Number(product.shipping_fee).toLocaleString()}원`;
 
@@ -108,15 +108,12 @@ export default class DetailPage {
     ${Footer.template()}`;
   }
 
-  async productCount() {
+  async productCount(product) {
     const minusBtn = document.querySelector(".minus");
     const plusBtn = document.querySelector(".plus");
     const countDisplay = document.querySelector(".count");
     const totalCount = document.querySelector(".count-number");
 
-    const product = await this.productList.getProductById(
-      Number(this.productId)
-    );
     // count의 최소 숫자는 1, 각 버튼을 눌러 수량 +,- 할수있음.
 
     let count = 1;

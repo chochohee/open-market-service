@@ -451,8 +451,7 @@ export function signup() {
       signupValidate.isAgreed = !signupValidate.isAgreed;
     });
 
-    window.addEventListener("click", (e) => {
-      console.log(e.target);
+    signupForm.addEventListener("click", (e) => {
       console.log(signupValidate.isValidUsername);
       if (
         e.target.matches(".select-option") ||
@@ -462,7 +461,7 @@ export function signup() {
         toggleSubmitState();
       }
     });
-    window.addEventListener("input", (e) => {
+    signupForm.addEventListener("input", (e) => {
       if (e.target.matches("input")) {
         toggleSubmitState();
       }

@@ -17,8 +17,8 @@ export default class SignUp {
   template() {
     return `
     <div class="sign-up-wrap">
-      <h1 class="sign-up-logo">
-        <a href="#/" class="logo-btn"></a>
+      <h1 class="main-logo">
+        <button href="#/" class="logo-btn"></button>
       </h1>
       <form method="post" class="sign-up-form">
         <div class="choice-user">
