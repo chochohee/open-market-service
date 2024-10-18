@@ -1,18 +1,45 @@
 import HomePage from "./component/HomePage.js";
 import LoginPage from "./component/LoginPage.js";
-import CartPage from "./component/CartPage.js";
 import DetailPage from "./component/DetailPage.js";
 import SignUpPage from "./component/SignUpPage.js";
 import { login } from "./js/login.js";
 import { signup } from "./js/signUp.js";
 import { isLoggedIn } from "./js/isLoggedIn.js";
 
+function headerModal() {
+  const mypageBtn = document.querySelector(".my-page-btn");
+  const mypageModal = document.querySelector(".my-page-modal");
+  const logoutBtn = document.querySelector(".logout");
+
+  // 모달 리스너 추가
+  if (mypageBtn) {
+    mypageBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      mypageModal.classList.toggle("none");
+    });
+
+    document.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (!mypageModal.contains(e.target) && !mypageBtn.contains(e.target)) {
+        mypageModal.classList.add("none");
+      }
+    });
+  }
+
+  //로그아웃 리스너
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("accessToken");
+      location.reload();
+    });
+  }
+}
 const $app = document.querySelector(".App");
 
 const routes = {
   "/": HomePage,
   "/login": LoginPage,
-  "/cart": CartPage,
   "/product": DetailPage,
   "/signup": SignUpPage,
 };
@@ -54,6 +81,8 @@ async function renderPage() {
   if (path === "/signup") {
     signup();
   }
+
+  headerModal();
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -61,22 +90,19 @@ document.addEventListener("DOMContentLoaded", async () => {
   await renderPage(window.location.hash);
   window.addEventListener("hashchange", () => {
     renderPage(window.location.hash);
+    isLoggedIn();
   });
 
   $app.addEventListener("click", (e) => {
+    console.log(e.target);
     if (e.target.matches(".logo-btn") || e.target.matches(".main-logo")) {
       e.preventDefault();
-      window.location.hash = "#/";
+      window.location.hash = "#";
     }
 
     if (e.target.matches(".login-btn")) {
       e.preventDefault();
       window.location.hash = "#/login";
-    }
-
-    if (e.target.matches(".cart-btn")) {
-      e.preventDefault();
-      window.location.hash = "#/cart";
     }
 
     if (e.target.closest(".product-wrap")) {
@@ -94,3 +120,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 });
+
+// if (!mypageBtn.parentNode.querySelector(".none")) {
+//   mypageModal.classList.add("none");
+// }

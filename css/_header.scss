@@ -88,6 +88,9 @@ header {
     box-shadow: 0px 0px 6px 0px #00000040;
     z-index: 10;
 
+    &.none {
+      display: none;
+    }
     &::before {
       content: "";
       width: 2rem;
@@ -98,7 +101,7 @@ header {
       box-shadow: 0px 0px 6px 0px #00000040;
       transform: rotateZ(45deg);
       border-radius: 0.4rem;
-      z-index: -1
+      z-index: -1;
     }
     &::after {
       content: "";

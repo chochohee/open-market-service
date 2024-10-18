@@ -6,7 +6,7 @@ class Header {
     return `
       <header>
       <div class="main-logo-wrap">
-        <h1 class="main-logo"><a href="/"></a></h1>
+        <h1 class="main-logo"><a href="/" class"logo-btn"></a></h1>
         <form class="search-box">
           <input type="text" placeholder="상품을 검색해보세요!" />
           <button>검색</button>
@@ -21,7 +21,7 @@ class Header {
           }
           
       </div>
-        <div class="my-page-modal">
+        <div class="my-page-modal none">
           <button class="my-page">마이페이지</button>
           <button class="logout">로그아웃</button>
         </div>
