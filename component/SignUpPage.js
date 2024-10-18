@@ -1,6 +1,6 @@
 import { state } from "../js/state.js";
 
-class SignUp {
+export default class SignUp {
   constructor() {
     this.init();
   }
@@ -119,5 +119,3 @@ class SignUp {
       `;
   }
 }
-
-export default SignUp;

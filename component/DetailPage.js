@@ -1,14 +1,20 @@
 import Header from "./Header.js";
 import Footer from "./Footer.js";
 import productList from "../js/productList.js";
-class DetailPage {
+export default class DetailPage {
   constructor() {
-    this.productList = productList;
+    this.productList = new productList();
+    this.header = new Header();
   }
 
   async init() {
-    await this.productList.init();
-    this.render();
+    try {
+      await this.productList.init();
+      this.render();
+      this.header.init();
+    } catch (error) {
+      console.error("상세페이지 초기화 오류:", error);
+    }
   }
 
   async render() {
@@ -24,6 +30,7 @@ class DetailPage {
     const $app = document.querySelector(".App");
     if (product) {
       $app.innerHTML = this.template(product);
+      this.header.init();
       this.productCount(product);
     } else {
       $app.innerHTML = "<p>제품을 찾을 수 없습니다.</p>";
@@ -40,8 +47,8 @@ class DetailPage {
         : `${Number(product.shipping_fee).toLocaleString()}원`;
 
     return `
-    ${Header.template()}
-        <main>
+    ${this.header.template()}
+      <main>
       <div class="detail-page-wrapper">
         <div class="product-detail">
           <div class="img-wrapper" data-id="${product.id}">
@@ -150,5 +157,3 @@ class DetailPage {
     totalPriceDisplay.textContent = totalPrice.toLocaleString();
   }
 }
-
-export default DetailPage;

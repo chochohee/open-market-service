@@ -1,6 +1,6 @@
 import { fetchAllProducts } from "./api.js";
 
-class ProductList {
+export default class ProductList {
   constructor() {
     this.data = [];
   }
@@ -36,5 +36,3 @@ class ProductList {
     return foundProduct;
   }
 }
-
-export default new ProductList; // 인스턴스 내보내기

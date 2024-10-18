@@ -50,6 +50,7 @@ export function login() {
         console.log("로그인 성공:", data);
         state.isLoggedIn = true;
         window.location.hash = "#/";
+        location.reload();
       } else {
         const errorData = await response.json();
         console.log("로그인 실패", errorData);

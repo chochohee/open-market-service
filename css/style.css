@@ -197,6 +197,7 @@ header .main-header-btn {
 }
 header .main-header-btn .cart-btn {
   text-wrap: nowrap;
+  cursor: pointer;
 }
 header .main-header-btn .cart-btn::before {
   content: "";
@@ -207,18 +208,10 @@ header .main-header-btn .cart-btn::before {
   padding-bottom: 0.9rem;
   display: block;
 }
-header .main-header-btn .cart-btn.active::before {
-  content: "";
-  background-image: url(../src/assets/icon-shopping-cart-2.svg);
-  background-repeat: no-repeat;
-  width: 3.2rem;
-  height: 3.2rem;
-  padding-bottom: 0.9rem;
-  display: block;
-}
 header .main-header-btn .login-btn,
 header .main-header-btn .my-page-btn {
   margin-left: 2.6rem;
+  cursor: pointer;
 }
 header .main-header-btn .login-btn::before,
 header .main-header-btn .my-page-btn::before {
@@ -231,6 +224,20 @@ header .main-header-btn .my-page-btn::before {
   display: block;
   margin: auto;
   text-wrap: nowrap;
+}
+header .main-header-btn .login-btn.active,
+header .main-header-btn .my-page-btn.active {
+  color: #21bf48;
+}
+header .main-header-btn .login-btn.active::before,
+header .main-header-btn .my-page-btn.active::before {
+  content: "";
+  background-image: url(../src/assets/icon-user-2.svg);
+  background-repeat: no-repeat;
+  width: 3.2rem;
+  height: 3.2rem;
+  padding-bottom: 0.9rem;
+  display: block;
 }
 header .my-page-modal {
   background-color: #fff;

@@ -1,4 +1,4 @@
-class Login {
+export default class Login {
   constructor() {
     this.init();
   }
@@ -47,5 +47,3 @@ class Login {
     </div>`;
   }
 }
-
-export default Login;

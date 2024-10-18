@@ -1,5 +1,52 @@
 import { state } from "../js/state.js";
-class Header {
+export default class Header {
+  constructor() {
+    this.mypageBtn = null; // 초기화
+    this.mypageModal = null; // 초기화
+    this.logoutBtn = null; // 초기화
+  }
+
+  init() {
+    this.mypageBtn = document.querySelector(".my-page-btn");
+    this.mypageModal = document.querySelector(".my-page-modal");
+    this.logoutBtn = document.querySelector(".logout");
+
+    this.setupMypageModal();
+    this.setupLogout();
+  }
+
+  setupMypageModal() {
+    if (this.mypageBtn) {
+      this.mypageBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.mypageModal.classList.toggle("none");
+        this.mypageBtn.classList.toggle("active");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (
+          this.mypageModal &&
+          !this.mypageModal.contains(e.target) &&
+          !this.mypageBtn.contains(e.target)
+        ) {
+          this.mypageModal.classList.add("none");
+          this.mypageBtn.classList.remove("active");
+        }
+      });
+    }
+  }
+
+  setupLogout() {
+    if (this.logoutBtn) {
+      this.logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.removeItem("accessToken");
+        state.isLoggedIn = false;
+        location.reload();
+      });
+    }
+  }
+
   template() {
     console.log("현재 로그인상태:", state.isLoggedIn);
 
@@ -13,10 +60,10 @@ class Header {
         </form>
       </div>
       <div class="main-header-btn">
-        <a href="#/cart" class="cart-btn">장바구니</a>
+        <a class="cart-btn">장바구니</a>
           ${
             state.isLoggedIn
-              ? '<a href="#" class="my-page-btn">마이페이지</a>'
+              ? '<a class="my-page-btn">마이페이지</a>'
               : '<a href="#/login" class="login-btn">로그인</a>'
           }
           
@@ -29,5 +76,3 @@ class Header {
     `;
   }
 }
-
-export default new Header();

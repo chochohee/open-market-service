@@ -2,10 +2,10 @@ import Header from "./Header.js";
 import Footer from "./Footer.js";
 import ProductList from "../js/productList.js";
 
-class Home {
+export default class HomePage {
   constructor() {
-    this.productList = ProductList;
-    this.init();
+    this.productList = new ProductList();
+    this.header = new Header();
   }
 
   async init() {
@@ -19,9 +19,9 @@ class Home {
   }
 
   render() {
-    const html = this.template(); // 템플릿 생성
     const $app = document.querySelector(".App"); // .App 요소 선택
-    $app.innerHTML = html; // HTML 렌더링
+    $app.innerHTML = this.template(); // HTML 렌더링
+    this.header.init();
   }
 
   template() {
@@ -48,7 +48,7 @@ class Home {
     }
 
     return `    
-    ${Header.template()}
+    ${this.header.template()}
     <main>
       <div class="slide-img-wrap">
         <button class="left"></button>
@@ -69,5 +69,3 @@ class Home {
     `;
   }
 }
-
-export default Home;
