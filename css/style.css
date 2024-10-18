@@ -1005,4 +1005,52 @@ footer address span {
   background-color: #21bf48;
   color: #fff;
   margin: auto;
+}
+
+.errorpage-wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.errorpage-wrap .content-wrap {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5rem;
+}
+.errorpage-wrap .content-wrap .title {
+  font-size: 3.6rem;
+  line-height: 4.5rem;
+  font-weight: 700;
+  word-break: kepp-all;
+  white-space: nowrap;
+}
+.errorpage-wrap .content-wrap .content {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  color: #767676;
+  padding: 2rem 0 4rem 0;
+  word-break: kepp-all;
+  white-space: nowrap;
+}
+.errorpage-wrap .content-wrap .btn-wrap {
+  white-space: nowrap;
+}
+.errorpage-wrap .content-wrap .btn-wrap .logo-btn,
+.errorpage-wrap .content-wrap .btn-wrap .back-page {
+  width: 20rem;
+  padding: 1.9rem 0;
+  border-radius: 0.5rem;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  font-weight: 700;
+}
+.errorpage-wrap .content-wrap .btn-wrap .logo-btn {
+  background-color: #21bf48;
+  color: #fff;
+}
+.errorpage-wrap .content-wrap .btn-wrap .back-page {
+  border: 1px solid #c4c4c4;
+  color: #767676;
 }/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,45 @@
+.errorpage-wrap {
+  width: 100vw;
+  height: 100vh;
+  @include center-xy;
+  .content-wrap {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5rem;
+    .title {
+      font-size: map-get($map: $font-size, $key: extra);
+      line-height: map-get($map: $line-height, $key: extra);
+      font-weight: map-get($map: $font-weights, $key: bold);
+      word-break: kepp-all;
+      white-space: nowrap;
+    }
+    .content {
+      font-size: map-get($map: $font-size, $key: small);
+      line-height: map-get($map: $line-height, $key: small);
+      color: $darkgray-color;
+      padding: 2rem 0 4rem 0;
+      word-break: kepp-all;
+      white-space: nowrap;
+    }
+    .btn-wrap {
+      white-space: nowrap;
+      .logo-btn,
+      .back-page {
+        width: 20rem;
+        padding: 1.9rem 0;
+        border-radius: 0.5rem;
+        font-size: map-get($map: $font-size, $key: medium);
+        line-height: map-get($map: $line-height, $key: medium);
+        font-weight: map-get($map: $font-weights, $key: bold);
+      }
+      .logo-btn {
+        background-color: $main-color;
+        color: $white;
+      }
+      .back-page {
+        border: 1px solid $gray-color;
+        color: $darkgray-color;
+      }
+    }
+  }
+}
