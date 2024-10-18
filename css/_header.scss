@@ -6,11 +6,16 @@ header {
   box-shadow: 0px 4px 5px 0px #0000001a;
   position: relative;
   @include blank-wrap-x;
+
   .main-logo-wrap {
     display: flex;
     align-items: center;
     padding: 2.6rem 0;
-    .main-logo a {
+    .main-logo .logo-btn {
+      background-image: url(../src/assets/Logo-hodu.png);
+      display: block;
+      background-size: contain;
+      background-repeat: no-repeat;
       width: 12.4rem;
       height: 3.8rem;
     }

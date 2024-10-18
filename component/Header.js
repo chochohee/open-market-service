@@ -53,7 +53,9 @@ export default class Header {
     return `
       <header>
       <div class="main-logo-wrap">
-        <h1 class="main-logo"><a href="/" class"logo-btn"></a></h1>
+        <h1 class="main-logo>
+         <button class="logo-btn"> </button>
+        </h1>
         <form class="search-box">
           <input type="text" placeholder="상품을 검색해보세요!" />
           <button>검색</button>

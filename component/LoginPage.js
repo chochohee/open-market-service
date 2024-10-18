@@ -15,8 +15,8 @@ export default class Login {
   template() {
     return `
     <div class="login-wrap">
-      <h1 class="login-logo">
-        <a href="#/" class="logo-btn"></a>
+      <h1 class="main-logo">
+        <button class="logo-btn"> </button>
       </h1>
       <form method="post" class="login-form">
         <div class="choice-user">

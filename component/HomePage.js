@@ -1,11 +1,13 @@
 import Header from "./Header.js";
 import Footer from "./Footer.js";
 import ProductList from "../js/productList.js";
+import LoginModal from "./LoginModal.js";
 
 export default class HomePage {
   constructor() {
     this.productList = new ProductList();
     this.header = new Header();
+    this.loginModal = new LoginModal();
   }
 
   async init() {
@@ -22,6 +24,7 @@ export default class HomePage {
     const $app = document.querySelector(".App"); // .App 요소 선택
     $app.innerHTML = this.template(); // HTML 렌더링
     this.header.init();
+    this.loginModal.init();
   }
 
   template() {
@@ -49,6 +52,7 @@ export default class HomePage {
 
     return `    
     ${this.header.template()}
+    ${this.loginModal.template()}
     <main>
       <div class="slide-img-wrap">
         <button class="left"></button>

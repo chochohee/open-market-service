@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await renderPage();
   const hompage = new HomePage();
   hompage.init();
+
   window.addEventListener("hashchange", () => {
     isLoggedIn();
     renderPage();
@@ -67,7 +68,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   $app.addEventListener("click", (e) => {
     console.log(e.target);
-    if (e.target.matches(".logo-btn") || e.target.matches(".main-logo-btn")) {
+
+    if (e.target.matches(".logo-btn")) {
       e.preventDefault();
       window.location.hash = "#";
     }

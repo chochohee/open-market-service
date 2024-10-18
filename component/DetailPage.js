@@ -1,10 +1,12 @@
 import Header from "./Header.js";
 import Footer from "./Footer.js";
 import productList from "../js/productList.js";
+import LoginModal from "./LoginModal.js";
 export default class DetailPage {
   constructor() {
     this.productList = new productList();
     this.header = new Header();
+    this.loginModal = new LoginModal();
   }
 
   async init() {
@@ -12,6 +14,7 @@ export default class DetailPage {
       await this.productList.init();
       this.render();
       this.header.init();
+      this.loginModal.init();
     } catch (error) {
       console.error("상세페이지 초기화 오류:", error);
     }
@@ -31,6 +34,7 @@ export default class DetailPage {
     if (product) {
       $app.innerHTML = this.template(product);
       this.header.init();
+      this.loginModal.init();
       this.productCount(product);
     } else {
       $app.innerHTML = "<p>제품을 찾을 수 없습니다.</p>";
@@ -48,6 +52,7 @@ export default class DetailPage {
 
     return `
     ${this.header.template()}
+    ${this.loginModal.template()}
       <main>
       <div class="detail-page-wrapper">
         <div class="product-detail">

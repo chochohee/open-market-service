@@ -8,13 +8,6 @@ body {
   color: #000;
 }
 
-h1 a {
-  background-image: url(../src/assets/Logo-hodu.png);
-  display: block;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
 .login-wrap {
   display: flex;
   justify-content: center;
@@ -23,8 +16,11 @@ h1 a {
   box-sizing: border-box;
   padding-top: 10rem;
 }
-
-.login-logo a {
+.login-wrap .login-logo .logo-btn {
+  background-image: url(../src/assets/Logo-hodu.png);
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
   width: 23.8rem;
   height: 7.4rem;
 }
@@ -151,7 +147,11 @@ header .main-logo-wrap {
   align-items: center;
   padding: 2.6rem 0;
 }
-header .main-logo-wrap .main-logo a {
+header .main-logo-wrap .main-logo .logo-btn {
+  background-image: url(../src/assets/Logo-hodu.png);
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
   width: 12.4rem;
   height: 3.8rem;
 }
@@ -909,4 +909,71 @@ footer address .company {
 }
 .sign-up-form .sign-up-submit:disabled {
   background-color: #c4c4c4;
+}
+
+.login-modal-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-modal-wrap.none {
+  display: none;
+}
+.login-modal-wrap .login-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36rem;
+  height: 20rem;
+  border: 1px solid #c4c4c4;
+  background-color: #fff;
+  padding: 5rem 7.5rem 4rem 7.5rem;
+  z-index: 10;
+  flex-direction: column;
+  text-align: center;
+  box-sizing: border-box;
+}
+.login-modal-wrap .login-modal #close-img {
+  width: 2.2rem;
+  height: 2.2rem;
+  position: absolute;
+  top: 1.8rem;
+  right: 1.8rem;
+  cursor: pointer;
+}
+.login-modal-wrap .login-modal div {
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+.login-modal-wrap .login-modal .modal-btn-wrap {
+  padding-top: 3rem;
+  display: flex;
+  justify-content: space-around;
+}
+.login-modal-wrap .login-modal .modal-btn-wrap .close-btn,
+.login-modal-wrap .login-modal .modal-btn-wrap .login-btn {
+  width: 10rem;
+  height: 4rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  font-weight: 400;
+  border-radius: 0.5rem;
+}
+.login-modal-wrap .login-modal .modal-btn-wrap .close-btn {
+  background-color: #fff;
+  border: 1px solid #c4c4c4;
+  color: #767676;
+}
+.login-modal-wrap .login-modal .modal-btn-wrap .login-btn {
+  background-color: #21bf48;
+  color: #fff;
+  margin: auto;
 }/*# sourceMappingURL=style.css.map */

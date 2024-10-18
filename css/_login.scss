@@ -3,11 +3,14 @@
   flex-direction: column;
   box-sizing: border-box;
   padding-top: 10rem;
-}
-
-.login-logo a {
-  width: 23.8rem;
-  height: 7.4rem;
+  .login-logo .logo-btn {
+    background-image: url(../src/assets/Logo-hodu.png);
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 23.8rem;
+    height: 7.4rem;
+  }
 }
 
 form {

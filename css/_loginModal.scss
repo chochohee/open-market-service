@@ -1,0 +1,64 @@
+.login-modal-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  @include center-xy;
+  &.none {
+    display: none;
+  }
+  .login-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 36rem;
+    height: 20rem;
+    border: 1px solid $gray-color;
+    background-color: $white;
+    padding: 5rem 7.5rem 4rem 7.5rem;
+    z-index: 10;
+    flex-direction: column;
+    text-align: center;
+    box-sizing: border-box;
+    #close-img {
+      width: 2.2rem;
+      height: 2.2rem;
+      position: absolute;
+      top: 1.8rem;
+      right: 1.8rem;
+      cursor: pointer;
+    }
+    div {
+      font-size: map-get($map: $font-size, $key: small);
+      line-height: map-get($map: $line-height, $key: small);
+    }
+    .modal-btn-wrap {
+      padding-top: 3rem;
+      display: flex;
+      justify-content: space-around;
+      .close-btn,
+      .login-btn {
+        width: 10rem;
+        height: 4rem;
+        font-size: map-get($map: $font-size, $key: small);
+        line-height: map-get($map: $line-height, $key: small);
+        font-weight: map-get($map: $font-weights, $key: regular);
+        border-radius: 0.5rem;
+      }
+      .close-btn {
+        background-color: $white;
+        border: 1px solid $gray-color;
+        color: $darkgray-color;
+      }
+      .login-btn {
+        background-color: $main-color;
+        color: $white;
+        margin: auto;
+      }
+    }
+  }
+}
