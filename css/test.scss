@@ -13,10 +13,12 @@
   }
 }
 
+
 .sign-up-form {
   @include center-xy;
   flex-direction: column;
   padding-top: 7rem;
+
   .choice-user button {
     border: 1px solid $gray-color;
     border-bottom: none;
@@ -27,68 +29,44 @@
     margin: -2px;
     background-color: $lightgray-color;
     position: relative;
-    &.active {
-      background-color: $white;
-      z-index: 10;
-      &.buyer::after {
-        content: "";
-        background-color: $white;
-        width: 1rem;
-        height: 2rem;
-        position: absolute;
-        top: 84.5%;
-        left: 98%;
-      }
-      &.seller::after {
-        content: "";
-        background-color: $white;
-        width: 1rem;
-        height: 2rem;
-        position: absolute;
-        top: 84.5%;
-        right: 98%;
-      }
-    }
   }
-
+  
   .input-wrap {
-    border: 1px solid $gray-color;
-    border-radius: 1rem;
-    width: 55rem;
     display: flex;
-    justify-content: center;
     align-items: flex-start;
-    flex-direction: column;
-    padding: 3.5rem;
-    position: relative;
-    top: -1rem;
-    background-color: $white;
+    padding-top: 4rem;
+
     label {
       font-size: map-get($map: $font-size, $key: small);
       line-height: map-get($map: $line-height, $key: small);
       color: $darkgray-color;
     }
-    & input {
+    input {
       border: 1px solid $gray-color;
       border-radius: 0.5rem;
       padding-left: 0.5rem;
       padding: 1.7rem 0 1.7rem 1.6rem;
       height: 5.4rem;
       &:focus {
-        outline: none;
         border: 1px solid $main-color;
       }
     }
-
+    .id-error {
+      font-size: map-get($map: $font-size, $key: small);
+      line-height: map-get($map: $line-height, $key: small);
+      padding-top: 1rem;
+      height: 4rem;
+      color: $error;
+      &.success {
+        color: $main-color;
+      }
+    }
     .error-text {
       font-size: map-get($map: $font-size, $key: small);
       line-height: map-get($map: $line-height, $key: small);
       padding: 1rem 0 1rem 0;
       height: 4rem;
       color: $error;
-      &.none {
-        display: none;
-      }
     }
     input.error {
       border: 1px solid $error;
@@ -101,6 +79,7 @@
         height: 5.4rem;
         margin-right: 1.2rem;
       }
+
       .checked-id {
         background-color: $main-color;
         padding: 1.7rem 3.1rem;
@@ -115,21 +94,10 @@
     .sign-up-pw-wrap,
     .checked-pw-wrap {
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      flex-direction: column;
-
-      label {
-        margin-top: 1.2rem;
-        margin-bottom: 1rem;
-      }
       .sign-up-pw,
       .checked-pw {
-        width: 48rem;
-        margin-bottom: 1rem;
+        margin-top: 1rem;
       }
-
       &::before {
         content: "";
         width: 2.8rem;
@@ -138,22 +106,24 @@
         background-repeat: no-repeat;
         background-size: contain;
         position: absolute;
-        top: 5.5rem;
-        left: 43rem;
+        top: 4.3rem;
+        right: 1.3rem;
       }
       &.on::before {
         background-image: url(../src/assets/icon-check-on.svg);
       }
     }
 
-    .name-wrap {
-      margin-top: 5rem;
-      #name {
-        width: 48rem;
-        margin-top: 1rem;
+    .sign-up-pw-wrap {
+      .sign-up-pw {
+        margin-bottom: 1rem;
       }
     }
 
+    #name {
+      margin-bottom: 1.6rem;
+      margin-top: 1rem;
+    }
     .contact-wrap {
       display: flex;
       align-items: center;
@@ -161,17 +131,17 @@
       & label {
         display: flex;
         flex-direction: column;
-        margin-top: 1.2rem;
-        margin-bottom: 1rem;
       }
       .contact-inp {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 1.2rem;
+        margin-top: 1rem;
         .select {
           display: inline;
           width: auto;
           border-radius: 0.5rem;
+          @include center-xy;
           font-size: map-get($map: $font-size, $key: small);
           line-height: map-get($map: $line-height, $key: small);
           position: relative;
@@ -183,9 +153,6 @@
             width: 15.2rem;
             padding: 1.6rem 7.3rem 1.6rem 5rem;
             cursor: pointer;
-            &.active {
-              border: 1px solid $main-color;
-            }
             &::before {
               content: "";
               background-image: url(../src/assets/icon-down-arrow.svg);
@@ -203,8 +170,9 @@
             border-radius: 0.5rem;
             @include center-xy;
             flex-direction: column;
+            margin-top: 0.6rem;
             position: absolute;
-            top: 6rem;
+            top: 100%;
             overflow-y: scroll;
             overflow-x: hidden;
             box-sizing: border-box;

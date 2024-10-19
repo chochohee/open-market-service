@@ -31,7 +31,7 @@ header {
       border: 2px solid $main-color;
       border-radius: 5rem;
       margin-left: 3rem;
-      flex-direction: row;
+      display: flex;
       justify-content: space-between;
       align-items: center;
       & input {

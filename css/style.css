@@ -25,14 +25,14 @@ body {
   height: 7.4rem;
 }
 
-form {
+.login-form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding-top: 7rem;
 }
-form .choice-user button {
+.login-form .choice-user button {
   border: 1px solid #c4c4c4;
   border-bottom: none;
   border-radius: 1rem 1rem 0 0;
@@ -43,11 +43,11 @@ form .choice-user button {
   background-color: #f2f2f2;
   position: relative;
 }
-form .choice-user button.active {
+.login-form .choice-user button.active {
   background-color: #fff;
   z-index: 10;
 }
-form .choice-user button.active.buyer::after {
+.login-form .choice-user button.active.buyer::after {
   content: "";
   background-color: #fff;
   width: 1rem;
@@ -56,7 +56,7 @@ form .choice-user button.active.buyer::after {
   top: 84.5%;
   left: 98%;
 }
-form .choice-user button.active.seller::after {
+.login-form .choice-user button.active.seller::after {
   content: "";
   background-color: #fff;
   width: 1rem;
@@ -65,7 +65,7 @@ form .choice-user button.active.seller::after {
   top: 84.5%;
   right: 98%;
 }
-form .input-wrap {
+.login-form .input-wrap {
   border: 1px solid #c4c4c4;
   border-radius: 1rem;
   width: 55rem;
@@ -78,27 +78,27 @@ form .input-wrap {
   top: -1rem;
   background-color: #fff;
 }
-form .input-wrap input {
+.login-form .input-wrap input {
   width: 48rem;
   height: 6rem;
   border-bottom: 1px solid #c4c4c4;
   font-size: 1.6rem;
   line-height: 2rem;
 }
-form .input-wrap input::-moz-placeholder {
+.login-form .input-wrap input::-moz-placeholder {
   font-size: 1.6rem;
   line-height: 2rem;
   color: #767676;
 }
-form .input-wrap input::placeholder {
+.login-form .input-wrap input::placeholder {
   font-size: 1.6rem;
   line-height: 2rem;
   color: #767676;
 }
-form .input-wrap input:focus {
+.login-form .input-wrap input:focus {
   outline: none;
 }
-form .input-wrap .login-submit {
+.login-form .input-wrap .login-submit {
   background-color: #21bf48;
   color: #fff;
   padding: 1.9rem 21.5rem;
@@ -109,7 +109,7 @@ form .input-wrap .login-submit {
   line-height: 2.2rem;
   font-weight: 700;
 }
-form .input-wrap .error-text {
+.login-form .input-wrap .error-text {
   font-size: 1.6rem;
   line-height: 2rem;
   font-weight: 500;
@@ -167,7 +167,7 @@ header .main-logo-wrap .search-box {
   border: 2px solid #21bf48;
   border-radius: 5rem;
   margin-left: 3rem;
-  flex-direction: row;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
@@ -658,8 +658,7 @@ footer address span {
   box-sizing: border-box;
   padding-top: 10rem;
 }
-
-.main-logo .logo-btn {
+.sign-up-wrap .main-logo .logo-btn {
   width: 23.8rem;
   height: 7.4rem;
   background-image: url(../src/assets/Logo-hodu.png);
@@ -686,10 +685,40 @@ footer address span {
   background-color: #f2f2f2;
   position: relative;
 }
+.sign-up-form .choice-user button.active {
+  background-color: #fff;
+  z-index: 10;
+}
+.sign-up-form .choice-user button.active.buyer::after {
+  content: "";
+  background-color: #fff;
+  width: 1rem;
+  height: 2rem;
+  position: absolute;
+  top: 84.5%;
+  left: 98%;
+}
+.sign-up-form .choice-user button.active.seller::after {
+  content: "";
+  background-color: #fff;
+  width: 1rem;
+  height: 2rem;
+  position: absolute;
+  top: 84.5%;
+  right: 98%;
+}
 .sign-up-form .input-wrap {
+  border: 1px solid #c4c4c4;
+  border-radius: 1rem;
+  width: 55rem;
   display: flex;
+  justify-content: center;
   align-items: flex-start;
-  padding-top: 4rem;
+  flex-direction: column;
+  padding: 3.5rem;
+  position: relative;
+  top: -1rem;
+  background-color: #fff;
 }
 .sign-up-form .input-wrap label {
   font-size: 1.6rem;
@@ -704,17 +733,8 @@ footer address span {
   height: 5.4rem;
 }
 .sign-up-form .input-wrap input:focus {
+  outline: none;
   border: 1px solid #21bf48;
-}
-.sign-up-form .input-wrap .id-error {
-  font-size: 1.6rem;
-  line-height: 2rem;
-  padding-top: 1rem;
-  height: 4rem;
-  color: #eb5757;
-}
-.sign-up-form .input-wrap .id-error.success {
-  color: #21bf48;
 }
 .sign-up-form .input-wrap .error-text {
   font-size: 1.6rem;
@@ -722,6 +742,9 @@ footer address span {
   padding: 1rem 0 1rem 0;
   height: 4rem;
   color: #eb5757;
+}
+.sign-up-form .input-wrap .error-text.none {
+  display: none;
 }
 .sign-up-form .input-wrap input.error {
   border: 1px solid #eb5757;
@@ -748,12 +771,22 @@ footer address span {
 .sign-up-form .input-wrap .sign-up-pw-wrap,
 .sign-up-form .input-wrap .checked-pw-wrap {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.sign-up-form .input-wrap .sign-up-pw-wrap label,
+.sign-up-form .input-wrap .checked-pw-wrap label {
+  margin-top: 1.2rem;
+  margin-bottom: 1rem;
 }
 .sign-up-form .input-wrap .sign-up-pw-wrap .sign-up-pw,
 .sign-up-form .input-wrap .sign-up-pw-wrap .checked-pw,
 .sign-up-form .input-wrap .checked-pw-wrap .sign-up-pw,
 .sign-up-form .input-wrap .checked-pw-wrap .checked-pw {
-  margin-top: 1rem;
+  width: 48rem;
+  margin-bottom: 1rem;
 }
 .sign-up-form .input-wrap .sign-up-pw-wrap::before,
 .sign-up-form .input-wrap .checked-pw-wrap::before {
@@ -764,18 +797,18 @@ footer address span {
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
-  top: 4.3rem;
-  right: 1.3rem;
+  top: 5.5rem;
+  left: 43rem;
 }
 .sign-up-form .input-wrap .sign-up-pw-wrap.on::before,
 .sign-up-form .input-wrap .checked-pw-wrap.on::before {
   background-image: url(../src/assets/icon-check-on.svg);
 }
-.sign-up-form .input-wrap .sign-up-pw-wrap .sign-up-pw {
-  margin-bottom: 1rem;
+.sign-up-form .input-wrap .name-wrap {
+  margin-top: 5rem;
 }
-.sign-up-form .input-wrap #name {
-  margin-bottom: 1.6rem;
+.sign-up-form .input-wrap .name-wrap #name {
+  width: 48rem;
   margin-top: 1rem;
 }
 .sign-up-form .input-wrap .contact-wrap {
@@ -786,20 +819,18 @@ footer address span {
 .sign-up-form .input-wrap .contact-wrap label {
   display: flex;
   flex-direction: column;
+  margin-top: 1.2rem;
+  margin-bottom: 1rem;
 }
 .sign-up-form .input-wrap .contact-wrap .contact-inp {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1.2rem;
-  margin-top: 1rem;
 }
 .sign-up-form .input-wrap .contact-wrap .contact-inp .select {
   display: inline;
   width: auto;
   border-radius: 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 1.6rem;
   line-height: 2rem;
   position: relative;
@@ -812,6 +843,9 @@ footer address span {
   width: 15.2rem;
   padding: 1.6rem 7.3rem 1.6rem 5rem;
   cursor: pointer;
+}
+.sign-up-form .input-wrap .contact-wrap .contact-inp .select .selected.active {
+  border: 1px solid #21bf48;
 }
 .sign-up-form .input-wrap .contact-wrap .contact-inp .select .selected::before {
   content: "";
@@ -831,9 +865,8 @@ footer address span {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 0.6rem;
   position: absolute;
-  top: 100%;
+  top: 6rem;
   overflow-y: scroll;
   overflow-x: hidden;
   box-sizing: border-box;

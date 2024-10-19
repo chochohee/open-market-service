@@ -42,7 +42,7 @@ export default class SignUp {
             />
             <button class="checked-id" type="submit">중복확인</button>
           </div>
-          <div class="id-error"></div>
+          <div class="id-error error-text none"></div>
           <div class="sign-up-pw-wrap">
             <label for="sign-up-pw">비밀번호</label>
             <input
@@ -65,11 +65,11 @@ export default class SignUp {
               class="checked-pw"
               required
             />
-            <div class="error-text"></div>
+            <div class="error-text none"></div>
           </div>
 
           <div class="name-wrap">
-          <label for="name" class=name" >이름</label>
+          <label for="name" id="name-label" >이름</label>
           <input type="text" id="name" name="name" class="name" pattern= "^[가-힣a-zA-Z]+$" required />
           </div>
           <div class= contact-wrap>
@@ -85,7 +85,7 @@ export default class SignUp {
               <li class="select-option">018</li>
               <li class="select-option">019</li>
             </ul>
-            <div class="error-text"></div>
+            <div class="error-text none"></div>
             </div>
              <input
               type="text"

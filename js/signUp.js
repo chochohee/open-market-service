@@ -69,16 +69,19 @@ export function signup() {
 
       if (!userName.value.trim()) {
         idError.textContent = "필수 정보입니다.";
+        idError.classList.remove("none");
         userName.classList.add("error");
         signupValidate.isValidUsername = false;
       } else if (userName.validity.patternMismatch) {
         idError.textContent =
           "20자 이내의 영문 소문자, 대문자, 숫자만 사용 가능합니다.";
+        idError.classList.remove("none");
         userName.classList.add("error");
 
         signupValidate.isValidUsername = false;
       } else {
         idError.textContent = "중복확인을 진행해주세요.";
+        idError.classList.remove("none");
         userName.classList.add("error");
         signupValidate.isValidUsername = false;
       }
@@ -87,6 +90,7 @@ export function signup() {
     userName.addEventListener("input", () => {
       signupValidate.isValidUsername = false;
       idError.classList.remove("success");
+      idError.classList.add("none");
       idError.textContent = "";
       userName.classList.remove("error");
 
@@ -94,9 +98,11 @@ export function signup() {
         idError.textContent =
           "20자 이내의 영문 소문자, 대문자, 숫자만 사용 가능합니다.";
         signupValidate.isValidUsername = false;
+        idError.classList.remove("none");
         userName.classList.add("error");
       } else if (userName.validity.valid) {
         idError.textContent = "중복확인을 진행해주세요.";
+        idError.classList.remove("none");
         signupValidate.isValidUsername = false;
         userName.classList.add("error");
       }
@@ -135,6 +141,7 @@ export function signup() {
 
       if (!userName) {
         idError.textContent = "필수 정보입니다.";
+        idError.classList.remove("none");
         signupValidate.isValidUsername = false;
         userName.classList.add("error");
         return;
@@ -144,11 +151,13 @@ export function signup() {
 
       if (isUsernameValid.valid) {
         idError.textContent = "멋진 아이디네요:)";
+        idError.classList.remove("none");
         signupValidate.isValidUsername = true;
         idError.classList.add("success");
         userName.classList.remove("error");
       } else {
         idError.textContent = isUsernameValid.error;
+        idError.classList.remove("none");
         signupValidate.isValidUsername = false;
         userName.classList.add("error");
       }
@@ -213,6 +222,7 @@ export function signup() {
     function passingUserName() {
       if (!userName.value.trim()) {
         idError.textContent = noneValue;
+        idError.classList.remove("none");
         userName.classList.add("error");
       }
     }
@@ -227,11 +237,13 @@ export function signup() {
       if (checkedPw.value.trim()) {
         if (checkedPw.value === pw.value) {
           checkedPwErrorText.textContent = "";
+          checkedPwErrorText.classList.remove("none");
           successCheckedPw.classList.add("on");
           checkedPw.classList.remove("error");
           signupValidate.isValidCheckedPw = true;
         } else if (checkedPw.value !== pw.value) {
           checkedPwErrorText.textContent = "비밀번호가 일치하지 않습니다.";
+          checkedPwErrorText.classList.remove("none");
           checkedPw.classList.add("error");
           successCheckedPw.classList.remove("on");
           signupValidate.isValidCheckedPw = false;
@@ -239,6 +251,7 @@ export function signup() {
       } else {
         if (!checkedPw.value.trim()) {
           checkedPwErrorText.textContent = noneValue;
+          checkedPwErrorText.classList.remove("none");
           checkedPw.classList.add("error");
         }
       }
@@ -267,10 +280,12 @@ export function signup() {
 
       if (!middleNum.value.trim()) {
         contactError.textContent = "필수 정보입니다.";
+        contactError.classList.remove("none");
         middleNum.classList.add("error");
         isValid = false;
       } else if (!middleNumValid) {
         contactError.textContent = noneValue;
+        contactError.classList.remove("none");
         middleNum.classList.add("error");
         isValid = false;
       } else {
@@ -279,10 +294,12 @@ export function signup() {
 
       if (!lastNum.value.trim()) {
         contactError.textContent = noneValue;
+        contactError.classList.remove("none");
         lastNum.classList.add("error");
         isValid = false;
       } else if (!lastNumValid) {
         contactError.textContent = noneValue;
+        contactError.classList.remove("none");
         lastNum.classList.remove("error");
         isValid = false;
       } else {
@@ -291,6 +308,7 @@ export function signup() {
 
       if (middleNumValid && lastNumValid) {
         contactError.textContent = "";
+        contactError.classList.add("none");
         middleNum.classList.remove("error");
         lastNum.classList.remove("error");
         isValid = true;
@@ -355,11 +373,13 @@ export function signup() {
       select.addEventListener("click", (e) => {
         e.preventDefault();
         selectList.classList.toggle("none");
+        select.classList.toggle("active");
 
         selectList.addEventListener("click", (e) => {
           e.preventDefault();
           select.textContent = e.target.textContent;
           selectList.classList.add("none");
+          select.classList.remove("active");
 
           firstNumber = select.textContent;
           getContactNum();
