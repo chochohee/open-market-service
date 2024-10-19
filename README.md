@@ -35,25 +35,7 @@
   |[chochohee](https://github.com/chochohee)|
 
 ## 2. 요구사항과 기능 명세
-  
-  ![image](https://github.com/user-attachments/assets/bfc18575-f5fa-479b-8892-7644d11e4f25)  
-
-  
-
-  ![image](https://github.com/user-attachments/assets/ba06d166-d1ad-4507-af36-923c38a57d41)  
-
-  
-
-  ![image](https://github.com/user-attachments/assets/e432b984-31fb-4f91-922b-29d8e19e94e2)  
-
-  
-
-  ![image](https://github.com/user-attachments/assets/34ff1fed-b3ba-4179-b9b6-20dad1ab6d50)
-
-  
-
-  ![image](https://github.com/user-attachments/assets/467c6ed2-37e3-4ac0-9362-a031fae91c0b)
-
+![image](https://github.com/user-attachments/assets/62599be3-2f29-47c8-9278-6bd505244b0e)
 
 ## 3. 프로젝트 구조와 개발 일정
 ### 3.1 프로젝트 구조
@@ -104,7 +86,7 @@
 
 ## 4. 와이어프레임/UI
   ### 4.1 와이어프레임
-  ![image](https://github.com/user-attachments/assets/90fd07b8-b0ff-4067-ae1d-db20f62b5997)
+  ![image](https://github.com/user-attachments/assets/717505b7-0f20-492a-9709-15593ef4674d)
 
   ### 4.2 UI
   #### 필수 구현페이지
