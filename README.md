@@ -84,7 +84,7 @@
       └─ 📁assets  
 
 ### 3.2 타임라인
-![OpenMarketService_TimeLine-001](https://github.com/user-attachments/assets/875479d2-96bc-4e90-a7ed-efe8eb17fe70)
+![OpenMarketService_TimeLine-001](https://github.com/user-attachments/assets/7a59b3f6-5917-4ccc-8789-1acc76338668)
 
 
 ## 4. 와이어프레임/UI
