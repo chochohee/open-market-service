@@ -49,10 +49,10 @@ async function renderPage() {
     try {
       const pageInstance = new page();
       /// init 메서드가 있는 경우에만 호출
+      $app.innerHTML = pageInstance.template();
       if (typeof pageInstance.init === "function") {
         await pageInstance.init();
       }
-      $app.innerHTML = pageInstance.template();
       console.log("랜더링 완료");
       if (path === "/login") {
         login();
