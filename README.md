@@ -34,72 +34,72 @@
   |<img src = "https://github.com/user-attachments/assets/959ca3c8-a246-4c49-baff-1f341b91f006" width="120px" height="120px" />|
   |[chochohee](https://github.com/chochohee)|
 
-## 2. 요구사항과 구현한 기능 명세
-  ### 2.1 로그인 페이지  
+## 2. 요구사항과 기능 명세
+  
   ![image](https://github.com/user-attachments/assets/bfc18575-f5fa-479b-8892-7644d11e4f25)  
 
   
-  ### 2.2 회원가입 페이지  
+
   ![image](https://github.com/user-attachments/assets/ba06d166-d1ad-4507-af36-923c38a57d41)  
 
   
-  ### 2.3 상품목록 / 상품상세페이지
+
   ![image](https://github.com/user-attachments/assets/e432b984-31fb-4f91-922b-29d8e19e94e2)  
 
   
-  ## 2.4 헤더  
+
   ![image](https://github.com/user-attachments/assets/34ff1fed-b3ba-4179-b9b6-20dad1ab6d50)
 
   
-  ### 2.5 기타 모달
+
   ![image](https://github.com/user-attachments/assets/467c6ed2-37e3-4ac0-9362-a031fae91c0b)
 
 
 ## 3. 프로젝트 구조와 개발 일정
 ### 3.1 프로젝트 구조
-├─ 📄 index.html
-│  📄 index.js
-│  📄 README.md
-│
-├─ 📁 component
-│      📄 DetailPage.js
-│      📄 Error404.js
-│      📄 Footer.js
-│      📄 Header.js
-│      📄 HomePage.js
-│      📄 LoginModal.js
-│      📄 LoginPage.js
-│      📄 SignUpPage.js
-│      📄 test.html
-│
-├─ 📁 css
-│      📄 reset.css
-│      📄 style.css
-│      📄 style.css.map
-│      📄 style.scss
-│      📄 _common.scss
-│      📄 _detailPage.scss
-│      📄 _error404.scss
-│      📄 _footer.scss
-│      📄 _header.scss
-│      📄 _login.scss
-│      📄 _loginModal.scss
-│      📄 _main.scss
-│      📄 _mixin.scss
-│      📄 _signUp.scss
-│      📄 _variable.scss
-│
-├─ 📁 js
-│      📄 api.js
-│      📄 isLoggedIn.js
-│      📄 login.js
-│      📄 mypageModal.js
-│      📄 productList.js
-│      📄 signup.js
-│      📄 state.js
-│
-└─ 📁 src
-      └─ 📁assets
+├─ 📄 index.html  
+│  📄 index.js  
+│  📄 README.md  
+│  
+├─ 📁 component  
+│      📄 DetailPage.js  
+│      📄 Error404.js  
+│      📄 Footer.js  
+│      📄 Header.js  
+│      📄 HomePage.js  
+│      📄 LoginModal.js  
+│      📄 LoginPage.js  
+│      📄 SignUpPage.js  
+│      📄 test.html  
+│  
+├─ 📁 css  
+│      📄 reset.css  
+│      📄 style.css  
+│      📄 style.css.map  
+│      📄 style.scss  
+│      📄 _common.scss  
+│      📄 _detailPage.scss  
+│      📄 _error404.scss  
+│      📄 _footer.scss  
+│      📄 _header.scss  
+│      📄 _login.scss  
+│      📄 _loginModal.scss  
+│      📄 _main.scss  
+│      📄 _mixin.scss  
+│      📄 _signUp.scss  
+│      📄 _variable.scss  
+│  
+├─ 📁 js  
+│      📄 api.js  
+│      📄 isLoggedIn.js  
+│      📄 login.js  
+│      📄 mypageModal.js  
+│      📄 productList.js  
+│      📄 signup.js  
+│      📄 state.js  
+│  
+└─ 📁 src  
+      └─ 📁assets  
 
 
 ## 4. 와이어프레임/UI
