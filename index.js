@@ -59,12 +59,24 @@ async function renderPage() {
 document.addEventListener("DOMContentLoaded", async () => {
   await isLoggedIn();
   await renderPage();
+
   const hompage = new HomePage();
   hompage.init();
 
-  window.addEventListener("hashchange", () => {
-    isLoggedIn();
-    renderPage();
+  // 페이지가 로드될 때, hash 체크하여 해당 페이지로 이동
+  window.addEventListener("load", () => {
+    const currentPage = sessionStorage.getItem("currentPage");
+    if (currentPage) {
+      window.location.hash = currentPage;
+    }
+  });
+
+  window.addEventListener("hashchange", async () => {
+    // hash가 변경될 때, 현재 페이지를 세션스토리지에 저장
+    const currentPage = window.location.hash;
+    sessionStorage.setItem("currentPage", currentPage);
+    await isLoggedIn();
+    await renderPage();
   });
 
   $app.addEventListener("click", (e) => {
