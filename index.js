@@ -24,8 +24,6 @@ async function renderPage() {
   const path = hash.replace("#", "");
   const pathParts = path.split("/").filter(Boolean); // 빈 요소를 제거하여 경로 파트 얻기
 
-  console.log("pathParts:", pathParts);
-
   if (path === "/404") {
     renderErrorPage();
     return;
@@ -80,7 +78,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await isLoggedIn();
   await renderPage();
 
-  // 페이지가 로드될 때, hash 체크하여 해당 페이지로 이동
+  // 페이지가 로드될 때, hash 체크하여 해당 페이지로 이동 (새로고침을위한 이벤트)
   window.addEventListener("load", async () => {
     const currentPage = sessionStorage.getItem("currentPage");
     if (currentPage) {
@@ -103,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (e.target.matches(".logo-btn")) {
       e.preventDefault();
       window.location.hash = "#";
-      await renderPage();
+      window.location.reload();
     }
 
     if (e.target.matches(".login-btn")) {
@@ -116,7 +114,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       const productId = e.target
         .closest(".product-wrap")
         .getAttribute("data-id");
-      console.log("e ID:", productId);
       window.location.hash = `#/product/${productId}`;
     }
 

@@ -15,7 +15,6 @@ export async function isLoggedIn() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         state.isLoggedIn = true;
       } else if (response.status === 401) {
         // 인증 실패 시 리프레시 토큰으로 재요청

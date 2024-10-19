@@ -7,7 +7,6 @@ export class ProductList {
 
   async init() {
     this.data = await this.loadProducts();
-    console.log(this.data);
   }
 
   async loadProducts() {

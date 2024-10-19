@@ -16,6 +16,8 @@ export default class DetailPage {
 
       await this.detailProduct.init(productId);
       this.render(productId);
+      
+      console.log("상세페이지 초기화");
     } catch (error) {
       console.error("상세페이지 초기화 오류:", error);
     }
@@ -24,7 +26,6 @@ export default class DetailPage {
   async render(productId) {
     const product = await this.detailProduct.getProductById(Number(productId));
     const $app = document.querySelector(".App");
-    console.log(product);
 
     if (product) {
       $app.innerHTML = this.template(product);

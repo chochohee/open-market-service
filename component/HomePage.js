@@ -24,7 +24,7 @@ export default class HomePage {
   render() {
     const $app = document.querySelector(".App"); // .App 요소 선택
     $app.innerHTML = this.template(); // HTML 렌더링
-
+    
     this.header.init();
     this.loginModal.init();
   }
