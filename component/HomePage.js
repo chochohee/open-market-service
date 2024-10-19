@@ -14,6 +14,7 @@ export default class HomePage {
     try {
       await this.productList.init();
       this.render();
+
       console.log("Home초기화");
     } catch (error) {
       console.error("home 초기화 오류 :", error);
@@ -23,6 +24,7 @@ export default class HomePage {
   render() {
     const $app = document.querySelector(".App"); // .App 요소 선택
     $app.innerHTML = this.template(); // HTML 렌더링
+
     this.header.init();
     this.loginModal.init();
   }

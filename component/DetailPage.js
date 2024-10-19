@@ -16,8 +16,6 @@ export default class DetailPage {
 
       await this.detailProduct.init(productId);
       this.render(productId);
-      this.header.init();
-      this.loginModal.init();
     } catch (error) {
       console.error("상세페이지 초기화 오류:", error);
     }

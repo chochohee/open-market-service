@@ -56,6 +56,11 @@ async function renderPage() {
       }
       $app.innerHTML = pageInstance.template();
       console.log("랜더링 완료");
+      if (path === "/login") {
+        login();
+      } else if (path === "/signup") {
+        signup();
+      }
     } catch (error) {
       console.error("페이지 초기화 오류", error);
       renderErrorPage();
@@ -75,16 +80,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   await isLoggedIn();
   await renderPage();
 
-  const hompage = new HomePage();
-  hompage.init();
-
   // 페이지가 로드될 때, hash 체크하여 해당 페이지로 이동
-  window.addEventListener("load", () => {
+  window.addEventListener("load", async () => {
     const currentPage = sessionStorage.getItem("currentPage");
     if (currentPage) {
       window.location.hash = currentPage;
-    } else {
-      window.location.hash = "#/";
+      await renderPage();
     }
   });
 
@@ -96,19 +97,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     await renderPage();
   });
 
-  $app.addEventListener("click", (e) => {
+  $app.addEventListener("click", async (e) => {
     console.log(e.target);
 
     if (e.target.matches(".logo-btn")) {
       e.preventDefault();
       window.location.hash = "#";
+      await renderPage();
     }
 
     if (e.target.matches(".login-btn")) {
       e.preventDefault();
       window.location.hash = "#/login";
       document.body.style.overflow = "auto";
-      login();
     }
 
     if (e.target.closest(".product-wrap")) {
@@ -123,7 +124,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       e.preventDefault();
       window.location.hash = "#/signup";
       state.userType = "BUYER";
-      signup();
     }
 
     if (e.target.closest(".back-page")) {

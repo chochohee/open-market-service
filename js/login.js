@@ -46,11 +46,10 @@ export function login() {
       if (response.ok) {
         const data = await response.json();
         const accessToken = data.access;
-        localStorage.setItem("accessToken", accessToken);
+        sessionStorage.setItem("accessToken", accessToken);
         console.log("로그인 성공:", data);
         state.isLoggedIn = true;
-        window.location.hash = "#/";
-        location.reload();
+        window.history.back();
       } else {
         const errorData = await response.json();
         console.log("로그인 실패", errorData);

@@ -1,9 +1,9 @@
 import { state } from "../js/state.js";
 export default class Header {
   constructor() {
-    this.mypageBtn = null; // 초기화
-    this.mypageModal = null; // 초기화
-    this.logoutBtn = null; // 초기화
+    this.mypageBtn = null;
+    this.mypageModal = null;
+    this.logoutBtn = null;
   }
 
   init() {
@@ -39,7 +39,7 @@ export default class Header {
     if (this.logoutBtn) {
       this.logoutBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        localStorage.removeItem("accessToken");
+        sessionStorage.removeItem("accessToken");
         state.isLoggedIn = false;
         location.reload();
       });

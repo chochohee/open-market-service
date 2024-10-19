@@ -1,7 +1,7 @@
 import { state } from "./state.js";
 
 export async function isLoggedIn() {
-  const jwt = localStorage.getItem("accessToken");
+  const jwt = sessionStorage.getItem("accessToken");
 
   if (jwt) {
     try {
@@ -33,7 +33,7 @@ export async function isLoggedIn() {
 
           if (refreshResponse.ok) {
             const newTokens = await refreshResponse.json();
-            localStorage.setItem("accessToken", newTokens.accsessToken);
+            sessionStorage.setItem("accessToken", newTokens.accsessToken);
             state.isLoggedIn = true;
           } else {
             console.error("리프레시 토큰 오류:", refreshResponse.statusText);
