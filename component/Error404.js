@@ -1,4 +1,5 @@
 export default class Error404 {
+
   template() {
     return `
         <div class="errorpage-wrap">

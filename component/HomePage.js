@@ -13,6 +13,8 @@ export default class HomePage {
   async init() {
     try {
       await this.productList.init();
+      this.render();
+      console.log("Home초기화");
     } catch (error) {
       console.error("home 초기화 오류 :", error);
     }

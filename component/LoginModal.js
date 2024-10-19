@@ -42,6 +42,7 @@ export default class LoginModal {
         this.cartBtn.forEach((btn) => {
           btn.addEventListener("click", (e) => {
             e.preventDefault();
+            console.log("카트");
             this.loginModal.classList.remove("none");
             document.body.style.overflow = "hidden";
           });
