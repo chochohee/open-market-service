@@ -83,6 +83,9 @@
 └─ 📁 src  
       └─ 📁assets  
 
+### 3.2 타임라인
+![OpenMarketService_TimeLine-001](https://github.com/user-attachments/assets/875479d2-96bc-4e90-a7ed-efe8eb17fe70)
+
 
 ## 4. 와이어프레임/UI
   ### 4.1 와이어프레임
