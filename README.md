@@ -104,7 +104,8 @@
 
 ## 4. 와이어프레임/UI
   ### 4.1 와이어프레임
-  ![image](https://github.com/user-attachments/assets/717505b7-0f20-492a-9709-15593ef4674d)
+  ![image](https://github.com/user-attachments/assets/90fd07b8-b0ff-4067-ae1d-db20f62b5997)
+
   ### 4.2 UI
   #### 필수 구현페이지
   |로그인페이지|회원가입페이지|
