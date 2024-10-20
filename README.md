@@ -96,8 +96,7 @@
   #### 필수 구현페이지
   |로그인페이지|회원가입페이지|
   |:---:|:---:|
-  |
-![login](https://github.com/user-attachments/assets/b3ee31b3-f41d-4d72-ade3-80787d171f25)|![signup](https://github.com/user-attachments/assets/5481c2d7-f14e-4e2d-bce5-a91e1aa1a121)|
+  |![login](https://github.com/user-attachments/assets/b3ee31b3-f41d-4d72-ade3-80787d171f25)|![signup](https://github.com/user-attachments/assets/5481c2d7-f14e-4e2d-bce5-a91e1aa1a121)|
   |상품목록페이지(메인)|상품상세페이지|
   |![main](https://github.com/user-attachments/assets/2634852d-7854-4feb-9431-b923f26cf989)|![detailpage](https://github.com/user-attachments/assets/a60586e9-4ce2-4537-a9d6-d849ddb3c126)|
   |(로그인)마이페이지모달|(비로그인)로그인요청모달|
