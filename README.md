@@ -96,8 +96,7 @@
   #### 필수 구현페이지
   |로그인페이지|회원가입페이지|
   |:---:|:---:|
-  |img
-|![signup](https://github.com/user-attachments/assets/ea957c57-3f2c-4bae-afee-0f051753d7bd)|
+  |![login](https://github.com/user-attachments/assets/064a03f4-495d-4d1d-a93f-16a6b21a1d45)|![signup](https://github.com/user-attachments/assets/ea957c57-3f2c-4bae-afee-0f051753d7bd)|
   |상품목록페이지(메인)|상품상세페이지|
   |img|img|
   |(로그인)마이페이지모달|(비로그인)로그인요청모달|
