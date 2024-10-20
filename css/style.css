@@ -746,6 +746,9 @@ footer address span {
 .sign-up-form .input-wrap .error-text.none {
   display: none;
 }
+.sign-up-form .input-wrap .error-text.success {
+  color: #21bf48;
+}
 .sign-up-form .input-wrap input.error {
   border: 1px solid #eb5757;
 }

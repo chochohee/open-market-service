@@ -152,8 +152,8 @@ export function signup() {
       if (isUsernameValid.valid) {
         idError.textContent = "멋진 아이디네요:)";
         idError.classList.remove("none");
-        signupValidate.isValidUsername = true;
         idError.classList.add("success");
+        signupValidate.isValidUsername = true;
         userName.classList.remove("error");
       } else {
         idError.textContent = isUsernameValid.error;

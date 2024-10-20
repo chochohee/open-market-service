@@ -89,6 +89,9 @@
       &.none {
         display: none;
       }
+      &.success {
+        color: $main-color;
+      }
     }
     input.error {
       border: 1px solid $error;
