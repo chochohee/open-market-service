@@ -96,11 +96,12 @@
   #### 필수 구현페이지
   |로그인페이지|회원가입페이지|
   |:---:|:---:|
-  |![login](https://github.com/user-attachments/assets/064a03f4-495d-4d1d-a93f-16a6b21a1d45)|![signup](https://github.com/user-attachments/assets/ea957c57-3f2c-4bae-afee-0f051753d7bd)|
+  |
+![login](https://github.com/user-attachments/assets/b3ee31b3-f41d-4d72-ade3-80787d171f25)|![signup](https://github.com/user-attachments/assets/5481c2d7-f14e-4e2d-bce5-a91e1aa1a121)|
   |상품목록페이지(메인)|상품상세페이지|
-  |img|img|
+  |![main](https://github.com/user-attachments/assets/2634852d-7854-4feb-9431-b923f26cf989)|![detailpage](https://github.com/user-attachments/assets/a60586e9-4ce2-4537-a9d6-d849ddb3c126)|
   |(로그인)마이페이지모달|(비로그인)로그인요청모달|
-  |img|img|
+  |![mypageModal](https://github.com/user-attachments/assets/01b9b266-ca8b-4e29-b257-710cf7617c38)|![loginModal](https://github.com/user-attachments/assets/5166331d-0d72-4039-975a-9bb88ab5a8c8)|
   
 ## 5. 에러와 해결방법
   - a
