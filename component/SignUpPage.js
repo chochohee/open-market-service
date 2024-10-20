@@ -85,7 +85,6 @@ export default class SignUp {
               <li class="select-option">018</li>
               <li class="select-option">019</li>
             </ul>
-            <div class="error-text none"></div>
             </div>
              <input
               type="text"
@@ -102,7 +101,8 @@ export default class SignUp {
       pattern="^[0-9]{4}"
       title="4자리 입력해주세요."
       required/>
-      </div>
+      <div class="error-text none"></div>  
+    </div>
         </div>
     </div>
         <div class="sign-up-checkd">

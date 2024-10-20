@@ -49,6 +49,8 @@ main {
         min-height: 16rem;
         height: 20vw;
         cursor: pointer;
+        border: 1px solid $gray-color;
+        border-radius: 1rem;
       }
       .product-store {
         margin-top: 1.6rem;
