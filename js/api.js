@@ -1,9 +1,9 @@
 //모든상품 불러오기
-async function fetchAllProducts() {
+export async function fetchAllProducts() {
+  const url = "https://estapi.openmarket.weniv.co.kr/products";
+
   try {
-    const response = await fetch(
-      "https://estapi.openmarket.weniv.co.kr/products"
-    );
+    const response = await fetch(url);
     if (!response.ok) {
       console.error("오류발생", response.statusText);
       return null; // 상태가 좋지 않으면 null 반환
@@ -17,13 +17,10 @@ async function fetchAllProducts() {
   }
 }
 
-export { fetchAllProducts };
-
-async function fetchDetailProducts(productId) {
+export async function fetchDetailProducts(productId) {
+  const url = `https://estapi.openmarket.weniv.co.kr/products/${productId}`;
   try {
-    const response = await fetch(
-      `https://estapi.openmarket.weniv.co.kr/products/${productId}`
-    );
+    const response = await fetch(url);
 
     if (!response.ok) {
       console.error("오류발생", response.statusText);
@@ -37,5 +34,3 @@ async function fetchDetailProducts(productId) {
     return null; // 오류 발생 시 null 반환
   }
 }
-
-export { fetchDetailProducts };
