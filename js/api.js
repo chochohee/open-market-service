@@ -10,7 +10,6 @@ async function fetchAllProducts() {
     }
 
     const json = await response.json(); // JSON 데이터 변환
-    console.log(json); // 가져온 데이터 콘솔 출력
     return json; // 데이터를 반환
   } catch (error) {
     console.error("API 요청 중 오류 발생:", error);
