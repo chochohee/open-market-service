@@ -58,7 +58,6 @@
 │      📄 LoginModal.js  
 │      📄 LoginPage.js  
 │      📄 SignUpPage.js  
-│      📄 test.html  
 │  
 ├─ 📁 css  
 │      📄 reset.css  
