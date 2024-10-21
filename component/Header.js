@@ -12,7 +12,6 @@ export default class Header {
     this.mypageModal = document.querySelector(".my-page-modal");
     this.logoutBtn = document.querySelector(".logout");
 
-    console.log("버튼:", this.mypageBtn, "모달:", this.mypageModal);
     this.setupMypageModal();
     this.setupLogout();
   }
@@ -21,7 +20,6 @@ export default class Header {
     if (this.mypageBtn) {
       this.mypageBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        console.log("모달");
         this.mypageModal.classList.toggle("none");
         this.mypageBtn.classList.toggle("active");
       });
@@ -50,7 +48,6 @@ export default class Header {
   }
 
   template() {
-    console.log("heder호출");
     return `
       <header>
       <div class="main-logo-wrap">
