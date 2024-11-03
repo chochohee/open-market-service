@@ -2,7 +2,7 @@
 > 배포주소 : https://chochohee.github.io/open-market-service/ </br>
 > 🛠 사용 기술스택 : <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> </br>
 
-## 1. 프로젝트의 목표와 기능
+## 1. 프로젝트의 목표와 기능 
 ### 1.1 프로젝트 목표
 - 판매자와 구매자를 구별하여 판매자가 상품을 등록, 판매하며 구매자는 구매하는 서비스.
 - JavaScript와 API를 사용하여 상품 등록, 결제, 상품에 대한 CRUD를 직접 구현해보는 프로젝트
